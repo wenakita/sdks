@@ -1,0 +1,6 @@
+export * from './BalancerAddresses'
+export * from './EcosystemProtocols'
+export * from './HermesAddresses'
+export * from './MaiaAddresses'
+export * from './TalosAddresses'
+export * from './UlyssesAddresses'
