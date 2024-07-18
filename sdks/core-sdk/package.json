@@ -10,7 +10,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "module": "dist/sdk-core.esm.js",
+  "module": "dist/maia-core-sdk.esm.js",
   "files": [
     "dist"
   ],
