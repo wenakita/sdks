@@ -1,6 +1,6 @@
 # Maia DAO SDK's
 
-A repository for many Uniswap SDK's. All SDK's can be found in `sdk/` and have more information in their individual README's.
+A repository for many Maia DAO SDK's. All SDK's can be found in `sdk/` and have more information in their individual README's.
 
 ## Development Commands
 
@@ -18,7 +18,7 @@ yarn g:lint
 # Test
 yarn g:test
 # Run a specific package.json command for an individual SDK
-yarn sdk @{sdk-name} {command}
+yarn sdk {sdk-name} {command}
 ```
 
 ## Publishing SDK's

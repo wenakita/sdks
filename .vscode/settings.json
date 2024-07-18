@@ -6,8 +6,8 @@
   "files.insertFinalNewline": true,
   "editor.formatOnSave": true,
   "eslint.workingDirectories": [
+    "./sdks/core-sdk",
     "./sdks/router-sdk",
-    "./sdks/sdk-core",
     "./sdks/universal-router-sdk",
     "./sdks/v2-sdk",
     "./sdks/v3-sdk",
