@@ -4,7 +4,6 @@ import { AddressMap } from './types'
 // Zero address
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
-//TODO: Update addresses
 // Address that all chains, except arbitrum, will use for the to param in a transaction
 export const LAYER_ZERO_ENDPOINT_ADDRESS: AddressMap = {
   //MAINNETS
