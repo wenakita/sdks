@@ -10,7 +10,7 @@
     "./sdks/router-sdk",
     "./sdks/universal-router-sdk",
     "./sdks/v2-sdk",
-    "./sdks/v3-sdk",
+    "./sdks/hermes-v2-sdk",
   ],
   "testing.openTesting": "neverOpen"
 }

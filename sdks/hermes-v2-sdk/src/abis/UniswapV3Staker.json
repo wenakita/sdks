@@ -1,0 +1,411 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      { "name": "_factory", "type": "address", "internalType": "contract IUniswapV3Factory" },
+      {
+        "name": "_nonfungiblePositionManager",
+        "type": "address",
+        "internalType": "contract INonfungiblePositionManager"
+      },
+      { "name": "_uniswapV3GaugeFactory", "type": "address", "internalType": "contract IUniswapV3GaugeFactory" },
+      { "name": "_hermesGaugeBoost", "type": "address", "internalType": "contract bHermesBoost" },
+      { "name": "_maxIncentiveStartLeadTime", "type": "uint256", "internalType": "uint256" },
+      { "name": "_minter", "type": "address", "internalType": "address" },
+      { "name": "_hermes", "type": "address", "internalType": "address" }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "bribeDepots",
+    "inputs": [{ "name": "pool", "type": "address", "internalType": "contract IUniswapV3Pool" }],
+    "outputs": [{ "name": "depot", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "claimAllRewards",
+    "inputs": [{ "name": "to", "type": "address", "internalType": "address" }],
+    "outputs": [{ "name": "reward", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "claimReward",
+    "inputs": [
+      { "name": "to", "type": "address", "internalType": "address" },
+      { "name": "amountRequested", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [{ "name": "reward", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "createIncentive",
+    "inputs": [
+      {
+        "name": "key",
+        "type": "tuple",
+        "internalType": "struct IUniswapV3Staker.IncentiveKey",
+        "components": [
+          { "name": "pool", "type": "address", "internalType": "contract IUniswapV3Pool" },
+          { "name": "startTime", "type": "uint96", "internalType": "uint96" }
+        ]
+      },
+      { "name": "reward", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "createIncentiveFromGauge",
+    "inputs": [{ "name": "reward", "type": "uint256", "internalType": "uint256" }],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "deposits",
+    "inputs": [{ "name": "tokenId", "type": "uint256", "internalType": "uint256" }],
+    "outputs": [
+      { "name": "owner", "type": "address", "internalType": "address" },
+      { "name": "tickLower", "type": "int24", "internalType": "int24" },
+      { "name": "tickUpper", "type": "int24", "internalType": "int24" },
+      { "name": "stakedTimestamp", "type": "uint40", "internalType": "uint40" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "endIncentive",
+    "inputs": [
+      {
+        "name": "key",
+        "type": "tuple",
+        "internalType": "struct IUniswapV3Staker.IncentiveKey",
+        "components": [
+          { "name": "pool", "type": "address", "internalType": "contract IUniswapV3Pool" },
+          { "name": "startTime", "type": "uint96", "internalType": "uint96" }
+        ]
+      }
+    ],
+    "outputs": [{ "name": "refund", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "factory",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address", "internalType": "contract IUniswapV3Factory" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "gaugePool",
+    "inputs": [{ "name": "gauge", "type": "address", "internalType": "address" }],
+    "outputs": [{ "name": "pool", "type": "address", "internalType": "contract IUniswapV3Pool" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "gauges",
+    "inputs": [{ "name": "pool", "type": "address", "internalType": "contract IUniswapV3Pool" }],
+    "outputs": [{ "name": "gauge", "type": "address", "internalType": "contract UniswapV3Gauge" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getRewardInfo",
+    "inputs": [
+      {
+        "name": "key",
+        "type": "tuple",
+        "internalType": "struct IUniswapV3Staker.IncentiveKey",
+        "components": [
+          { "name": "pool", "type": "address", "internalType": "contract IUniswapV3Pool" },
+          { "name": "startTime", "type": "uint96", "internalType": "uint96" }
+        ]
+      },
+      { "name": "tokenId", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [
+      { "name": "reward", "type": "uint256", "internalType": "uint256" },
+      { "name": "secondsInsideX128", "type": "uint160", "internalType": "uint160" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "hermes",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "hermesGaugeBoost",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address", "internalType": "contract bHermesBoost" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "incentives",
+    "inputs": [{ "name": "incentiveId", "type": "bytes32", "internalType": "bytes32" }],
+    "outputs": [
+      { "name": "totalRewardUnclaimed", "type": "uint256", "internalType": "uint256" },
+      { "name": "totalSecondsClaimedX128", "type": "uint160", "internalType": "uint160" },
+      { "name": "numberOfStakes", "type": "uint96", "internalType": "uint96" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "maxIncentiveStartLeadTime",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "minter",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "multicall",
+    "inputs": [{ "name": "data", "type": "bytes[]", "internalType": "bytes[]" }],
+    "outputs": [{ "name": "", "type": "bytes[]", "internalType": "bytes[]" }],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "nonfungiblePositionManager",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address", "internalType": "contract INonfungiblePositionManager" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "onERC721Received",
+    "inputs": [
+      { "name": "", "type": "address", "internalType": "address" },
+      { "name": "from", "type": "address", "internalType": "address" },
+      { "name": "tokenId", "type": "uint256", "internalType": "uint256" },
+      { "name": "", "type": "bytes", "internalType": "bytes" }
+    ],
+    "outputs": [{ "name": "", "type": "bytes4", "internalType": "bytes4" }],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "poolsMinimumWidth",
+    "inputs": [{ "name": "pool", "type": "address", "internalType": "contract IUniswapV3Pool" }],
+    "outputs": [{ "name": "minimumWidth", "type": "uint24", "internalType": "uint24" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "restakeToken",
+    "inputs": [{ "name": "tokenId", "type": "uint256", "internalType": "uint256" }],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "rewards",
+    "inputs": [{ "name": "user", "type": "address", "internalType": "address" }],
+    "outputs": [{ "name": "rewardAmount", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "stakeToken",
+    "inputs": [{ "name": "tokenId", "type": "uint256", "internalType": "uint256" }],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "stakes",
+    "inputs": [
+      { "name": "tokenId", "type": "uint256", "internalType": "uint256" },
+      { "name": "incentiveId", "type": "bytes32", "internalType": "bytes32" }
+    ],
+    "outputs": [
+      { "name": "secondsPerLiquidityInsideInitialX128", "type": "uint160", "internalType": "uint160" },
+      { "name": "liquidity", "type": "uint128", "internalType": "uint128" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "tokenIdRewards",
+    "inputs": [{ "name": "tokenId", "type": "uint256", "internalType": "uint256" }],
+    "outputs": [{ "name": "rewardAmount", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "uniswapV3GaugeFactory",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address", "internalType": "contract IUniswapV3GaugeFactory" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "unstakeToken",
+    "inputs": [{ "name": "tokenId", "type": "uint256", "internalType": "uint256" }],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateBribeDepot",
+    "inputs": [{ "name": "uniswapV3Pool", "type": "address", "internalType": "contract IUniswapV3Pool" }],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateGauges",
+    "inputs": [{ "name": "uniswapV3Pool", "type": "address", "internalType": "contract IUniswapV3Pool" }],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updatePoolMinimumWidth",
+    "inputs": [{ "name": "uniswapV3Pool", "type": "address", "internalType": "contract IUniswapV3Pool" }],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "userAttachements",
+    "inputs": [
+      { "name": "user", "type": "address", "internalType": "address" },
+      { "name": "pool", "type": "address", "internalType": "contract IUniswapV3Pool" }
+    ],
+    "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "withdrawToken",
+    "inputs": [
+      { "name": "tokenId", "type": "uint256", "internalType": "uint256" },
+      { "name": "to", "type": "address", "internalType": "address" },
+      { "name": "data", "type": "bytes", "internalType": "bytes" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "BribeDepotUpdated",
+    "inputs": [
+      { "name": "uniswapV3Pool", "type": "address", "indexed": true, "internalType": "contract IUniswapV3Pool" },
+      { "name": "bribeDepot", "type": "address", "indexed": true, "internalType": "address" }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "DepositTransferred",
+    "inputs": [
+      { "name": "tokenId", "type": "uint256", "indexed": true, "internalType": "uint256" },
+      { "name": "newOwner", "type": "address", "indexed": true, "internalType": "address" }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "GaugeUpdated",
+    "inputs": [
+      { "name": "uniswapV3Pool", "type": "address", "indexed": true, "internalType": "contract IUniswapV3Pool" },
+      { "name": "uniswapV3Gauge", "type": "address", "indexed": true, "internalType": "address" }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "IncentiveCreated",
+    "inputs": [
+      { "name": "pool", "type": "address", "indexed": true, "internalType": "contract IUniswapV3Pool" },
+      { "name": "startTime", "type": "uint256", "indexed": true, "internalType": "uint256" },
+      { "name": "reward", "type": "uint256", "indexed": true, "internalType": "uint256" }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "IncentiveEnded",
+    "inputs": [
+      { "name": "incentiveId", "type": "bytes32", "indexed": true, "internalType": "bytes32" },
+      { "name": "refund", "type": "uint256", "indexed": true, "internalType": "uint256" }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "PoolMinimumWidthUpdated",
+    "inputs": [
+      { "name": "uniswapV3Pool", "type": "address", "indexed": true, "internalType": "contract IUniswapV3Pool" },
+      { "name": "poolMinimumWidth", "type": "uint24", "indexed": true, "internalType": "uint24" }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "RewardClaimed",
+    "inputs": [
+      { "name": "to", "type": "address", "indexed": true, "internalType": "address" },
+      { "name": "reward", "type": "uint256", "indexed": true, "internalType": "uint256" }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "TokenStaked",
+    "inputs": [
+      { "name": "tokenId", "type": "uint256", "indexed": true, "internalType": "uint256" },
+      { "name": "incentiveId", "type": "bytes32", "indexed": true, "internalType": "bytes32" },
+      { "name": "isBoosted", "type": "bool", "indexed": true, "internalType": "bool" }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "TokenUnstaked",
+    "inputs": [
+      { "name": "tokenId", "type": "uint256", "indexed": true, "internalType": "uint256" },
+      { "name": "reward", "type": "uint256", "indexed": true, "internalType": "uint256" }
+    ],
+    "anonymous": false
+  },
+  { "type": "error", "name": "EndIncentiveBeforeEndTime", "inputs": [] },
+  { "type": "error", "name": "EndIncentiveNoRefundAvailable", "inputs": [] },
+  { "type": "error", "name": "EndIncentiveWhileStakesArePresent", "inputs": [] },
+  { "type": "error", "name": "IncentiveCallerMustBeRegisteredGauge", "inputs": [] },
+  { "type": "error", "name": "IncentiveCannotBeCreatedForPoolWithNoGauge", "inputs": [] },
+  { "type": "error", "name": "IncentiveRewardMustBeGreaterThanZero", "inputs": [] },
+  { "type": "error", "name": "IncentiveStartTimeMustBeNowOrInTheFuture", "inputs": [] },
+  { "type": "error", "name": "IncentiveStartTimeNotAtEndOfAnEpoch", "inputs": [] },
+  { "type": "error", "name": "IncentiveStartTimeTooFarIntoFuture", "inputs": [] },
+  { "type": "error", "name": "InvalidGauge", "inputs": [] },
+  { "type": "error", "name": "InvalidRecipient", "inputs": [] },
+  { "type": "error", "name": "InvalidStartTime", "inputs": [] },
+  { "type": "error", "name": "NoLiquidityError", "inputs": [] },
+  { "type": "error", "name": "NonExistentIncentiveError", "inputs": [] },
+  { "type": "error", "name": "NotCalledByOwner", "inputs": [] },
+  { "type": "error", "name": "RangeTooSmallError", "inputs": [] },
+  { "type": "error", "name": "TokenNotDeposited", "inputs": [] },
+  { "type": "error", "name": "TokenNotStaked", "inputs": [] },
+  { "type": "error", "name": "TokenNotUniswapV3NFT", "inputs": [] },
+  { "type": "error", "name": "TokenStakedError", "inputs": [] }
+]
