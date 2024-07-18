@@ -1,17 +1,23 @@
-import { BigintIsh, CurrencyAmount, Ether, Percent, Token, TradeType, WETH9 } from '@uniswap/sdk-core'
-import { Pair, Route as V2Route, Trade as V2Trade } from '@uniswap/v2-sdk'
 import {
   encodeSqrtRatioX96,
+  Ether,
   FeeAmount,
   nearestUsableTick,
+  Pair,
   Pool,
   Position,
   Route as V3Route,
-  TickMath,
   TICK_SPACINGS,
+  TickMath,
   Trade as V3Trade,
-} from '@uniswap/v3-sdk'
+  TradeType,
+  V2RouteSDK as V2Route,
+  V2Trade,
+  WETH9,
+} from 'hermes-v2-sdk'
 import JSBI from 'jsbi'
+import { BigintIsh, CurrencyAmount, NativeToken, Percent } from 'maia-core-sdk'
+
 import { SwapRouter, Trade } from '.'
 import { ApprovalTypes } from './approveAndCall'
 import { MixedRouteSDK } from './entities/mixedRoute/route'
@@ -21,16 +27,16 @@ describe('SwapRouter', () => {
   const ETHER = Ether.onChain(1)
   const WETH = WETH9[1]
 
-  const token0 = new Token(1, '0x0000000000000000000000000000000000000001', 18, 't0', 'token0')
-  const token1 = new Token(1, '0x0000000000000000000000000000000000000002', 18, 't1', 'token1')
-  const token2 = new Token(1, '0x0000000000000000000000000000000000000003', 18, 't2', 'token2')
+  const token0 = new NativeToken(1, '0x0000000000000000000000000000000000000001', 18, 't0', 'token0')
+  const token1 = new NativeToken(1, '0x0000000000000000000000000000000000000002', 18, 't1', 'token1')
+  const token2 = new NativeToken(1, '0x0000000000000000000000000000000000000003', 18, 't2', 'token2')
 
   const feeAmount = FeeAmount.MEDIUM
   const sqrtRatioX96 = encodeSqrtRatioX96(1, 1)
   const liquidity = 1_000_000
 
   // v3
-  const makePool = (token0: Token, token1: Token, liquidity: number) => {
+  const makePool = (token0: NativeToken, token1: NativeToken, liquidity: number) => {
     return new Pool(token0, token1, feeAmount, sqrtRatioX96, liquidity, TickMath.getTickAtSqrtRatio(sqrtRatioX96), [
       {
         index: nearestUsableTick(TickMath.MIN_TICK, TICK_SPACINGS[feeAmount]),
@@ -46,7 +52,7 @@ describe('SwapRouter', () => {
   }
 
   // v2
-  const makePair = (token0: Token, token1: Token, liquidity: BigintIsh) => {
+  const makePair = (token0: NativeToken, token1: NativeToken, liquidity: BigintIsh) => {
     const amount0 = CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(liquidity))
     const amount1 = CurrencyAmount.fromRawAmount(token1, JSBI.BigInt(liquidity))
 
@@ -101,6 +107,8 @@ describe('SwapRouter', () => {
                 amount: amountIn,
               },
             ],
+            [],
+            [],
             TradeType.EXACT_INPUT
           )
 
@@ -149,6 +157,8 @@ describe('SwapRouter', () => {
                 amount: amountOut,
               },
             ],
+            [],
+            [],
             TradeType.EXACT_OUTPUT
           )
 
@@ -201,6 +211,8 @@ describe('SwapRouter', () => {
                 amount: amountIn,
               },
             ],
+            [],
+            [],
             TradeType.EXACT_INPUT
           )
 
@@ -253,6 +265,8 @@ describe('SwapRouter', () => {
                 amount: amountOut,
               },
             ],
+            [],
+            [],
             TradeType.EXACT_OUTPUT
           )
 
@@ -324,6 +338,8 @@ describe('SwapRouter', () => {
                   amount: amountIn,
                 },
               ],
+              [],
+              [],
               TradeType.EXACT_INPUT
             )
 
@@ -335,7 +351,7 @@ describe('SwapRouter', () => {
             expect(calldata).toEqual(expectedCalldata)
             expect(value).toBe('0x00')
 
-            const mixedRouteTrades = await Trade.fromRoutes([], [], TradeType.EXACT_INPUT, [
+            const mixedRouteTrades = await Trade.fromRoutes([], [], [], [], TradeType.EXACT_INPUT, [
               {
                 mixedRoute: (await mixedRouteTrade1).swaps[0].route,
                 amount: amountIn,
@@ -390,7 +406,7 @@ describe('SwapRouter', () => {
           })
 
           it('meta-trade', async () => {
-            const trades = await Trade.fromRoutes([], [], TradeType.EXACT_INPUT, [
+            const trades = await Trade.fromRoutes([], [], [], [], TradeType.EXACT_INPUT, [
               {
                 mixedRoute: (await mixedRouteTrade1).swaps[0].route,
                 amount: amountIn,
@@ -493,6 +509,8 @@ describe('SwapRouter', () => {
                   amount: amountIn,
                 },
               ],
+              [],
+              [],
               TradeType.EXACT_INPUT
             )
 
@@ -513,6 +531,8 @@ describe('SwapRouter', () => {
                   amount: amountIn,
                 },
               ],
+              [],
+              [],
               [],
               TradeType.EXACT_INPUT,
               [
@@ -572,6 +592,8 @@ describe('SwapRouter', () => {
                   amount: amountOut,
                 },
               ],
+              [],
+              [],
               TradeType.EXACT_OUTPUT
             )
 
@@ -641,6 +663,8 @@ describe('SwapRouter', () => {
                   amount: amountIn,
                 },
               ],
+              [],
+              [],
               TradeType.EXACT_INPUT
             )
 
@@ -666,6 +690,8 @@ describe('SwapRouter', () => {
                   amount: amountIn,
                 },
               ],
+              [],
+              [],
               TradeType.EXACT_INPUT,
               [
                 {
@@ -724,6 +750,8 @@ describe('SwapRouter', () => {
                   amount: amountOut,
                 },
               ],
+              [],
+              [],
               TradeType.EXACT_OUTPUT
             )
 
@@ -845,6 +873,8 @@ describe('SwapRouter', () => {
                   amount: amountIn,
                 },
               ],
+              [],
+              [],
               TradeType.EXACT_INPUT
             )
 
@@ -865,6 +895,8 @@ describe('SwapRouter', () => {
                   amount: amountIn,
                 },
               ],
+              [],
+              [],
               [],
               TradeType.EXACT_INPUT,
               [
@@ -924,6 +956,8 @@ describe('SwapRouter', () => {
                   amount: amountOut,
                 },
               ],
+              [],
+              [],
               TradeType.EXACT_OUTPUT
             )
 
@@ -993,6 +1027,8 @@ describe('SwapRouter', () => {
                   amount: amountIn,
                 },
               ],
+              [],
+              [],
               TradeType.EXACT_INPUT
             )
 
@@ -1016,6 +1052,8 @@ describe('SwapRouter', () => {
                   amount: amountIn,
                 },
               ],
+              [],
+              [],
               TradeType.EXACT_INPUT,
               [
                 {
@@ -1074,6 +1112,8 @@ describe('SwapRouter', () => {
                   amount: amountOut,
                 },
               ],
+              [],
+              [],
               TradeType.EXACT_OUTPUT
             )
 

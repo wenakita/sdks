@@ -4471,21 +4471,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniswap/router-sdk@workspace:sdks/router-sdk":
-  version: 0.0.0-use.local
-  resolution: "@uniswap/router-sdk@workspace:sdks/router-sdk"
-  dependencies:
-    "@ethersproject/abi": ^5.5.0
-    "@types/jest": ^24.0.25
-    "@uniswap/sdk-core": ^5.3.1
-    "@uniswap/swap-router-contracts": ^1.3.0
-    "@uniswap/v2-sdk": ^4.3.2
-    "@uniswap/v3-sdk": ^3.11.2
-    prettier: ^2.4.1
-    tsdx: ^0.14.1
-  languageName: unknown
-  linkType: soft
-
 "@uniswap/sdk-core@npm:^5.3.1":
   version: 5.3.1
   resolution: "@uniswap/sdk-core@npm:5.3.1"
@@ -9556,6 +9541,42 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hermes-swap-router-sdk@workspace:sdks/router-sdk":
+  version: 0.0.0-use.local
+  resolution: "hermes-swap-router-sdk@workspace:sdks/router-sdk"
+  dependencies:
+    "@ethersproject/abi": ^5.5.0
+    "@types/jest": ^24.0.25
+    "@uniswap/swap-router-contracts": ^1.3.0
+    hermes-v2-sdk: 0.0.72
+    maia-core-sdk: 1.0.29
+    prettier: ^2.4.1
+    tsdx: ^0.14.1
+  languageName: unknown
+  linkType: soft
+
+"hermes-v2-sdk@npm:0.0.72":
+  version: 0.0.72
+  resolution: "hermes-v2-sdk@npm:0.0.72"
+  dependencies:
+    "@ethersproject/abi": ^5.5.0
+    "@ethersproject/solidity": ^5.0.9
+    "@types/lodash.clonedeep": ^4.5.9
+    "@uniswap/swap-router-contracts": ^1.3.0
+    "@uniswap/v3-periphery": ^1.1.1
+    "@uniswap/v3-staker": 1.0.0
+    big.js: ^5.2.2
+    bignumber.js: 9.0.1
+    decimal.js-light: ^2.5.0
+    jsbi: ^3.1.4
+    lodash.clonedeep: ^4.5.0
+    maia-core-sdk: ^1.0.29
+    tiny-invariant: ^1.1.0
+    tiny-warning: ^1.0.3
+  checksum: d02b446409bbd201e6ca810097475146607a972116f7f661553c2de67a78951894caca1284e7d88e057df01e27e9f333d0b6b03e1d40e5a96733b62c8004093b
+  languageName: node
+  linkType: hard
+
 "hermes-v2-sdk@workspace:sdks/hermes-v2-sdk":
   version: 0.0.0-use.local
   resolution: "hermes-v2-sdk@workspace:sdks/hermes-v2-sdk"
@@ -12176,7 +12197,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"maia-core-sdk@npm:^1.0.29":
+"maia-core-sdk@npm:1.0.29, maia-core-sdk@npm:^1.0.29":
   version: 1.0.29
   resolution: "maia-core-sdk@npm:1.0.29"
   dependencies:

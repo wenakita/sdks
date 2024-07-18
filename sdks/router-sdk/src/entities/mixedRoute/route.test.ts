@@ -1,17 +1,27 @@
-import { Ether, Token, WETH9, CurrencyAmount, Currency } from '@uniswap/sdk-core'
-import { Route as V3RouteSDK, Pool, FeeAmount, TickMath, encodeSqrtRatioX96 } from '@uniswap/v3-sdk'
-import { MixedRoute, RouteV3 } from '../route'
-import { Protocol } from '../protocol'
-import { Route as V2RouteSDK, Pair } from '@uniswap/v2-sdk'
-import { MixedRouteSDK } from './route'
+import {
+  encodeSqrtRatioX96,
+  Ether,
+  FeeAmount,
+  Pair,
+  Pool,
+  Route as V3RouteSDK,
+  TickMath,
+  V2RouteSDK,
+  WETH9,
+} from 'hermes-v2-sdk'
+import { Currency, CurrencyAmount, NativeToken } from 'maia-core-sdk'
+
 import { partitionMixedRouteByProtocol } from '../../utils'
+import { Protocol } from '../protocol'
+import { MixedRoute, RouteV3 } from '../route'
+import { MixedRouteSDK } from './route'
 
 describe('MixedRoute', () => {
   const ETHER = Ether.onChain(1)
-  const token0 = new Token(1, '0x0000000000000000000000000000000000000001', 18, 't0')
-  const token1 = new Token(1, '0x0000000000000000000000000000000000000002', 18, 't1')
-  const token2 = new Token(1, '0x0000000000000000000000000000000000000003', 18, 't2')
-  const token3 = new Token(1, '0x0000000000000000000000000000000000000004', 18, 't3')
+  const token0 = new NativeToken(1, '0x0000000000000000000000000000000000000001', 18, 't0')
+  const token1 = new NativeToken(1, '0x0000000000000000000000000000000000000002', 18, 't1')
+  const token2 = new NativeToken(1, '0x0000000000000000000000000000000000000003', 18, 't2')
+  const token3 = new NativeToken(1, '0x0000000000000000000000000000000000000004', 18, 't3')
   const weth = WETH9[1]
 
   const pool_0_1 = new Pool(token0, token1, FeeAmount.MEDIUM, encodeSqrtRatioX96(1, 1), 0, 0, [])

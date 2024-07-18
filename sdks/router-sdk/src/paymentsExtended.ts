@@ -1,15 +1,15 @@
 import { Interface } from '@ethersproject/abi'
-import { Percent, Token, validateAndParseAddress } from '@uniswap/sdk-core'
-import { abi } from '@uniswap/swap-router-contracts/artifacts/contracts/interfaces/IPeripheryPaymentsWithFeeExtended.sol/IPeripheryPaymentsWithFeeExtended.json'
-import { FeeOptions, Payments, toHex } from '@uniswap/v3-sdk'
+import IPeripheryPaymentsWithFeeExtendedABI from '@uniswap/swap-router-contracts/artifacts/contracts/interfaces/IPeripheryPaymentsWithFeeExtended.sol/IPeripheryPaymentsWithFeeExtended.json'
+import { FeeOptions, Payments, validateAndParseAddress } from 'hermes-v2-sdk'
 import JSBI from 'jsbi'
+import { NativeToken, Percent, toHex } from 'maia-core-sdk'
 
 function encodeFeeBips(fee: Percent): string {
   return toHex(fee.multiply(10_000).quotient)
 }
 
 export abstract class PaymentsExtended {
-  public static readonly INTERFACE: Interface = new Interface(abi)
+  public static INTERFACE: Interface = new Interface(IPeripheryPaymentsWithFeeExtendedABI.abi)
 
   /**
    * Cannot be constructed.
@@ -37,7 +37,7 @@ export abstract class PaymentsExtended {
   }
 
   public static encodeSweepToken(
-    token: Token,
+    token: NativeToken,
     amountMinimum: JSBI,
     recipient?: string,
     feeOptions?: FeeOptions
@@ -65,7 +65,7 @@ export abstract class PaymentsExtended {
     }
   }
 
-  public static encodePull(token: Token, amount: JSBI): string {
+  public static encodePull(token: NativeToken, amount: JSBI): string {
     return PaymentsExtended.INTERFACE.encodeFunctionData('pull', [token.address, toHex(amount)])
   }
 

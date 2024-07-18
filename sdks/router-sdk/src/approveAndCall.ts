@@ -1,14 +1,8 @@
 import { Interface } from '@ethersproject/abi'
-import { Currency, Percent, Token } from '@uniswap/sdk-core'
-import { abi } from '@uniswap/swap-router-contracts/artifacts/contracts/interfaces/IApproveAndCall.sol/IApproveAndCall.json'
-import {
-  IncreaseSpecificOptions,
-  MintSpecificOptions,
-  NonfungiblePositionManager,
-  Position,
-  toHex,
-} from '@uniswap/v3-sdk'
+import IApproveAndCallABI from '@uniswap/swap-router-contracts/artifacts/contracts/interfaces/IApproveAndCall.sol/IApproveAndCall.json'
+import { IncreaseSpecificOptions, MintSpecificOptions, NonfungiblePositionManager, Pool, Position } from 'hermes-v2-sdk'
 import JSBI from 'jsbi'
+import { Currency, CurrencyAmount, NativeToken, Percent, toHex } from 'maia-core-sdk'
 import invariant from 'tiny-invariant'
 
 // condensed version of v3-sdk AddLiquidityOptions containing only necessary swap + add attributes
@@ -28,33 +22,33 @@ export function isMint(options: CondensedAddLiquidityOptions): options is Omit<M
 }
 
 export abstract class ApproveAndCall {
-  public static readonly INTERFACE: Interface = new Interface(abi)
+  public static INTERFACE: Interface = new Interface(IApproveAndCallABI.abi)
 
   /**
    * Cannot be constructed.
    */
   private constructor() {}
 
-  public static encodeApproveMax(token: Token): string {
+  public static encodeApproveMax(token: NativeToken): string {
     return ApproveAndCall.INTERFACE.encodeFunctionData('approveMax', [token.address])
   }
 
-  public static encodeApproveMaxMinusOne(token: Token): string {
+  public static encodeApproveMaxMinusOne(token: NativeToken): string {
     return ApproveAndCall.INTERFACE.encodeFunctionData('approveMaxMinusOne', [token.address])
   }
 
-  public static encodeApproveZeroThenMax(token: Token): string {
+  public static encodeApproveZeroThenMax(token: NativeToken): string {
     return ApproveAndCall.INTERFACE.encodeFunctionData('approveZeroThenMax', [token.address])
   }
 
-  public static encodeApproveZeroThenMaxMinusOne(token: Token): string {
+  public static encodeApproveZeroThenMaxMinusOne(token: NativeToken): string {
     return ApproveAndCall.INTERFACE.encodeFunctionData('approveZeroThenMaxMinusOne', [token.address])
   }
 
   public static encodeCallPositionManager(calldatas: string[]): string {
     invariant(calldatas.length > 0, 'NULL_CALLDATA')
 
-    if (calldatas.length === 1) {
+    if (calldatas.length == 1) {
       return ApproveAndCall.INTERFACE.encodeFunctionData('callPositionManager', calldatas)
     } else {
       const encodedMulticall = NonfungiblePositionManager.INTERFACE.encodeFunctionData('multicall', [calldatas])
@@ -74,24 +68,27 @@ export abstract class ApproveAndCall {
     addLiquidityOptions: CondensedAddLiquidityOptions,
     slippageTolerance: Percent
   ): string {
-    let { amount0: amount0Min, amount1: amount1Min } = position.mintAmountsWithSlippage(slippageTolerance)
+    let { amount0: amount0Min, amount1: amount1Min } = position.mintAmountsWithSlippage(slippageTolerance) as {
+      amount0: JSBI
+      amount1: JSBI
+    }
 
     // position.mintAmountsWithSlippage() can create amounts not dependenable in scenarios
     // such as range orders. Allow the option to provide a position with custom minimum amounts
     // for these scenarios
-    if (JSBI.lessThan(minimalPosition.amount0.quotient, amount0Min)) {
-      amount0Min = minimalPosition.amount0.quotient
+    if (JSBI.lessThan((minimalPosition.amount0 as CurrencyAmount<NativeToken>).quotient, amount0Min)) {
+      amount0Min = (minimalPosition.amount0 as CurrencyAmount<NativeToken>).quotient
     }
-    if (JSBI.lessThan(minimalPosition.amount1.quotient, amount1Min)) {
-      amount1Min = minimalPosition.amount1.quotient
+    if (JSBI.lessThan((minimalPosition.amount1 as CurrencyAmount<NativeToken>).quotient, amount1Min)) {
+      amount1Min = (minimalPosition.amount1 as CurrencyAmount<NativeToken>).quotient
     }
 
     if (isMint(addLiquidityOptions)) {
       return ApproveAndCall.INTERFACE.encodeFunctionData('mint', [
         {
-          token0: position.pool.token0.address,
-          token1: position.pool.token1.address,
-          fee: position.pool.fee,
+          token0: (position.pool as Pool).token0.address,
+          token1: (position.pool as Pool).token1.address,
+          fee: (position.pool as Pool).fee,
           tickLower: position.tickLower,
           tickUpper: position.tickUpper,
           amount0Min: toHex(amount0Min),
@@ -102,8 +99,8 @@ export abstract class ApproveAndCall {
     } else {
       return ApproveAndCall.INTERFACE.encodeFunctionData('increaseLiquidity', [
         {
-          token0: position.pool.token0.address,
-          token1: position.pool.token1.address,
+          token0: (position.pool as Pool).token0.address,
+          token1: (position.pool as Pool).token1.address,
           amount0Min: toHex(amount0Min),
           amount1Min: toHex(amount1Min),
           tokenId: toHex(addLiquidityOptions.tokenId),
@@ -123,7 +120,7 @@ export abstract class ApproveAndCall {
       case ApprovalTypes.ZERO_THEN_MAX_MINUS_ONE:
         return ApproveAndCall.encodeApproveZeroThenMaxMinusOne(token.wrapped)
       default:
-        throw new Error('Error: invalid ApprovalType')
+        throw 'Error: invalid ApprovalType'
     }
   }
 }

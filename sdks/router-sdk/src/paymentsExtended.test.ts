@@ -1,5 +1,6 @@
-import { Percent, Token } from '@uniswap/sdk-core'
 import JSBI from 'jsbi'
+import { NativeToken, Percent } from 'maia-core-sdk'
+
 import { PaymentsExtended } from './paymentsExtended'
 
 const recipient = '0x0000000000000000000000000000000000000003'
@@ -10,7 +11,7 @@ const feeOptions = {
   recipient: '0x0000000000000000000000000000000000000009',
 }
 
-const token = new Token(1, '0x0000000000000000000000000000000000000001', 18, 't0', 'token0')
+const token = new NativeToken(1, '0x0000000000000000000000000000000000000001', 18, 't0', 'token0')
 
 describe('PaymentsExtended', () => {
   describe('#encodeUnwrapWETH9', () => {

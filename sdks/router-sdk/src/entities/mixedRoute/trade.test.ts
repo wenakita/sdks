@@ -1,20 +1,32 @@
-import { Percent, Price, sqrt, Token, CurrencyAmount, TradeType, WETH9, Ether, Currency } from '@uniswap/sdk-core'
-import { Pair } from '@uniswap/v2-sdk'
-import { encodeSqrtRatioX96, FeeAmount, nearestUsableTick, Pool, TickMath, TICK_SPACINGS } from '@uniswap/v3-sdk'
+import {
+  encodeSqrtRatioX96,
+  Ether,
+  FeeAmount,
+  nearestUsableTick,
+  Pair,
+  Pool,
+  sqrt,
+  TICK_SPACINGS,
+  TickMath,
+  TradeType,
+  WETH9,
+} from 'hermes-v2-sdk'
 import JSBI from 'jsbi'
+import { Currency, CurrencyAmount, NativeToken, Percent, Price } from 'maia-core-sdk'
+
 import { MixedRouteSDK } from './route'
 import { MixedRouteTrade } from './trade'
 
 describe('MixedRouteTrade', () => {
   const ETHER = Ether.onChain(1)
-  const token0 = new Token(1, '0x0000000000000000000000000000000000000001', 18, 't0', 'token0')
-  const token1 = new Token(1, '0x0000000000000000000000000000000000000002', 18, 't1', 'token1')
-  const token2 = new Token(1, '0x0000000000000000000000000000000000000003', 18, 't2', 'token2')
-  const token3 = new Token(1, '0x0000000000000000000000000000000000000004', 18, 't3', 'token3')
+  const token0 = new NativeToken(1, '0x0000000000000000000000000000000000000001', 18, 't0', 'token0')
+  const token1 = new NativeToken(1, '0x0000000000000000000000000000000000000002', 18, 't1', 'token1')
+  const token2 = new NativeToken(1, '0x0000000000000000000000000000000000000003', 18, 't2', 'token2')
+  const token3 = new NativeToken(1, '0x0000000000000000000000000000000000000004', 18, 't3', 'token3')
 
   function v2StylePool(
-    reserve0: CurrencyAmount<Token>,
-    reserve1: CurrencyAmount<Token>,
+    reserve0: CurrencyAmount<NativeToken>,
+    reserve1: CurrencyAmount<NativeToken>,
     feeAmount: FeeAmount = FeeAmount.MEDIUM
   ) {
     const sqrtRatioX96 = encodeSqrtRatioX96(reserve1.quotient, reserve0.quotient)
@@ -143,7 +155,7 @@ describe('MixedRouteTrade', () => {
 
     describe('#fromRoutes', () => {
       it('can be constructed with ETHER as input with multiple routes', async () => {
-        const trade = await MixedRouteTrade.fromRoutes<Ether, Token, TradeType>(
+        const trade = await MixedRouteTrade.fromRoutes<Ether, NativeToken, TradeType>(
           [
             {
               amount: CurrencyAmount.fromRawAmount(Ether.onChain(1), JSBI.BigInt(10000)),
@@ -157,7 +169,7 @@ describe('MixedRouteTrade', () => {
       })
 
       it('can be constructed with ETHER as output for exact input with multiple routes', async () => {
-        const trade = await MixedRouteTrade.fromRoutes<Token, Ether, TradeType>(
+        const trade = await MixedRouteTrade.fromRoutes<NativeToken, Ether, TradeType>(
           [
             {
               amount: CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(3000)),
@@ -176,7 +188,7 @@ describe('MixedRouteTrade', () => {
 
       it('throws if pools are re-used between routes', async () => {
         await expect(
-          MixedRouteTrade.fromRoutes<Token, Ether, TradeType.EXACT_INPUT>(
+          MixedRouteTrade.fromRoutes<NativeToken, Ether, TradeType.EXACT_INPUT>(
             [
               {
                 amount: CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(4500)),
@@ -194,7 +206,7 @@ describe('MixedRouteTrade', () => {
 
       it('throws if created with exact output', async () => {
         await expect(
-          MixedRouteTrade.fromRoutes<Ether, Token, TradeType>(
+          MixedRouteTrade.fromRoutes<Ether, NativeToken, TradeType>(
             [
               {
                 amount: CurrencyAmount.fromRawAmount(Ether.onChain(1), JSBI.BigInt(10000)),
@@ -440,9 +452,15 @@ describe('MixedRouteTrade', () => {
             ],
             tradeType: TradeType.EXACT_INPUT,
           })
-
+          it('is cached', () => {
+            expect(exactIn.priceImpact === exactIn.priceImpact).toStrictEqual(true)
+          })
           it('is correct', () => {
             expect(exactIn.priceImpact.toSignificant(3)).toEqual('17.2')
+          })
+
+          it('is cached with multiple routes', () => {
+            expect(exactInMultipleRoutes.priceImpact === exactInMultipleRoutes.priceImpact).toStrictEqual(true)
           })
           it('is correct with multiple routes', async () => {
             expect(exactInMultipleRoutes.priceImpact.toSignificant(3)).toEqual('19.8')
@@ -477,8 +495,15 @@ describe('MixedRouteTrade', () => {
             ],
             tradeType: TradeType.EXACT_INPUT,
           })
+          it('is cached', () => {
+            expect(exactIn.priceImpact === exactIn.priceImpact).toStrictEqual(true)
+          })
           it('is correct', () => {
             expect(exactIn.priceImpact.toSignificant(3)).toEqual('17.2')
+          })
+
+          it('is cached with multiple routes', () => {
+            expect(exactInMultipleRoutes.priceImpact === exactInMultipleRoutes.priceImpact).toStrictEqual(true)
           })
           it('is correct with multiple routes', async () => {
             expect(exactInMultipleRoutes.priceImpact.toSignificant(3)).toEqual('19.8')
@@ -600,7 +625,7 @@ describe('MixedRouteTrade', () => {
 
     describe('#maximumAmountIn', () => {
       describe('tradeType = EXACT_INPUT', () => {
-        let exactIn: MixedRouteTrade<Token, Token, TradeType.EXACT_INPUT>
+        let exactIn: MixedRouteTrade<NativeToken, NativeToken, TradeType.EXACT_INPUT>
         beforeEach(async () => {
           exactIn = await MixedRouteTrade.fromRoute(
             new MixedRouteSDK([pool_0_1, pool_1_2], token0, token2),
@@ -638,7 +663,7 @@ describe('MixedRouteTrade', () => {
 
     describe('#minimumAmountOut', () => {
       describe('tradeType = EXACT_INPUT', () => {
-        let exactIn: MixedRouteTrade<Token, Token, TradeType.EXACT_INPUT>
+        let exactIn: MixedRouteTrade<NativeToken, NativeToken, TradeType.EXACT_INPUT>
         beforeEach(
           async () =>
             (exactIn = await MixedRouteTrade.fromRoute(
@@ -931,7 +956,7 @@ describe('MixedRouteTrade', () => {
 
     describe('#fromRoutes', () => {
       it('can be constructed with ETHER as input with multiple routes', async () => {
-        const trade = await MixedRouteTrade.fromRoutes<Ether, Token, TradeType>(
+        const trade = await MixedRouteTrade.fromRoutes<Ether, NativeToken, TradeType>(
           [
             {
               amount: CurrencyAmount.fromRawAmount(Ether.onChain(1), JSBI.BigInt(10000)),
@@ -945,7 +970,7 @@ describe('MixedRouteTrade', () => {
       })
 
       it('can be constructed with ETHER as output for exact input with multiple routes', async () => {
-        const trade = await MixedRouteTrade.fromRoutes<Token, Ether, TradeType.EXACT_INPUT>(
+        const trade = await MixedRouteTrade.fromRoutes<NativeToken, Ether, TradeType.EXACT_INPUT>(
           [
             {
               amount: CurrencyAmount.fromRawAmount(token1, JSBI.BigInt(3000)),
@@ -1162,8 +1187,15 @@ describe('MixedRouteTrade', () => {
           ],
           tradeType: TradeType.EXACT_INPUT,
         })
+        it('is cached', () => {
+          expect(exactIn.priceImpact === exactIn.priceImpact).toStrictEqual(true)
+        })
         it('is correct', () => {
           expect(exactIn.priceImpact.toSignificant(3)).toEqual('17.2')
+        })
+
+        it('is cached with multiple routes', () => {
+          expect(exactInMultipleRoutes.priceImpact === exactInMultipleRoutes.priceImpact).toStrictEqual(true)
         })
         it('is correct with multiple routes', async () => {
           expect(exactInMultipleRoutes.priceImpact.toSignificant(3)).toEqual('19.8')
@@ -1288,7 +1320,7 @@ describe('MixedRouteTrade', () => {
 
     describe('#maximumAmountIn', () => {
       describe('tradeType = EXACT_INPUT', () => {
-        let exactIn: MixedRouteTrade<Token, Token, TradeType.EXACT_INPUT>
+        let exactIn: MixedRouteTrade<NativeToken, NativeToken, TradeType.EXACT_INPUT>
         beforeEach(async () => {
           exactIn = await MixedRouteTrade.fromRoute(
             new MixedRouteSDK([pool_0_1, pair_1_2], token0, token2),
@@ -1326,7 +1358,7 @@ describe('MixedRouteTrade', () => {
 
     describe('#minimumAmountOut', () => {
       describe('tradeType = EXACT_INPUT', () => {
-        let exactIn: MixedRouteTrade<Token, Token, TradeType.EXACT_INPUT>
+        let exactIn: MixedRouteTrade<NativeToken, NativeToken, TradeType.EXACT_INPUT>
         const large_pair_0_1 = new Pair(
           CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(100000)),
           CurrencyAmount.fromRawAmount(token1, JSBI.BigInt(100000))

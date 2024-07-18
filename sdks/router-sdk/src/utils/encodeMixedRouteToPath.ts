@@ -1,9 +1,9 @@
 import { pack } from '@ethersproject/solidity'
-import { Currency, Token } from '@uniswap/sdk-core'
-import { Pool } from '@uniswap/v3-sdk'
-import { Pair } from '@uniswap/v2-sdk'
-import { MixedRouteSDK } from '../entities/mixedRoute/route'
+import { Pool } from 'hermes-v2-sdk'
+import { Currency, NativeToken } from 'maia-core-sdk'
+
 import { V2_FEE_PATH_PLACEHOLDER } from '../constants'
+import { MixedRouteSDK, TPool } from '../entities/mixedRoute/route'
 
 /**
  * Converts a route to a hex encoded path
@@ -12,15 +12,15 @@ import { V2_FEE_PATH_PLACEHOLDER } from '../constants'
  * @returns the exactIn encoded path
  */
 export function encodeMixedRouteToPath(route: MixedRouteSDK<Currency, Currency>): string {
-  const firstInputToken: Token = route.input.wrapped
+  const firstInputToken: NativeToken = route.input.wrapped
 
   const { path, types } = route.pools.reduce(
     (
-      { inputToken, path, types }: { inputToken: Token; path: (string | number)[]; types: string[] },
-      pool: Pool | Pair,
+      { inputToken, path, types }: { inputToken: NativeToken; path: (string | number)[]; types: string[] },
+      pool: TPool,
       index
-    ): { inputToken: Token; path: (string | number)[]; types: string[] } => {
-      const outputToken: Token = pool.token0.equals(inputToken) ? pool.token1 : pool.token0
+    ): { inputToken: NativeToken; path: (string | number)[]; types: string[] } => {
+      const outputToken: NativeToken = pool.token0.equals(inputToken) ? pool.token1 : pool.token0
       if (index === 0) {
         return {
           inputToken: outputToken,

@@ -1,9 +1,8 @@
-import { Currency, Fraction, Percent, Price, sortedInsert, CurrencyAmount, TradeType, Token } from '@uniswap/sdk-core'
-import { Pair } from '@uniswap/v2-sdk'
-import { BestTradeOptions, Pool } from '@uniswap/v3-sdk'
+import { BestTradeOptions, Pair, Pool, sortedInsert, TradeType } from 'hermes-v2-sdk'
+import { Currency, CurrencyAmount, Fraction, NativeToken, ONE, Percent, Price, ZERO } from 'maia-core-sdk'
 import invariant from 'tiny-invariant'
-import { ONE, ZERO } from '../../constants'
-import { MixedRouteSDK } from './route'
+
+import { MixedRouteSDK, TPool } from './route'
 
 /**
  * Trades comparator, an extension of the input output comparator that also considers other dimensions of the trade in ranking them
@@ -66,7 +65,7 @@ export class MixedRouteTrade<TInput extends Currency, TOutput extends Currency, 
    * i.e. which pools the trade goes through.
    */
   public get route(): MixedRouteSDK<TInput, TOutput> {
-    invariant(this.swaps.length === 1, 'MULTIPLE_ROUTES')
+    invariant(this.swaps.length == 1, 'MULTIPLE_ROUTES')
     return this.swaps[0].route
   }
 
@@ -193,9 +192,7 @@ export class MixedRouteTrade<TInput extends Currency, TOutput extends Currency, 
     amount: TTradeType extends TradeType.EXACT_INPUT ? CurrencyAmount<TInput> : CurrencyAmount<TOutput>,
     tradeType: TTradeType
   ): Promise<MixedRouteTrade<TInput, TOutput, TTradeType>> {
-    const amounts: CurrencyAmount<Token>[] = new Array(route.path.length)
-    let inputAmount: CurrencyAmount<TInput>
-    let outputAmount: CurrencyAmount<TOutput>
+    const amounts: CurrencyAmount<NativeToken>[] = new Array(route.path.length)
 
     invariant(tradeType === TradeType.EXACT_INPUT, 'TRADE_TYPE')
 
@@ -203,11 +200,17 @@ export class MixedRouteTrade<TInput extends Currency, TOutput extends Currency, 
     amounts[0] = amount.wrapped
     for (let i = 0; i < route.path.length - 1; i++) {
       const pool = route.pools[i]
+      // TODO: If ComposableStablePoolWrapper and using underlying, update Wrapper's rate
+      // TODO: Double check if other routes don't influence this one
       const [outputAmount] = await pool.getOutputAmount(amounts[i])
       amounts[i + 1] = outputAmount
     }
-    inputAmount = CurrencyAmount.fromFractionalAmount(route.input, amount.numerator, amount.denominator)
-    outputAmount = CurrencyAmount.fromFractionalAmount(
+    const inputAmount: CurrencyAmount<TInput> = CurrencyAmount.fromFractionalAmount(
+      route.input,
+      amount.numerator,
+      amount.denominator
+    )
+    const outputAmount: CurrencyAmount<TOutput> = CurrencyAmount.fromFractionalAmount(
       route.output,
       amounts[amounts.length - 1].numerator,
       amounts[amounts.length - 1].denominator
@@ -245,21 +248,25 @@ export class MixedRouteTrade<TInput extends Currency, TOutput extends Currency, 
     invariant(tradeType === TradeType.EXACT_INPUT, 'TRADE_TYPE')
 
     for (const { route, amount } of routes) {
-      const amounts: CurrencyAmount<Token>[] = new Array(route.path.length)
-      let inputAmount: CurrencyAmount<TInput>
-      let outputAmount: CurrencyAmount<TOutput>
+      const amounts: CurrencyAmount<NativeToken>[] = new Array(route.path.length)
 
       invariant(amount.currency.equals(route.input), 'INPUT')
-      inputAmount = CurrencyAmount.fromFractionalAmount(route.input, amount.numerator, amount.denominator)
+      const inputAmount: CurrencyAmount<TInput> = CurrencyAmount.fromFractionalAmount(
+        route.input,
+        amount.numerator,
+        amount.denominator
+      )
       amounts[0] = CurrencyAmount.fromFractionalAmount(route.input.wrapped, amount.numerator, amount.denominator)
 
       for (let i = 0; i < route.path.length - 1; i++) {
         const pool = route.pools[i]
+        // TODO: If ComposableStablePoolWrapper and using underlying, update Wrapper's rate
+        // TODO: Double check if other routes don't influence this one
         const [outputAmount] = await pool.getOutputAmount(amounts[i])
         amounts[i + 1] = outputAmount
       }
 
-      outputAmount = CurrencyAmount.fromFractionalAmount(
+      const outputAmount: CurrencyAmount<TOutput> = CurrencyAmount.fromFractionalAmount(
         route.output,
         amounts[amounts.length - 1].numerator,
         amounts[amounts.length - 1].denominator
@@ -366,7 +373,7 @@ export class MixedRouteTrade<TInput extends Currency, TOutput extends Currency, 
       }
     }
 
-    invariant(numPools === poolAddressSet.size, 'POOLS_DUPLICATED')
+    invariant(numPools == poolAddressSet.size, 'POOLS_DUPLICATED')
 
     invariant(tradeType === TradeType.EXACT_INPUT, 'TRADE_TYPE')
 
@@ -430,12 +437,13 @@ export class MixedRouteTrade<TInput extends Currency, TOutput extends Currency, 
    * @returns The exact in trade
    */
   public static async bestTradeExactIn<TInput extends Currency, TOutput extends Currency>(
-    pools: (Pool | Pair)[],
+    pools: TPool[],
     currencyAmountIn: CurrencyAmount<TInput>,
     currencyOut: TOutput,
+    // TODO: Increase maxHops (and maybe maxNumResults) to 5
     { maxNumResults = 3, maxHops = 3 }: BestTradeOptions = {},
     // used in recursion.
-    currentPools: (Pool | Pair)[] = [],
+    currentPools: TPool[] = [],
     nextAmountIn: CurrencyAmount<Currency> = currencyAmountIn,
     bestTrades: MixedRouteTrade<TInput, TOutput, TradeType.EXACT_INPUT>[] = []
   ): Promise<MixedRouteTrade<TInput, TOutput, TradeType.EXACT_INPUT>[]> {
@@ -453,8 +461,10 @@ export class MixedRouteTrade<TInput extends Currency, TOutput extends Currency, 
         if ((pool as Pair).reserve0.equalTo(ZERO) || (pool as Pair).reserve1.equalTo(ZERO)) continue
       }
 
-      let amountOut: CurrencyAmount<Token>
+      let amountOut: CurrencyAmount<NativeToken>
       try {
+        // TODO: If ComposableStablePoolWrapper and using underlying, update Wrapper's rate
+        // TODO: Double check if other routes don't influence this one
         ;[amountOut] = await pool.getOutputAmount(amountIn)
       } catch (error) {
         // input too low

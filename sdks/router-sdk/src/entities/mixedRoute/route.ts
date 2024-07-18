@@ -1,10 +1,11 @@
+import { IPool, Pair } from 'hermes-v2-sdk'
+import { Currency, NativeToken, Price } from 'maia-core-sdk'
 import invariant from 'tiny-invariant'
 
-import { Currency, Price, Token } from '@uniswap/sdk-core'
-import { Pool } from '@uniswap/v3-sdk'
-import { Pair } from '@uniswap/v2-sdk'
-
-type TPool = Pair | Pool
+/**
+ * Represents a list of all pools through which a mixed swap can occur
+ */
+export type TPool = Pair | IPool
 
 /**
  * Represents a list of pools or pairs through which a swap can occur
@@ -13,7 +14,7 @@ type TPool = Pair | Pool
  */
 export class MixedRouteSDK<TInput extends Currency, TOutput extends Currency> {
   public readonly pools: TPool[]
-  public readonly path: Token[]
+  public readonly path: NativeToken[]
   public readonly input: TInput
   public readonly output: TOutput
 
@@ -40,7 +41,7 @@ export class MixedRouteSDK<TInput extends Currency, TOutput extends Currency> {
     /**
      * Normalizes token0-token1 order and selects the next token/fee step to add to the path
      * */
-    const tokenPath: Token[] = [wrappedInput]
+    const tokenPath: NativeToken[] = [wrappedInput]
     for (const [i, pool] of pools.entries()) {
       const currentInputToken = tokenPath[i]
       invariant(currentInputToken.equals(pool.token0) || currentInputToken.equals(pool.token1), 'PATH')

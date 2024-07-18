@@ -1,14 +1,16 @@
-import { CurrencyAmount, Ether, Token, WETH9 } from '@uniswap/sdk-core'
-import { Pair } from '@uniswap/v2-sdk'
-import { encodeSqrtRatioX96, FeeAmount, Pool } from '@uniswap/v3-sdk'
+import { Ether, WETH9 } from 'hermes-v2-sdk'
+import { Pair } from 'hermes-v2-sdk'
+import { encodeSqrtRatioX96, FeeAmount, Pool } from 'hermes-v2-sdk'
+import { CurrencyAmount, NativeToken } from 'maia-core-sdk'
+
 import { MixedRouteSDK } from '../entities/mixedRoute/route'
 import { encodeMixedRouteToPath } from './encodeMixedRouteToPath'
 
 describe('#encodeMixedRouteToPath', () => {
   const ETHER = Ether.onChain(1)
-  const token0 = new Token(1, '0x0000000000000000000000000000000000000001', 18, 't0', 'token0')
-  const token1 = new Token(1, '0x0000000000000000000000000000000000000002', 18, 't1', 'token1')
-  const token2 = new Token(1, '0x0000000000000000000000000000000000000003', 18, 't2', 'token2')
+  const token0 = new NativeToken(1, '0x0000000000000000000000000000000000000001', 18, 't0', 'token0')
+  const token1 = new NativeToken(1, '0x0000000000000000000000000000000000000002', 18, 't1', 'token1')
+  const token2 = new NativeToken(1, '0x0000000000000000000000000000000000000003', 18, 't2', 'token2')
 
   const weth = WETH9[1]
 

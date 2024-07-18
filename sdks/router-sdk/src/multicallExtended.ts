@@ -1,7 +1,7 @@
 import { Interface } from '@ethersproject/abi'
-import { BigintIsh } from '@uniswap/sdk-core'
-import { abi } from '@uniswap/swap-router-contracts/artifacts/contracts/interfaces/IMulticallExtended.sol/IMulticallExtended.json'
-import { Multicall, toHex } from '@uniswap/v3-sdk'
+import IMulticallExtendedABI from '@uniswap/swap-router-contracts/artifacts/contracts/interfaces/IMulticallExtended.sol/IMulticallExtended.json'
+import { Multicall } from 'hermes-v2-sdk'
+import { BigintIsh, toHex } from 'maia-core-sdk'
 
 // deadline or previousBlockhash
 export type Validation = BigintIsh | string
@@ -15,7 +15,7 @@ function validateAndParseBytes32(bytes32: string): string {
 }
 
 export abstract class MulticallExtended {
-  public static readonly INTERFACE: Interface = new Interface(abi)
+  public static INTERFACE: Interface = new Interface(IMulticallExtendedABI.abi)
 
   /**
    * Cannot be constructed.
