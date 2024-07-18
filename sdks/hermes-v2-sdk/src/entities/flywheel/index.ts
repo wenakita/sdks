@@ -13,9 +13,7 @@ export abstract class Flywheel {
    * Cannot be constructed.
    */
   /* eslint-disable @typescript-eslint/no-empty-function */
-  public constructor() {
-    /* TODO document why this constructor is empty */
-  }
+  private constructor() {}
 
   /**
    * Encodes the contract interaction calldata to accrue rewards for a strategy and user.

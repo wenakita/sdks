@@ -40,13 +40,11 @@ export function tradeComparator<
     } else {
       return 1
     }
-  } else {
     // tradeA has less output than trade B, so should come second
-    if (a.outputAmount.lessThan(b.outputAmount)) {
-      return 1
-    } else {
-      return -1
-    }
+  } else if (a.outputAmount.lessThan(b.outputAmount)) {
+    return 1
+  } else {
+    return -1
   }
 }
 

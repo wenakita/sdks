@@ -149,7 +149,7 @@ export abstract class SwapRouter {
 
     // unwrap
     if (routerMustCustody) {
-      if (!!options.fee) {
+      if (options.fee) {
         if (outputIsNative) {
           calldatas.push(Payments.encodeUnwrapWETH9(totalAmountOut.quotient, recipient, options.fee))
         } else {
