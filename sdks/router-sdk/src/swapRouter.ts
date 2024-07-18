@@ -14,19 +14,19 @@ import {
   toHex,
   Trade as V3Trade,
 } from '@uniswap/v3-sdk'
-import invariant from 'tiny-invariant'
 import JSBI from 'jsbi'
+import invariant from 'tiny-invariant'
+import { ApprovalTypes, ApproveAndCall, CondensedAddLiquidityOptions } from './approveAndCall'
 import { ADDRESS_THIS, MSG_SENDER } from './constants'
-import { ApproveAndCall, ApprovalTypes, CondensedAddLiquidityOptions } from './approveAndCall'
-import { Trade } from './entities/trade'
+import { MixedRouteSDK } from './entities/mixedRoute/route'
+import { MixedRouteTrade } from './entities/mixedRoute/trade'
 import { Protocol } from './entities/protocol'
 import { MixedRoute, RouteV2, RouteV3 } from './entities/route'
+import { Trade } from './entities/trade'
 import { MulticallExtended, Validation } from './multicallExtended'
 import { PaymentsExtended } from './paymentsExtended'
-import { MixedRouteTrade } from './entities/mixedRoute/trade'
+import { getOutputOfPools, partitionMixedRouteByProtocol } from './utils'
 import { encodeMixedRouteToPath } from './utils/encodeMixedRouteToPath'
-import { MixedRouteSDK } from './entities/mixedRoute/route'
-import { partitionMixedRouteByProtocol, getOutputOfPools } from './utils'
 
 const ZERO = JSBI.BigInt(0)
 const REFUND_ETH_PRICE_IMPACT_THRESHOLD = new Percent(JSBI.BigInt(50), JSBI.BigInt(100))
@@ -83,7 +83,7 @@ type AnyTradeType =
  * Represents the Uniswap V2 + V3 SwapRouter02, and has static methods for helping execute trades.
  */
 export abstract class SwapRouter {
-  public static INTERFACE: Interface = new Interface(abi)
+  public static readonly INTERFACE: Interface = new Interface(abi)
 
   /**
    * Cannot be constructed.

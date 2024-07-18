@@ -1,10 +1,10 @@
-import abi from '../../../abis/LooksRareV2.json'
 import { Interface } from '@ethersproject/abi'
-import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
-import { TradeConfig } from '../Command'
-import { RoutePlanner, CommandType } from '../../utils/routerCommands'
 import { BigNumber } from 'ethers'
+import abi from '../../../abis/LooksRareV2.json'
 import { ZERO_ADDRESS } from '../../utils/constants'
+import { CommandType, RoutePlanner } from '../../utils/routerCommands'
+import { TradeConfig } from '../Command'
+import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
 
 export type MakerOrder = {
   quoteType: number
@@ -55,7 +55,7 @@ export type LooksRareV2Data = {
 }
 
 export class LooksRareV2Trade extends NFTTrade<LooksRareV2Data> {
-  public static INTERFACE: Interface = new Interface(abi)
+  public static readonly INTERFACE: Interface = new Interface(abi)
   private static ERC721_ORDER = 0
 
   constructor(orders: LooksRareV2Data[]) {

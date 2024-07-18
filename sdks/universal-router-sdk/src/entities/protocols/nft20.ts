@@ -1,9 +1,9 @@
-import abi from '../../../abis/NFT20.json'
 import { Interface } from '@ethersproject/abi'
-import { TradeConfig } from '../Command'
-import { NFTTrade, Market, TokenType, BuyItem } from '../NFTTrade'
-import { RoutePlanner, CommandType } from '../../utils/routerCommands'
 import { BigNumber, BigNumberish } from 'ethers'
+import abi from '../../../abis/NFT20.json'
+import { CommandType, RoutePlanner } from '../../utils/routerCommands'
+import { TradeConfig } from '../Command'
+import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
 
 export type NFT20Data = {
   tokenAddress: string
@@ -16,7 +16,7 @@ export type NFT20Data = {
 }
 
 export class NFT20Trade extends NFTTrade<NFT20Data> {
-  public static INTERFACE: Interface = new Interface(abi)
+  public static readonly INTERFACE: Interface = new Interface(abi)
 
   constructor(orders: NFT20Data[]) {
     super(Market.NFT20, orders)

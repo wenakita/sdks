@@ -1,9 +1,9 @@
-import abi from '../../../abis/Foundation.json'
 import { Interface } from '@ethersproject/abi'
-import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
-import { TradeConfig } from '../Command'
-import { RoutePlanner, CommandType } from '../../utils/routerCommands'
 import { BigNumber, BigNumberish } from 'ethers'
+import abi from '../../../abis/Foundation.json'
+import { CommandType, RoutePlanner } from '../../utils/routerCommands'
+import { TradeConfig } from '../Command'
+import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
 
 export type FoundationData = {
   recipient: string
@@ -14,7 +14,7 @@ export type FoundationData = {
 }
 
 export class FoundationTrade extends NFTTrade<FoundationData> {
-  public static INTERFACE: Interface = new Interface(abi)
+  public static readonly INTERFACE: Interface = new Interface(abi)
 
   constructor(orders: FoundationData[]) {
     super(Market.Foundation, orders)

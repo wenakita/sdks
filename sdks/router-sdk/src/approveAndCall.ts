@@ -1,15 +1,15 @@
 import { Interface } from '@ethersproject/abi'
-import invariant from 'tiny-invariant'
-import { abi } from '@uniswap/swap-router-contracts/artifacts/contracts/interfaces/IApproveAndCall.sol/IApproveAndCall.json'
 import { Currency, Percent, Token } from '@uniswap/sdk-core'
+import { abi } from '@uniswap/swap-router-contracts/artifacts/contracts/interfaces/IApproveAndCall.sol/IApproveAndCall.json'
 import {
-  MintSpecificOptions,
   IncreaseSpecificOptions,
+  MintSpecificOptions,
   NonfungiblePositionManager,
   Position,
   toHex,
 } from '@uniswap/v3-sdk'
 import JSBI from 'jsbi'
+import invariant from 'tiny-invariant'
 
 // condensed version of v3-sdk AddLiquidityOptions containing only necessary swap + add attributes
 export type CondensedAddLiquidityOptions = Omit<MintSpecificOptions, 'createPool'> | IncreaseSpecificOptions
@@ -28,7 +28,7 @@ export function isMint(options: CondensedAddLiquidityOptions): options is Omit<M
 }
 
 export abstract class ApproveAndCall {
-  public static INTERFACE: Interface = new Interface(abi)
+  public static readonly INTERFACE: Interface = new Interface(abi)
 
   /**
    * Cannot be constructed.

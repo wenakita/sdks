@@ -1,7 +1,7 @@
-import JSBI from 'jsbi'
 import { Interface } from '@ethersproject/abi'
-import IPeripheryPaymentsWithFee from '@uniswap/v3-periphery/artifacts/contracts/interfaces/IPeripheryPaymentsWithFee.sol/IPeripheryPaymentsWithFee.json'
 import { Percent, Token, validateAndParseAddress } from '@uniswap/sdk-core'
+import IPeripheryPaymentsWithFee from '@uniswap/v3-periphery/artifacts/contracts/interfaces/IPeripheryPaymentsWithFee.sol/IPeripheryPaymentsWithFee.json'
+import JSBI from 'jsbi'
 import { toHex } from './utils/calldata'
 
 export interface FeeOptions {
@@ -17,7 +17,7 @@ export interface FeeOptions {
 }
 
 export abstract class Payments {
-  public static INTERFACE: Interface = new Interface(IPeripheryPaymentsWithFee.abi)
+  public static readonly INTERFACE: Interface = new Interface(IPeripheryPaymentsWithFee.abi)
 
   /**
    * Cannot be constructed.
@@ -31,7 +31,7 @@ export abstract class Payments {
   public static encodeUnwrapWETH9(amountMinimum: JSBI, recipient: string, feeOptions?: FeeOptions): string {
     recipient = validateAndParseAddress(recipient)
 
-    if (!!feeOptions) {
+    if (feeOptions) {
       const feeBips = this.encodeFeeBips(feeOptions.fee)
       const feeRecipient: string = validateAndParseAddress(feeOptions.recipient)
 
@@ -54,7 +54,7 @@ export abstract class Payments {
   ): string {
     recipient = validateAndParseAddress(recipient)
 
-    if (!!feeOptions) {
+    if (feeOptions) {
       const feeBips = this.encodeFeeBips(feeOptions.fee)
       const feeRecipient: string = validateAndParseAddress(feeOptions.recipient)
 

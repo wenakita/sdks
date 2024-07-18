@@ -9,7 +9,7 @@ function encodeFeeBips(fee: Percent): string {
 }
 
 export abstract class PaymentsExtended {
-  public static INTERFACE: Interface = new Interface(abi)
+  public static readonly INTERFACE: Interface = new Interface(abi)
 
   /**
    * Cannot be constructed.

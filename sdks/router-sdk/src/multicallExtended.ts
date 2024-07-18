@@ -15,7 +15,7 @@ function validateAndParseBytes32(bytes32: string): string {
 }
 
 export abstract class MulticallExtended {
-  public static INTERFACE: Interface = new Interface(abi)
+  public static readonly INTERFACE: Interface = new Interface(abi)
 
   /**
    * Cannot be constructed.

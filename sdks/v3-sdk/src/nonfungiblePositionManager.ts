@@ -1,24 +1,24 @@
+import { Interface } from '@ethersproject/abi'
 import {
   BigintIsh,
+  Currency,
+  CurrencyAmount,
+  NativeCurrency,
   Percent,
   Token,
-  CurrencyAmount,
   validateAndParseAddress,
-  Currency,
-  NativeCurrency,
 } from '@uniswap/sdk-core'
+import INonfungiblePositionManager from '@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json'
 import JSBI from 'jsbi'
 import invariant from 'tiny-invariant'
-import { Position } from './entities/position'
-import { ONE, ZERO } from './internalConstants'
-import { MethodParameters, toHex } from './utils/calldata'
-import { Interface } from '@ethersproject/abi'
-import INonfungiblePositionManager from '@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json'
-import { PermitOptions, SelfPermit } from './selfPermit'
 import { ADDRESS_ZERO } from './constants'
 import { Pool } from './entities'
+import { Position } from './entities/position'
+import { ONE, ZERO } from './internalConstants'
 import { Multicall } from './multicall'
 import { Payments } from './payments'
+import { PermitOptions, SelfPermit } from './selfPermit'
+import { MethodParameters, toHex } from './utils/calldata'
 
 const MaxUint128 = toHex(JSBI.subtract(JSBI.exponentiate(JSBI.BigInt(2), JSBI.BigInt(128)), JSBI.BigInt(1)))
 
@@ -173,7 +173,7 @@ export interface RemoveLiquidityOptions {
 }
 
 export abstract class NonfungiblePositionManager {
-  public static INTERFACE: Interface = new Interface(INonfungiblePositionManager.abi)
+  public static readonly INTERFACE: Interface = new Interface(INonfungiblePositionManager.abi)
 
   /**
    * Cannot be constructed.

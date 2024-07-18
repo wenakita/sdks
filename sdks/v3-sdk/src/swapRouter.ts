@@ -1,14 +1,14 @@
 import { Interface } from '@ethersproject/abi'
 import { BigintIsh, Currency, CurrencyAmount, Percent, TradeType, validateAndParseAddress } from '@uniswap/sdk-core'
+import ISwapRouter from '@uniswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json'
 import invariant from 'tiny-invariant'
-import { Trade } from './entities/trade'
 import { ADDRESS_ZERO } from './constants'
+import { Trade } from './entities/trade'
+import { Multicall } from './multicall'
+import { FeeOptions, Payments } from './payments'
 import { PermitOptions, SelfPermit } from './selfPermit'
 import { encodeRouteToPath } from './utils'
 import { MethodParameters, toHex } from './utils/calldata'
-import ISwapRouter from '@uniswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json'
-import { Multicall } from './multicall'
-import { FeeOptions, Payments } from './payments'
 
 /**
  * Options for producing the arguments to send calls to the router.
@@ -49,7 +49,7 @@ export interface SwapOptions {
  * Represents the Uniswap V3 SwapRouter, and has static methods for helping execute trades.
  */
 export abstract class SwapRouter {
-  public static INTERFACE: Interface = new Interface(ISwapRouter.abi)
+  public static readonly INTERFACE: Interface = new Interface(ISwapRouter.abi)
 
   /**
    * Cannot be constructed.

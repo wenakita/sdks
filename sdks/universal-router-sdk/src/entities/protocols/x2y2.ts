@@ -1,9 +1,9 @@
-import abi from '../../../abis/X2Y2.json'
 import { Interface } from '@ethersproject/abi'
-import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
-import { TradeConfig } from '../Command'
-import { RoutePlanner, CommandType } from '../../utils/routerCommands'
 import { BigNumber, BigNumberish } from 'ethers'
+import abi from '../../../abis/X2Y2.json'
+import { CommandType, RoutePlanner } from '../../utils/routerCommands'
+import { TradeConfig } from '../Command'
+import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
 
 type X2Y2PartialData = {
   signedInput: string
@@ -25,7 +25,7 @@ export type X2Y2_1155_Data = X2Y2PartialData & {
 export type X2Y2Data = X2Y2_721_Data | X2Y2_1155_Data
 
 export class X2Y2Trade extends NFTTrade<X2Y2Data> {
-  public static INTERFACE: Interface = new Interface(abi)
+  public static readonly INTERFACE: Interface = new Interface(abi)
 
   constructor(orders: X2Y2Data[]) {
     super(Market.X2Y2, orders)

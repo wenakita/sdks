@@ -1,9 +1,9 @@
-import abi from '../../../abis/NFTXZap.json'
 import { Interface } from '@ethersproject/abi'
-import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
-import { TradeConfig } from '../Command'
-import { RoutePlanner, CommandType } from '../../utils/routerCommands'
 import { BigNumber, BigNumberish } from 'ethers'
+import abi from '../../../abis/NFTXZap.json'
+import { CommandType, RoutePlanner } from '../../utils/routerCommands'
+import { TradeConfig } from '../Command'
+import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
 
 export type NFTXData = {
   recipient: string
@@ -15,7 +15,7 @@ export type NFTXData = {
 }
 
 export class NFTXTrade extends NFTTrade<NFTXData> {
-  public static INTERFACE: Interface = new Interface(abi)
+  public static readonly INTERFACE: Interface = new Interface(abi)
 
   constructor(orders: NFTXData[]) {
     super(Market.NFTX, orders)

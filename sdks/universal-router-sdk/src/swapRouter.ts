@@ -1,18 +1,18 @@
-import invariant from 'tiny-invariant'
-import { abi } from '@uniswap/universal-router/artifacts/contracts/UniversalRouter.sol/UniversalRouter.json'
 import { Interface } from '@ethersproject/abi'
-import { BigNumber, BigNumberish } from 'ethers'
-import { MethodParameters } from '@uniswap/v3-sdk'
 import { Trade as RouterTrade } from '@uniswap/router-sdk'
 import { Currency, TradeType } from '@uniswap/sdk-core'
+import { abi } from '@uniswap/universal-router/artifacts/contracts/UniversalRouter.sol/UniversalRouter.json'
+import { MethodParameters } from '@uniswap/v3-sdk'
+import { BigNumber, BigNumberish } from 'ethers'
+import invariant from 'tiny-invariant'
+import { SeaportTrade } from './entities'
 import { Command, RouterTradeType } from './entities/Command'
 import { Market, NFTTrade, SupportedProtocolsData } from './entities/NFTTrade'
-import { UniswapTrade, SwapOptions } from './entities/protocols/uniswap'
+import { SwapOptions, UniswapTrade } from './entities/protocols/uniswap'
 import { UnwrapWETH } from './entities/protocols/unwrapWETH'
-import { CommandType, RoutePlanner } from './utils/routerCommands'
+import { ETH_ADDRESS, ROUTER_AS_RECIPIENT, SENDER_AS_RECIPIENT } from './utils/constants'
 import { encodePermit } from './utils/inputTokens'
-import { ROUTER_AS_RECIPIENT, SENDER_AS_RECIPIENT, ETH_ADDRESS } from './utils/constants'
-import { SeaportTrade } from './entities'
+import { CommandType, RoutePlanner } from './utils/routerCommands'
 
 export type SwapRouterConfig = {
   sender?: string // address
@@ -22,7 +22,7 @@ export type SwapRouterConfig = {
 type SupportedNFTTrade = NFTTrade<SupportedProtocolsData>
 
 export abstract class SwapRouter {
-  public static INTERFACE: Interface = new Interface(abi)
+  public static readonly INTERFACE: Interface = new Interface(abi)
 
   public static swapCallParameters(trades: Command[] | Command, config: SwapRouterConfig = {}): MethodParameters {
     if (!Array.isArray(trades)) trades = [trades]

@@ -1,10 +1,10 @@
-import abi from '../../../abis/Element.json'
 import { Interface } from '@ethersproject/abi'
-import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
-import { TradeConfig } from '../Command'
-import { RoutePlanner, CommandType } from '../../utils/routerCommands'
 import { BigNumber } from 'ethers'
+import abi from '../../../abis/Element.json'
 import { ZERO_ADDRESS } from '../../utils/constants'
+import { CommandType, RoutePlanner } from '../../utils/routerCommands'
+import { TradeConfig } from '../Command'
+import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
 
 export interface Fee {
   recipient: string
@@ -44,7 +44,7 @@ export type ElementData = {
 
 export class ElementTrade extends NFTTrade<ElementData> {
   private static ETH_ADDRESS = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'.toLowerCase()
-  public static INTERFACE: Interface = new Interface(abi)
+  public static readonly INTERFACE: Interface = new Interface(abi)
 
   constructor(orders: ElementData[]) {
     super(Market.Element, orders)

@@ -1,11 +1,11 @@
-import { BigNumber, BigNumberish } from 'ethers'
 import { Interface } from '@ethersproject/abi'
+import { BigNumber, BigNumberish } from 'ethers'
 import abi from '../../../abis/Seaport.json'
-import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
-import { TradeConfig } from '../Command'
-import { RoutePlanner, CommandType } from '../../utils/routerCommands'
-import { encodeInputTokenOptions, Permit2Permit } from '../../utils/inputTokens'
 import { ETH_ADDRESS } from '../../utils/constants'
+import { encodeInputTokenOptions, Permit2Permit } from '../../utils/inputTokens'
+import { CommandType, RoutePlanner } from '../../utils/routerCommands'
+import { TradeConfig } from '../Command'
+import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
 
 export type SeaportData = {
   items: Order[]
@@ -64,7 +64,7 @@ export type AdvancedOrder = Order & {
 }
 
 export class SeaportTrade extends NFTTrade<SeaportData> {
-  public static INTERFACE: Interface = new Interface(abi)
+  public static readonly INTERFACE: Interface = new Interface(abi)
   public static OPENSEA_CONDUIT_KEY: string = '0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000'
 
   constructor(orders: SeaportData[]) {
