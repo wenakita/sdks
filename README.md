@@ -33,3 +33,31 @@ Publishing of each SDK is done on merge to main using semantic-release and seman
 ```
 
 Versions will only be generated based on the changelog of the relevant SDK's folder/files.
+
+## Supported Chains
+
+### Root Chains
+These are chains that have all core contract deployments.
+- 42161: Arbitrum One
+- 11155111: Ethereum Sepolia
+
+### Branch Chains
+These are chains that have branch contract deployments.
+- TODO
+
+## Documentation
+
+<!-- TODO - [SDK Documentation](https://v2-docs.maiadao.io/protocols/SDK/introduction) -->
+- [Maia DAO Ecosystem Documentation](https://v2-docs.maiadao.io/)
+
+## License
+
+This SDK is open-source and available under the [MIT License](./LICENSE). Feel free to use, modify, and distribute it as needed for your project.
+
+## Contributing
+
+If you would like to contribute to the development of this SDK, please follow our [Contributing Guidelines](../../CONTRIBUTING.md).
+
+## Contact
+
+If you have any questions or need assistance, you can reach out to us at our discord server: https://discord.gg/maiadao.
