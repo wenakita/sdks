@@ -1,5 +1,6 @@
 import { Interface } from '@ethersproject/abi'
-import { BigNumber } from 'ethers'
+import { BigNumber } from '@ethersproject/bignumber'
+
 import abi from '../../../abis/Element.json'
 import { ZERO_ADDRESS } from '../../utils/constants'
 import { CommandType, RoutePlanner } from '../../utils/routerCommands'
@@ -70,7 +71,7 @@ export class ElementTrade extends NFTTrade<ElementData> {
   }
 
   getBuyItems(): BuyItem[] {
-    let buyItems: BuyItem[] = []
+    const buyItems: BuyItem[] = []
     for (const item of this.orders) {
       buyItems.push({
         tokenAddress: item.order.nft,

@@ -1,4 +1,5 @@
 import { ElementData, OrderSignature, ERC721SellOrder } from '../../src/entities/protocols/element-market'
+import { ZERO_ADDRESS } from '../../src/utils/constants'
 import { TEST_RECIPIENT_ADDRESS } from '../utils/addresses'
 
 export const elementOrderETH: ERC721SellOrder = {

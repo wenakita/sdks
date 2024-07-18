@@ -1,7 +1,8 @@
+import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
+
+import { CommandType, RoutePlanner } from '../../utils/routerCommands'
 import { TradeConfig } from '../Command'
-import { NFTTrade, Market, TokenType, BuyItem } from '../NFTTrade'
-import { RoutePlanner, CommandType } from '../../utils/routerCommands'
-import { BigNumber, BigNumberish } from 'ethers'
+import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
 
 export type CryptopunkData = {
   tokenId: BigNumberish
@@ -10,7 +11,7 @@ export type CryptopunkData = {
 }
 
 export class CryptopunkTrade extends NFTTrade<CryptopunkData> {
-  public static CRYPTOPUNK_ADDRESS: string = '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb'
+  public static readonly CRYPTOPUNK_ADDRESS = '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb'
 
   constructor(orders: CryptopunkData[]) {
     super(Market.Cryptopunks, orders)
@@ -23,7 +24,7 @@ export class CryptopunkTrade extends NFTTrade<CryptopunkData> {
   }
 
   getBuyItems(): BuyItem[] {
-    let buyItems: BuyItem[] = []
+    const buyItems: BuyItem[] = []
     for (const item of this.orders) {
       buyItems.push({
         tokenAddress: CryptopunkTrade.CRYPTOPUNK_ADDRESS,

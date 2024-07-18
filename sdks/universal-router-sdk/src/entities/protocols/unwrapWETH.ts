@@ -1,13 +1,15 @@
+import { BigNumberish } from '@ethersproject/bignumber'
 import invariant from 'tiny-invariant'
-import { BigNumberish } from 'ethers'
-import { RoutePlanner, CommandType } from '../../utils/routerCommands'
-import { encodeInputTokenOptions, Permit2Permit } from '../../utils/inputTokens'
-import { Command, RouterTradeType, TradeConfig } from '../Command'
+
+import { Permit2Permit } from '../../types'
 import { ROUTER_AS_RECIPIENT, WETH_ADDRESS } from '../../utils/constants'
+import { encodeInputTokenOptions } from '../../utils/inputTokens'
+import { CommandType, RoutePlanner } from '../../utils/routerCommands'
+import { Command, RouterTradeType, TradeConfig } from '../Command'
 
 export class UnwrapWETH implements Command {
   readonly tradeType: RouterTradeType = RouterTradeType.UnwrapWETH
-  readonly permit2Data: Permit2Permit
+  readonly permit2Data: Permit2Permit | undefined
   readonly wethAddress: string
   readonly amount: BigNumberish
 

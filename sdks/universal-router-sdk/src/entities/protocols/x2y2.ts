@@ -1,5 +1,6 @@
 import { Interface } from '@ethersproject/abi'
-import { BigNumber, BigNumberish } from 'ethers'
+import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
+
 import abi from '../../../abis/X2Y2.json'
 import { CommandType, RoutePlanner } from '../../utils/routerCommands'
 import { TradeConfig } from '../Command'
@@ -53,7 +54,7 @@ export class X2Y2Trade extends NFTTrade<X2Y2Data> {
   }
 
   getBuyItems(): BuyItem[] {
-    let buyItems: BuyItem[] = []
+    const buyItems: BuyItem[] = []
     for (const item of this.orders) {
       buyItems.push({
         tokenAddress: item.tokenAddress,

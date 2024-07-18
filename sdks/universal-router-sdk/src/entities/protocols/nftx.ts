@@ -1,5 +1,6 @@
 import { Interface } from '@ethersproject/abi'
-import { BigNumber, BigNumberish } from 'ethers'
+import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
+
 import abi from '../../../abis/NFTXZap.json'
 import { CommandType, RoutePlanner } from '../../utils/routerCommands'
 import { TradeConfig } from '../Command'
@@ -36,12 +37,12 @@ export class NFTXTrade extends NFTTrade<NFTXData> {
   }
 
   getBuyItems(): BuyItem[] {
-    let buyItems: BuyItem[] = []
+    const buyItems: BuyItem[] = []
     for (const order of this.orders) {
       for (const tokenId of order.tokenIds) {
         buyItems.push({
           tokenAddress: order.tokenAddress,
-          tokenId: tokenId,
+          tokenId,
           tokenType: TokenType.ERC721,
         })
       }

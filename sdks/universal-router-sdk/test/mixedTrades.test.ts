@@ -1,26 +1,31 @@
 import { expect } from 'chai'
-import { UnwrapWETH } from '../src/entities/protocols/unwrapWETH'
-import { SwapRouter, ROUTER_AS_RECIPIENT, WETH_ADDRESS, SeaportTrade } from '../src'
-import { utils, Wallet } from 'ethers'
+import { Wallet, utils } from 'ethers'
+import {
+  Pair,
+  Pool,
+  V2RouteSDK as RouteV2,
+  Route as RouteV3,
+  TradeType,
+  V2Trade,
+  Trade as V3Trade,
+} from 'hermes-v2-sdk'
+import { CurrencyAmount } from 'maia-core-sdk'
+import { ROUTER_AS_RECIPIENT, SeaportTrade, SwapRouter, UniswapTrade, WETH_ADDRESS } from '../src'
 import { LooksRareV2Data, LooksRareV2Trade } from '../src/entities/protocols/looksRareV2'
+import { UnwrapWETH } from '../src/entities/protocols/unwrapWETH'
+import { ETH_ADDRESS } from '../src/utils/constants'
+import { registerFixture } from './forge/writeInterop'
 import { looksRareV2Orders } from './orders/looksRareV2'
 import { seaportV1_4DataETHRecent } from './orders/seaportV1_4'
-import { Trade as V2Trade, Route as RouteV2, Pair } from '@uniswap/v2-sdk'
-import { Trade as V3Trade, Route as RouteV3, Pool } from '@uniswap/v3-sdk'
-import { generatePermitSignature, makePermit } from './utils/permit2'
-
-import { UniswapTrade } from '../src'
-import { CurrencyAmount, TradeType } from '@uniswap/sdk-core'
-import { registerFixture } from './forge/writeInterop'
-import { buildTrade, getUniswapPools, swapOptions, DAI, ETHER, WETH, USDC } from './utils/uniswapData'
 import {
   FORGE_PERMIT2_ADDRESS,
   FORGE_ROUTER_ADDRESS,
   FORGE_SENDER_ADDRESS,
   TEST_RECIPIENT_ADDRESS,
 } from './utils/addresses'
-import { ETH_ADDRESS } from '../src/utils/constants'
 import { hexToDecimalString } from './utils/hexToDecimalString'
+import { generatePermitSignature, makePermit } from './utils/permit2'
+import { DAI, ETHER, USDC, WETH, buildTrade, getUniswapPools, swapOptions } from './utils/uniswapData'
 
 describe('SwapRouter.swapCallParameters', () => {
   const wallet = new Wallet(utils.zeroPad('0x1234', 32))

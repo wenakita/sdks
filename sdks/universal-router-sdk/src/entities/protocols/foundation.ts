@@ -1,5 +1,6 @@
 import { Interface } from '@ethersproject/abi'
-import { BigNumber, BigNumberish } from 'ethers'
+import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
+
 import abi from '../../../abis/Foundation.json'
 import { CommandType, RoutePlanner } from '../../utils/routerCommands'
 import { TradeConfig } from '../Command'
@@ -37,7 +38,7 @@ export class FoundationTrade extends NFTTrade<FoundationData> {
   }
 
   getBuyItems(): BuyItem[] {
-    let buyItems: BuyItem[] = []
+    const buyItems: BuyItem[] = []
     for (const item of this.orders) {
       buyItems.push({
         tokenAddress: item.tokenAddress,

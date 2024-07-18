@@ -1,5 +1,6 @@
 import { Interface } from '@ethersproject/abi'
-import { BigNumber, BigNumberish } from 'ethers'
+import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
+
 import abi from '../../../abis/Sudoswap.json'
 import { CommandType, RoutePlanner } from '../../utils/routerCommands'
 import { TradeConfig } from '../Command'
@@ -46,7 +47,7 @@ export class SudoswapTrade extends NFTTrade<SudoswapData> {
   }
 
   getBuyItems(): BuyItem[] {
-    let buyItems: BuyItem[] = []
+    const buyItems: BuyItem[] = []
     for (const order of this.orders) {
       for (const swap of order.swaps) {
         for (const tokenId of swap.swapInfo.nftIds) {

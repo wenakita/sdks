@@ -14,6 +14,7 @@ contract SwapERC20CallParametersTest is Test, Interop, DeployRouter {
     ERC20 private constant WETH = ERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     ERC20 private constant USDC = ERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
     ERC20 private constant DAI = ERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
+
     // starting eth balance
     uint256 constant BALANCE = 10 ether;
     uint256 ONE_USDC = 10 ** 6;
@@ -423,22 +424,6 @@ contract SwapERC20CallParametersTest is Test, Interop, DeployRouter {
 
         (bool success,) = address(router).call{value: params.value}(params.data);
         require(success, "call failed");
-        assertLe(from.balance, BALANCE - params.value);
-        assertGt(DAI.balanceOf(RECIPIENT), 1000 * ONE_DAI);
-    }
-
-    function testV3ExactInputNativeWithSafeMode() public {
-        MethodParameters memory params = readFixture(json, "._UNISWAP_V3_ETH_FOR_DAI_SAFE_MODE");
-
-        assertEq(from.balance, BALANCE);
-        assertEq(DAI.balanceOf(RECIPIENT), 0);
-
-        // intended call value is 1e18 but 5e18 are sent in
-        assertEq(params.value, 1e18);
-        (bool success,) = address(router).call{value: 5e18}(params.data);
-        require(success, "call failed");
-
-        // the final balance only decreased by 1e18 because safemode swept back the excess
         assertLe(from.balance, BALANCE - params.value);
         assertGt(DAI.balanceOf(RECIPIENT), 1000 * ONE_DAI);
     }

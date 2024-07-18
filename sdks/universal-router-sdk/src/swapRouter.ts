@@ -1,17 +1,19 @@
 import { Interface } from '@ethersproject/abi'
-import { Trade as RouterTrade } from '@uniswap/router-sdk'
-import { Currency, TradeType } from '@uniswap/sdk-core'
-import { abi } from '@uniswap/universal-router/artifacts/contracts/UniversalRouter.sol/UniversalRouter.json'
-import { MethodParameters } from '@uniswap/v3-sdk'
-import { BigNumber, BigNumberish } from 'ethers'
+import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
+import UniversalRouterABI from '@uniswap/universal-router/artifacts/contracts/UniversalRouter.sol/UniversalRouter.json'
+import { Trade as RouterTrade } from 'hermes-swap-router-sdk'
+import { TradeType } from 'hermes-v2-sdk'
+import { Currency, CurrencyAmount, MethodParameters } from 'maia-core-sdk'
 import invariant from 'tiny-invariant'
+
 import { SeaportTrade } from './entities'
 import { Command, RouterTradeType } from './entities/Command'
 import { Market, NFTTrade, SupportedProtocolsData } from './entities/NFTTrade'
-import { SwapOptions, UniswapTrade } from './entities/protocols/uniswap'
+import { RouteOptions, SwapOptions, UniswapTrade } from './entities/protocols/uniswap'
 import { UnwrapWETH } from './entities/protocols/unwrapWETH'
+import { ApproveProtocol } from './types'
 import { ETH_ADDRESS, ROUTER_AS_RECIPIENT, SENDER_AS_RECIPIENT } from './utils/constants'
-import { encodePermit } from './utils/inputTokens'
+import { encodeInputTokenOptions, encodePermit } from './utils/inputTokens'
 import { CommandType, RoutePlanner } from './utils/routerCommands'
 
 export type SwapRouterConfig = {
@@ -22,7 +24,7 @@ export type SwapRouterConfig = {
 type SupportedNFTTrade = NFTTrade<SupportedProtocolsData>
 
 export abstract class SwapRouter {
-  public static readonly INTERFACE: Interface = new Interface(abi)
+  public static readonly INTERFACE: Interface = new Interface(UniversalRouterABI.abi)
 
   public static swapCallParameters(trades: Command[] | Command, config: SwapRouterConfig = {}): MethodParameters {
     if (!Array.isArray(trades)) trades = [trades]
@@ -36,7 +38,7 @@ export abstract class SwapRouter {
     let transactionValue = BigNumber.from(0)
 
     // tracks the input tokens (and ETH) used to buy NFTs to allow us to sweep
-    let nftInputTokens = new Set<string>()
+    const nftInputTokens = new Set<string>()
 
     for (const trade of trades) {
       /**
@@ -102,7 +104,7 @@ export abstract class SwapRouter {
          * else
          */
       } else {
-        throw 'trade must be of instance: UniswapTrade or NFTTrade'
+        throw 'trade must be of instance: UniswapTrade, NFTTrade, UnwrapWETH'
       }
     }
 
@@ -122,7 +124,7 @@ export abstract class SwapRouter {
    * @param trades to produce call parameters for
    */
   public static swapNFTCallParameters(trades: SupportedNFTTrade[], config: SwapRouterConfig = {}): MethodParameters {
-    let planner = new RoutePlanner()
+    const planner = new RoutePlanner()
     let totalPrice = BigNumber.from(0)
 
     const allowRevert = trades.length == 1 && trades[0].orders.length == 1 ? false : true
@@ -144,18 +146,33 @@ export abstract class SwapRouter {
    */
   public static swapERC20CallParameters(
     trades: RouterTrade<Currency, Currency, TradeType>,
-    options: SwapOptions
+    options: SwapOptions,
+    routesOptions?: RouteOptions[],
+    overrideInputCurrency?: Currency,
+    overrideOutputAmount?: CurrencyAmount<Currency>
   ): MethodParameters {
     // TODO: use permit if signature included in swapOptions
     const planner = new RoutePlanner()
 
-    const trade: UniswapTrade = new UniswapTrade(trades, options)
+    const trade: UniswapTrade = new UniswapTrade(
+      trades,
+      options,
+      routesOptions,
+      overrideInputCurrency,
+      overrideOutputAmount
+    )
 
-    const inputCurrency = trade.trade.inputAmount.currency
+    const inputCurrency = overrideInputCurrency ?? trade.trade.inputAmount.currency
     invariant(!(inputCurrency.isNative && !!options.inputTokenPermit), 'NATIVE_INPUT_PERMIT')
 
     if (options.inputTokenPermit) {
       encodePermit(planner, options.inputTokenPermit)
+    }
+
+    if (options.approveTokens) {
+      options.approveTokens.forEach((approval: ApproveProtocol) => {
+        encodeInputTokenOptions(planner, { approval })
+      })
     }
 
     const nativeCurrencyValue = inputCurrency.isNative

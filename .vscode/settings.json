@@ -7,10 +7,9 @@
   "editor.formatOnSave": true,
   "eslint.workingDirectories": [
     "./sdks/core-sdk",
+    "./sdks/hermes-v2-sdk",
     "./sdks/router-sdk",
     "./sdks/universal-router-sdk",
-    "./sdks/v2-sdk",
-    "./sdks/hermes-v2-sdk",
   ],
   "testing.openTesting": "neverOpen"
 }

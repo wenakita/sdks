@@ -1,4 +1,5 @@
-import { Currency, CurrencyAmount, Ether } from '@uniswap/sdk-core'
+import { Ether } from 'hermes-v2-sdk'
+import { Currency, CurrencyAmount } from 'maia-core-sdk'
 
 export function getNativeCurrencyValue(currencyValues: CurrencyAmount<Currency>[]): CurrencyAmount<Currency> {
   for (const value of currencyValues) {

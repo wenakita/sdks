@@ -1,5 +1,6 @@
 import { Interface } from '@ethersproject/abi'
-import { BigNumber, BigNumberish } from 'ethers'
+import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
+
 import abi from '../../../abis/NFT20.json'
 import { CommandType, RoutePlanner } from '../../utils/routerCommands'
 import { TradeConfig } from '../Command'
@@ -37,12 +38,12 @@ export class NFT20Trade extends NFTTrade<NFT20Data> {
   }
 
   getBuyItems(): BuyItem[] {
-    let buyItems: BuyItem[] = []
+    const buyItems: BuyItem[] = []
     for (const pool of this.orders) {
       for (const tokenId of pool.tokenIds) {
         buyItems.push({
           tokenAddress: pool.tokenAddress,
-          tokenId: tokenId,
+          tokenId,
           tokenType: TokenType.ERC721,
         })
       }

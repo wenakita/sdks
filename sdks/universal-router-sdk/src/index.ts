@@ -1,11 +1,11 @@
-export { SwapRouter } from './swapRouter'
 export * from './entities'
-export * from './utils/routerTradeAdapter'
-export { RoutePlanner, CommandType } from './utils/routerCommands'
+export { SwapRouter } from './swapRouter'
+export * from './types'
 export {
-  UNIVERSAL_ROUTER_ADDRESS,
-  UNIVERSAL_ROUTER_CREATION_BLOCK,
   PERMIT2_ADDRESS,
   ROUTER_AS_RECIPIENT,
+  UNIVERSAL_ROUTER_ADDRESS,
+  UNIVERSAL_ROUTER_CREATION_BLOCK,
   WETH_ADDRESS,
 } from './utils/constants'
+export { CommandType, RoutePlanner } from './utils/routerCommands'

@@ -1,5 +1,6 @@
 import { Interface } from '@ethersproject/abi'
-import { BigNumber } from 'ethers'
+import { BigNumber } from '@ethersproject/bignumber'
+
 import abi from '../../../abis/LooksRareV2.json'
 import { ZERO_ADDRESS } from '../../utils/constants'
 import { CommandType, RoutePlanner } from '../../utils/routerCommands'
@@ -89,7 +90,7 @@ export class LooksRareV2Trade extends NFTTrade<LooksRareV2Data> {
   }
 
   getBuyItems(): BuyItem[] {
-    let buyItems: BuyItem[] = []
+    const buyItems: BuyItem[] = []
     for (const item of this.orders) {
       const tokenAddress = item.apiOrder.collection
       const tokenType =
@@ -119,11 +120,11 @@ export class LooksRareV2Trade extends NFTTrade<LooksRareV2Data> {
     totalValue: BigNumber
     merkleTrees: MerkleTree[]
   } {
-    let takerBids: TakerOrder[] = []
-    let makerOrders: MakerOrder[] = []
-    let makerSignatures: string[] = []
+    const takerBids: TakerOrder[] = []
+    const makerOrders: MakerOrder[] = []
+    const makerSignatures: string[] = []
     let totalValue: BigNumber = BigNumber.from(0)
-    let merkleTrees: MerkleTree[] = []
+    const merkleTrees: MerkleTree[] = []
 
     orders.forEach((order) => {
       makerOrders.push({ ...order.apiOrder })

@@ -43,6 +43,23 @@ export enum CommandType {
   SEAPORT_V1_4 = 0x20,
   EXECUTE_SUB_PLAN = 0x21,
   APPROVE_ERC20 = 0x22,
+
+  // ERC4626-related exact input command types
+  ERC4626_DEPOSIT = 0x28,
+  ERC4626_REDEEM = 0x29,
+
+  // ERC4626-related exact output command types
+  ERC4626_MINT = 0x2a,
+  ERC4626_WITHDRAW = 0x2b,
+
+  // ERC4626-related approve command types
+  APPROVE_ERC20_ADDRESS = 0x2c,
+
+  // Balancer's vault-related command types
+  BALANCER_BATCH_SWAPS_EXACT_IN = 0x30,
+  BALANCER_SINGLE_SWAP_EXACT_IN = 0x31,
+  BALANCER_BATCH_SWAPS_EXACT_OUT = 0x32,
+  BALANCER_SINGLE_SWAP_EXACT_OUT = 0x33,
 }
 
 const ALLOW_REVERT_FLAG = 0x80
@@ -99,6 +116,7 @@ const ABI_DEFINITION: { [key in CommandType]: string[] } = {
   [CommandType.OWNER_CHECK_721]: ['address', 'address', 'uint256'],
   [CommandType.OWNER_CHECK_1155]: ['address', 'address', 'uint256', 'uint256'],
   [CommandType.APPROVE_ERC20]: ['address', 'uint256'],
+  [CommandType.APPROVE_ERC20_ADDRESS]: ['address', 'uint256'],
 
   // NFT Markets
   [CommandType.SEAPORT_V1_5]: ['uint256', 'bytes'],
@@ -112,6 +130,48 @@ const ABI_DEFINITION: { [key in CommandType]: string[] } = {
   [CommandType.NFT20]: ['uint256', 'bytes'],
   [CommandType.CRYPTOPUNKS]: ['uint256', 'address', 'uint256'],
   [CommandType.ELEMENT_MARKET]: ['uint256', 'bytes'],
+
+  // ERC4626 Actions
+  [CommandType.ERC4626_DEPOSIT]: ['address', 'uint256', 'bool', 'uint256', 'address'],
+  [CommandType.ERC4626_REDEEM]: ['address', 'uint256', 'bool', 'uint256', 'address'],
+  [CommandType.ERC4626_MINT]: ['address', 'uint256', 'bool', 'uint256', 'address'],
+  [CommandType.ERC4626_WITHDRAW]: ['address', 'uint256', 'bool', 'uint256', 'address'],
+
+  // Balancer Batch Swap Actions
+  [CommandType.BALANCER_BATCH_SWAPS_EXACT_IN]: [
+    'tuple(bytes32,uint256,uint256,uint256,bytes)[]',
+    'address[]',
+    'int256[]',
+    'bool',
+    'address',
+  ],
+  [CommandType.BALANCER_SINGLE_SWAP_EXACT_IN]: [
+    'bytes32',
+    'address',
+    'address',
+    'uint256',
+    'uint256',
+    'bool',
+    'address',
+    'bytes',
+  ],
+  [CommandType.BALANCER_BATCH_SWAPS_EXACT_OUT]: [
+    'tuple(bytes32,uint256,uint256,uint256,bytes)[]',
+    'address[]',
+    'int256[]',
+    'bool',
+    'address',
+  ],
+  [CommandType.BALANCER_SINGLE_SWAP_EXACT_OUT]: [
+    'bytes32',
+    'address',
+    'address',
+    'uint256',
+    'uint256',
+    'bool',
+    'address',
+    'bytes',
+  ],
 }
 
 export class RoutePlanner {
@@ -128,7 +188,7 @@ export class RoutePlanner {
   }
 
   addCommand(type: CommandType, parameters: any[], allowRevert = false): void {
-    let command = createCommand(type, parameters)
+    const command = createCommand(type, parameters)
     this.inputs.push(command.encodedInput)
     if (allowRevert) {
       if (!REVERTIBLE_COMMANDS.has(command.type)) {

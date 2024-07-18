@@ -1,16 +1,17 @@
+import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
 import invariant from 'tiny-invariant'
-import { BigNumber, BigNumberish } from 'ethers'
-import { SeaportData } from './protocols/seaport'
-import { FoundationData } from './protocols/foundation'
-import { NFTXData } from './protocols/nftx'
-import { NFT20Data } from './protocols/nft20'
+
 import { RoutePlanner } from '../utils/routerCommands'
 import { Command, RouterTradeType, TradeConfig } from './Command'
-import { SudoswapData } from './protocols/sudoswap'
 import { CryptopunkData } from './protocols/cryptopunk'
-import { X2Y2Data } from './protocols/x2y2'
 import { ElementData } from './protocols/element-market'
+import { FoundationData } from './protocols/foundation'
 import { LooksRareV2Data } from './protocols/looksRareV2'
+import { NFT20Data } from './protocols/nft20'
+import { NFTXData } from './protocols/nftx'
+import { SeaportData } from './protocols/seaport'
+import { SudoswapData } from './protocols/sudoswap'
+import { X2Y2Data } from './protocols/x2y2'
 
 export type SupportedProtocolsData =
   | SeaportData

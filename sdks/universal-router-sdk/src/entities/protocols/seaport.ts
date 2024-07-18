@@ -1,8 +1,10 @@
 import { Interface } from '@ethersproject/abi'
-import { BigNumber, BigNumberish } from 'ethers'
+import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
+
 import abi from '../../../abis/Seaport.json'
+import { Permit2Permit } from '../../types'
 import { ETH_ADDRESS } from '../../utils/constants'
-import { encodeInputTokenOptions, Permit2Permit } from '../../utils/inputTokens'
+import { encodeInputTokenOptions } from '../../utils/inputTokens'
 import { CommandType, RoutePlanner } from '../../utils/routerCommands'
 import { TradeConfig } from '../Command'
 import { BuyItem, Market, NFTTrade, TokenType } from '../NFTTrade'
@@ -65,7 +67,7 @@ export type AdvancedOrder = Order & {
 
 export class SeaportTrade extends NFTTrade<SeaportData> {
   public static readonly INTERFACE: Interface = new Interface(abi)
-  public static OPENSEA_CONDUIT_KEY: string = '0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000'
+  public static OPENSEA_CONDUIT_KEY = '0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000'
 
   constructor(orders: SeaportData[]) {
     super(Market.Seaport, orders)
@@ -73,11 +75,11 @@ export class SeaportTrade extends NFTTrade<SeaportData> {
 
   encode(planner: RoutePlanner, config: TradeConfig): void {
     for (const order of this.orders) {
-      let advancedOrders: AdvancedOrder[] = []
-      let orderFulfillments: FulfillmentComponent[][] = order.items.map((_, index) => [
+      const advancedOrders: AdvancedOrder[] = []
+      const orderFulfillments: FulfillmentComponent[][] = order.items.map((_, index) => [
         { orderIndex: index, itemIndex: 0 },
       ])
-      let considerationFulFillments: FulfillmentComponent[][] = this.getConsiderationFulfillments(order.items)
+      const considerationFulFillments: FulfillmentComponent[][] = this.getConsiderationFulfillments(order.items)
 
       for (const item of order.items) {
         const { advancedOrder } = this.getAdvancedOrderParams(item)
@@ -126,7 +128,7 @@ export class SeaportTrade extends NFTTrade<SeaportData> {
   }
 
   getBuyItems(): BuyItem[] {
-    let buyItems: BuyItem[] = []
+    const buyItems: BuyItem[] = []
     for (const order of this.orders) {
       for (const item of order.items) {
         for (const offer of item.parameters.offer) {
@@ -142,7 +144,7 @@ export class SeaportTrade extends NFTTrade<SeaportData> {
   }
 
   getInputTokens(): Set<string> {
-    let inputTokens = new Set<string>()
+    const inputTokens = new Set<string>()
     for (const order of this.orders) {
       for (const item of order.items) {
         for (const consideration of item.parameters.consideration) {
@@ -184,7 +186,7 @@ export class SeaportTrade extends NFTTrade<SeaportData> {
   }
 
   private getConsiderationFulfillments(protocolDatas: Order[]): FulfillmentComponent[][] {
-    let considerationFulfillments: FulfillmentComponent[][] = []
+    const considerationFulfillments: FulfillmentComponent[][] = []
     const considerationRecipients: string[] = []
 
     for (const i in protocolDatas) {
