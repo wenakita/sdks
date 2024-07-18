@@ -1,14 +1,3 @@
-# Permit2 SDK
-[submodule "sdks/permit2-sdk/permit2"]
-	path = sdks/permit2-sdk/permit2
-	url = https://github.com/Uniswap/permit2
-[submodule "sdks/permit2-sdk/lib/forge-std"]
-	path = sdks/permit2-sdk/lib/forge-std
-	url = https://github.com/foundry-rs/forge-std
-[submodule "sdks/permit2-sdk/lib/solmate"]
-	path = sdks/permit2-sdk/lib/solmate
-	url = https://github.com/transmissions11/solmate
-
 # Universal Router
 [submodule "sdks/universal-router-sdk/lib/forge-std"]
 	path = sdks/universal-router-sdk/lib/forge-std
