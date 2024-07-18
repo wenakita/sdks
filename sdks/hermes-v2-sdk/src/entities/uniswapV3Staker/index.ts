@@ -19,9 +19,7 @@ export abstract class UniswapV3Staker {
    * Cannot be constructed.
    */
   /* eslint-disable @typescript-eslint/no-empty-function */
-  public constructor() {
-    /* TODO document why this constructor is empty */
-  }
+  private constructor() {}
 
   /**
    * Encodes the contract interaction calldata to create an incentive for a pool.
