@@ -6,8 +6,6 @@ on:
       - main
       - beta
 
-permissions: write-all
-
 jobs:
   release:
     name: Release
@@ -36,6 +34,6 @@ jobs:
       - name: Release Needed SDK's
         env:
           NPM_CONFIG_USERCONFIG: /dev/null
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn g:release
