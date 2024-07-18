@@ -1,23 +1,23 @@
 import { HermesAddressesType, IHermes } from '../../types'
-import { ZERO_ADDRESS } from '../addresses'
+// import { ZERO_ADDRESS } from '../addresses'
 import { SupportedChainId } from '../chainIds'
 
 /**
  * These addresses are on arbitrum
  */
-export const ArbitrumHermesAddresses: IHermes = {
-  Hermes: ZERO_ADDRESS,
-  bHermes: ZERO_ADDRESS,
-  bHermesVotes: ZERO_ADDRESS,
-  bHermesGauges: ZERO_ADDRESS,
-  bHermesBoost: ZERO_ADDRESS,
-  UniswapV3GaugeFactory: ZERO_ADDRESS,
-  UniswapV3Staker: ZERO_ADDRESS,
-  BribesFactory: ZERO_ADDRESS,
-  BaseV2Minter: ZERO_ADDRESS,
-  PartnerManagerFactory: ZERO_ADDRESS,
-  FlywheelGaugeRewards: ZERO_ADDRESS,
-}
+// export const ArbitrumHermesAddresses: IHermes = {
+//   Hermes: ZERO_ADDRESS,
+//   bHermes: ZERO_ADDRESS,
+//   bHermesVotes: ZERO_ADDRESS,
+//   bHermesGauges: ZERO_ADDRESS,
+//   bHermesBoost: ZERO_ADDRESS,
+//   UniswapV3GaugeFactory: ZERO_ADDRESS,
+//   UniswapV3Staker: ZERO_ADDRESS,
+//   BribesFactory: ZERO_ADDRESS,
+//   BaseV2Minter: ZERO_ADDRESS,
+//   PartnerManagerFactory: ZERO_ADDRESS,
+//   FlywheelGaugeRewards: ZERO_ADDRESS,
+// }
 
 /**
  * These are the tesnet addresses on Sepolia
@@ -37,6 +37,6 @@ export const SepoliaHermesAddresses: IHermes = {
 }
 
 export const HermesAddresses: HermesAddressesType = {
-  [SupportedChainId.ARBITRUM_ONE]: ArbitrumHermesAddresses,
+  // [SupportedChainId.ARBITRUM_ONE]: ArbitrumHermesAddresses,
   [SupportedChainId.SEPOLIA]: SepoliaHermesAddresses,
 }

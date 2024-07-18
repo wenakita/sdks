@@ -6,9 +6,7 @@ on:
       - main
       - beta
 
-permissions:
-  contents: write
-  actions: write
+permissions: write-all
 
 jobs:
   release:

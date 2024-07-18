@@ -20,7 +20,7 @@ _[e.g. Manually, E2E tests, unit tests, Storybook]_
 
 _[e.g. Type definitions, API definitions]_
 
-If there are breaking changes, please ensure you bump the major version Bump the major version (by using the title `feat(breaking): ...`), post a notice in #eng-sdks, and explicitly notify all Uniswap Labs consumers of the SDK.
+If there are breaking changes, please ensure you bump the major version Bump the major version (by using the title `feat(breaking): ...`), post a notice in #dev-chat, and explicitly notify all Maia DAO consumers of the SDK.
 
 ## (Optional) Feedback Focus
 
