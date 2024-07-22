@@ -1,17 +1,17 @@
 {
-  "pipeline": {
+  "tasks": {
     "lint": {
       "inputs": [
-        "sdks/*/src/**.ts",
-        "sdks/*/src/**.tsx"
+        "sdks/*/src/**/*.ts",
+        "sdks/*/src/**/*.tsx"
       ]
     },
     "build": {
       "inputs": [
         "yarn.lock",
         "**/package.json",
-        "sdks/*/src/**.ts",
-        "sdks/*/src/**.tsx"
+        "sdks/*/src/**/*.ts",
+        "sdks/*/src/**/*.tsx"
       ],
       "outputs": []
     },
