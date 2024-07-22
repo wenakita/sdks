@@ -1508,7 +1508,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ethersproject/abi@npm:5.7.0, @ethersproject/abi@npm:^5.1.2, @ethersproject/abi@npm:^5.5.0, @ethersproject/abi@npm:^5.7.0":
+"@ethersproject/abi@npm:5.7.0, @ethersproject/abi@npm:^5.1.2, @ethersproject/abi@npm:^5.7.0":
   version: 5.7.0
   resolution: "@ethersproject/abi@npm:5.7.0"
   dependencies:
@@ -1808,7 +1808,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ethersproject/solidity@npm:5.7.0, @ethersproject/solidity@npm:^5.0.9, @ethersproject/solidity@npm:^5.7.0":
+"@ethersproject/solidity@npm:5.7.0, @ethersproject/solidity@npm:^5.7.0":
   version: 5.7.0
   resolution: "@ethersproject/solidity@npm:5.7.0"
   dependencies:
@@ -9006,15 +9006,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hermes-swap-router-sdk@npm:^0.0.38":
-  version: 0.0.38
-  resolution: "hermes-swap-router-sdk@npm:0.0.38"
+"hermes-swap-router-sdk@npm:^0.0.40":
+  version: 0.0.40
+  resolution: "hermes-swap-router-sdk@npm:0.0.40"
   dependencies:
-    "@ethersproject/abi": ^5.5.0
+    "@ethersproject/abi": ^5.7.0
     "@uniswap/swap-router-contracts": ^1.3.0
-    hermes-v2-sdk: 0.0.72
-    maia-core-sdk: 1.0.29
-  checksum: 4b78c88dd24157d1bea94234b626e25dea95f646d4bc9bab3b2a8b9ed75db106b2fd7d614f08c9b095aec1507e4c4717aaf6e1809192ac346319575b4959f012
+    hermes-v2-sdk: 0.0.74
+    maia-core-sdk: 1.0.30
+  checksum: 5dc6fa221fa91c8b0e8289fbd547ba53253140faac238ce315b8c92aee4b4981ca5a74e90f6422cb215dcc6145669564c3350e32961342cd1ca111df874ca8f4
   languageName: node
   linkType: hard
 
@@ -9048,9 +9048,9 @@ __metadata:
     eslint-plugin-prettier: ^3.4.1
     ethers: ^5.7.0
     hardhat: ^2.14.0
-    hermes-swap-router-sdk: ^0.0.38
-    hermes-v2-sdk: 0.0.72
-    maia-core-sdk: 1.0.29
+    hermes-swap-router-sdk: ^0.0.40
+    hermes-v2-sdk: 0.0.74
+    maia-core-sdk: 1.0.30
     prettier: ^2.4.1
     ts-node: ^10.9.1
     tsdx: ^0.14.1
@@ -9059,28 +9059,6 @@ __metadata:
     typescript: ^4.3.3
   languageName: unknown
   linkType: soft
-
-"hermes-v2-sdk@npm:0.0.72":
-  version: 0.0.72
-  resolution: "hermes-v2-sdk@npm:0.0.72"
-  dependencies:
-    "@ethersproject/abi": ^5.5.0
-    "@ethersproject/solidity": ^5.0.9
-    "@types/lodash.clonedeep": ^4.5.9
-    "@uniswap/swap-router-contracts": ^1.3.0
-    "@uniswap/v3-periphery": ^1.1.1
-    "@uniswap/v3-staker": 1.0.0
-    big.js: ^5.2.2
-    bignumber.js: 9.0.1
-    decimal.js-light: ^2.5.0
-    jsbi: ^3.1.4
-    lodash.clonedeep: ^4.5.0
-    maia-core-sdk: ^1.0.29
-    tiny-invariant: ^1.1.0
-    tiny-warning: ^1.0.3
-  checksum: d02b446409bbd201e6ca810097475146607a972116f7f661553c2de67a78951894caca1284e7d88e057df01e27e9f333d0b6b03e1d40e5a96733b62c8004093b
-  languageName: node
-  linkType: hard
 
 "hermes-v2-sdk@npm:0.0.74, hermes-v2-sdk@npm:^0.0.74":
   version: 0.0.74
@@ -10772,7 +10750,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsbi@npm:^3.1.4, jsbi@npm:^3.1.5":
+"jsbi@npm:^3.1.5":
   version: 3.2.5
   resolution: "jsbi@npm:3.2.5"
   checksum: 642d1bb139ad1c1e96c4907eb159565e980a0d168487626b493d0d0b7b341da0e43001089d3b21703fe17b18a7a6c0f42c92026f71d54471ed0a0d1b3015ec0f
@@ -11715,22 +11693,6 @@ __metadata:
   dependencies:
     sourcemap-codec: ^1.4.8
   checksum: 9a0e55a15c7303fc360f9572a71cffba1f61451bc92c5602b1206c9d17f492403bf96f946dfce7483e66822d6b74607262e24392e87b0ac27b786e69a40e9b1a
-  languageName: node
-  linkType: hard
-
-"maia-core-sdk@npm:1.0.29, maia-core-sdk@npm:^1.0.29":
-  version: 1.0.29
-  resolution: "maia-core-sdk@npm:1.0.29"
-  dependencies:
-    "@ethersproject/abi": ^5.7.0
-    "@ethersproject/address": ^5.7.0
-    "@ethersproject/solidity": ^5.7.0
-    big.js: ^5.2.2
-    decimal.js-light: ^2.5.0
-    jsbi: ^3.1.4
-    tiny-invariant: ^1.1.0
-    toformat: ^2.0.0
-  checksum: e75b539d2a31ac410abdd9542b0b421a5d11069be0e3f0a3ad9b525b839a1c8fbe8ed7ed79a4617e1740a47f81e9145ff343620f612faac173c8b2e4aa89be04
   languageName: node
   linkType: hard
 
@@ -16160,13 +16122,6 @@ __metadata:
   version: 1.3.0
   resolution: "tiny-relative-date@npm:1.3.0"
   checksum: 82a1fa2f3b00cd77c3ff0cf45380dad9e5befa8ee344d8de8076525efda4e6bd6af8f7f483e103b5834dc34bbed337fab7ac151f1d1a429a20f434a3744057b4
-  languageName: node
-  linkType: hard
-
-"tiny-warning@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "tiny-warning@npm:1.0.3"
-  checksum: da62c4acac565902f0624b123eed6dd3509bc9a8d30c06e017104bedcf5d35810da8ff72864400ad19c5c7806fc0a8323c68baf3e326af7cb7d969f846100d71
   languageName: node
   linkType: hard
 

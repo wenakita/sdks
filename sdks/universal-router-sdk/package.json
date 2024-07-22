@@ -34,9 +34,9 @@
     "@uniswap/universal-router": "1.6.0",
     "bignumber.js": "^9.0.2",
     "ethers": "^5.7.0",
-    "hermes-swap-router-sdk": "^0.0.38",
-    "hermes-v2-sdk": "0.0.72",
-    "maia-core-sdk": "1.0.29"
+    "hermes-swap-router-sdk": "^0.0.40",
+    "hermes-v2-sdk": "0.0.74",
+    "maia-core-sdk": "1.0.30"
   },
   "devDependencies": {
     "@types/chai": "^4.3.3",
