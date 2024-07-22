@@ -15322,6 +15322,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"solady@npm:^0.0.167":
+  version: 0.0.167
+  resolution: "solady@npm:0.0.167"
+  checksum: cb82d290cd7daee1f1f41ba58fab0897821236aa516b11e86738aa6cdac5829b84bf409fdc56fe4adf996d93ad49e4529ca8adb18f8e9e2b103710ecd8bc7956
+  languageName: node
+  linkType: hard
+
 "solc@npm:0.7.3":
   version: 0.7.3
   resolution: "solc@npm:0.7.3"
@@ -16739,6 +16746,19 @@ __metadata:
   checksum: 7b3897df38b6fc7d7d9f4dcd658599d81aa2b1fb0d074829dd4e5290f7318dbca1f4af2f45acb833b95b1fe0ed4698662ab61b87e94328eb4c0a0d3435baf924
   languageName: node
   linkType: hard
+
+"ulysses-sdk@workspace:sdks/ulysses-sdk":
+  version: 0.0.0-use.local
+  resolution: "ulysses-sdk@workspace:sdks/ulysses-sdk"
+  dependencies:
+    "@ethersproject/abi": ^5.5.0
+    "@types/jest": ^24.0.25
+    maia-core-sdk: 1.0.29
+    prettier: ^2.4.1
+    solady: ^0.0.167
+    tsdx: ^0.14.1
+  languageName: unknown
+  linkType: soft
 
 "unbox-primitive@npm:^1.0.2":
   version: 1.0.2
