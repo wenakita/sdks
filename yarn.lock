@@ -10756,7 +10756,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsbi@npm:^3.1.4":
+"jsbi@npm:^3.1.4, jsbi@npm:^3.1.5":
   version: 3.2.5
   resolution: "jsbi@npm:3.2.5"
   checksum: 642d1bb139ad1c1e96c4907eb159565e980a0d168487626b493d0d0b7b341da0e43001089d3b21703fe17b18a7a6c0f42c92026f71d54471ed0a0d1b3015ec0f
@@ -11722,14 +11722,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "maia-core-sdk@workspace:sdks/core-sdk"
   dependencies:
-    "@ethersproject/abi": ^5.7.0
     "@ethersproject/address": ^5.7.0
-    "@ethersproject/solidity": ^5.7.0
     "@types/big.js": ^4.0.5
     "@types/jest": ^24.0.25
     big.js: ^5.2.2
     decimal.js-light: ^2.5.0
-    jsbi: ^3.1.4
+    jsbi: ^3.1.5
     tiny-invariant: ^1.1.0
     toformat: ^2.0.0
     tsdx: ^0.14.1
