@@ -11715,7 +11715,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"maia-core-sdk@npm:^1.0.30":
+"maia-core-sdk@npm:1.0.30, maia-core-sdk@npm:^1.0.30":
   version: 1.0.30
   resolution: "maia-core-sdk@npm:1.0.30"
   dependencies:
@@ -16794,7 +16794,7 @@ __metadata:
   dependencies:
     "@ethersproject/abi": ^5.7.0
     "@types/jest": ^24.0.25
-    maia-core-sdk: 1.0.29
+    maia-core-sdk: 1.0.30
     prettier: ^2.4.1
     solady: ^0.0.167
     tsdx: ^0.14.1
