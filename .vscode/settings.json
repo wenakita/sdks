@@ -9,6 +9,8 @@
     "./sdks/core-sdk",
     "./sdks/hermes-v2-sdk",
     "./sdks/router-sdk",
+    "./sdks/ulysses-actions-sdk",
+    "./sdks/ulysses-sdk",
     "./sdks/universal-router-sdk",
   ],
   "testing.openTesting": "neverOpen"
