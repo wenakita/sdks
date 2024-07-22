@@ -9022,7 +9022,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "hermes-swap-router-sdk@workspace:sdks/router-sdk"
   dependencies:
-    "@ethersproject/abi": ^5.5.0
+    "@ethersproject/abi": ^5.7.0
     "@types/jest": ^24.0.25
     "@uniswap/swap-router-contracts": ^1.3.0
     hermes-v2-sdk: 0.0.72
@@ -9086,7 +9086,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "hermes-v2-sdk@workspace:sdks/hermes-v2-sdk"
   dependencies:
-    "@ethersproject/abi": ^5.5.0
+    "@ethersproject/abi": ^5.7.0
     "@ethersproject/solidity": ^5.0.9
     "@types/jest": ^24.0.25
     "@types/lodash.clonedeep": ^4.5.9
@@ -15329,6 +15329,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"solady@npm:^0.0.226":
+  version: 0.0.226
+  resolution: "solady@npm:0.0.226"
+  checksum: d52332511d20bddcde0c4c3e58032482f20fef2efffb9b1cfad4c180100baed74c51d84eb913ce874f70d22de34eb20ba3986f0bd54ba86d8226f40aa33d992b
+  languageName: node
+  linkType: hard
+
 "solc@npm:0.7.3":
   version: 0.7.3
   resolution: "solc@npm:0.7.3"
@@ -16747,11 +16754,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ulysses-actions-sdk@workspace:sdks/ulysses-actions-sdk":
+  version: 0.0.0-use.local
+  resolution: "ulysses-actions-sdk@workspace:sdks/ulysses-actions-sdk"
+  dependencies:
+    "@ethersproject/solidity": ^5.7.0
+    "@types/jest": ^24.0.25
+    maia-core-sdk: 1.0.29
+    prettier: ^2.4.1
+    solady: ^0.0.226
+    tsdx: ^0.14.1
+    ulysses-sdk: ^0.0.91
+  languageName: unknown
+  linkType: soft
+
+"ulysses-sdk@npm:^0.0.91":
+  version: 0.0.91
+  resolution: "ulysses-sdk@npm:0.0.91"
+  dependencies:
+    "@ethersproject/abi": ^5.5.0
+    maia-core-sdk: 1.0.29
+    solady: ^0.0.167
+  checksum: bc0217f29de54913bd556c7b1169314d31538d326305cea6e69300d0ea757806c0fe5d09f6f7403b9a27583d3c6021a6e1d55941dcbeee1c1ed42634d703597d
+  languageName: node
+  linkType: hard
+
 "ulysses-sdk@workspace:sdks/ulysses-sdk":
   version: 0.0.0-use.local
   resolution: "ulysses-sdk@workspace:sdks/ulysses-sdk"
   dependencies:
-    "@ethersproject/abi": ^5.5.0
+    "@ethersproject/abi": ^5.7.0
     "@types/jest": ^24.0.25
     maia-core-sdk: 1.0.29
     prettier: ^2.4.1

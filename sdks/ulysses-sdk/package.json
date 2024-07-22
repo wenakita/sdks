@@ -23,7 +23,7 @@
     "test": "tsdx test"
   },
   "dependencies": {
-    "@ethersproject/abi": "^5.5.0",
+    "@ethersproject/abi": "^5.7.0",
     "maia-core-sdk": "1.0.29",
     "solady": "^0.0.167"
   },

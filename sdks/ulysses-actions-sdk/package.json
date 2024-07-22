@@ -1,10 +1,10 @@
 {
-  "name": "hermes-swap-router-sdk",
-  "description": "An sdk for routing swaps using Uniswap v2, Uniswap v3 and Balancer Stable Pools.",
+  "name": "ulysses-actions-sdk",
+  "description": "An sdk for interacting with contracts using Ulysses Protocol",
   "repository": "https://github.com/Maia-DAO/sdks.git",
   "keywords": [
-    "uniswap",
-    "balancer",
+    "ulysses",
+    "layerzero",
     "maia",
     "hermes",
     "ethereum"
@@ -23,10 +23,10 @@
     "test": "tsdx test"
   },
   "dependencies": {
-    "@ethersproject/abi": "^5.7.0",
-    "@uniswap/swap-router-contracts": "^1.3.0",
-    "hermes-v2-sdk": "0.0.72",
-    "maia-core-sdk": "1.0.29"
+    "@ethersproject/solidity": "^5.7.0",
+    "maia-core-sdk": "1.0.29",
+    "solady": "^0.0.226",
+    "ulysses-sdk": "^0.0.91"
   },
   "devDependencies": {
     "@types/jest": "^24.0.25",
