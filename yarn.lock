@@ -9032,8 +9032,8 @@ __metadata:
     "@ethersproject/abi": ^5.7.0
     "@types/jest": ^24.0.25
     "@uniswap/swap-router-contracts": ^1.3.0
-    hermes-v2-sdk: 0.0.74
-    maia-core-sdk: 1.0.30
+    hermes-v2-sdk: 0.0.76
+    maia-core-sdk: 1.0.31
     prettier: ^2.4.1
     tsdx: ^0.14.1
   languageName: unknown
@@ -9067,7 +9067,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"hermes-v2-sdk@npm:0.0.74, hermes-v2-sdk@npm:^0.0.74":
+"hermes-v2-sdk@npm:0.0.74":
   version: 0.0.74
   resolution: "hermes-v2-sdk@npm:0.0.74"
   dependencies:
@@ -9086,6 +9086,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hermes-v2-sdk@npm:0.0.76, hermes-v2-sdk@npm:^0.0.76":
+  version: 0.0.76
+  resolution: "hermes-v2-sdk@npm:0.0.76"
+  dependencies:
+    "@ethersproject/abi": ^5.7.0
+    "@ethersproject/solidity": ^5.7.0
+    "@types/lodash.clonedeep": ^4.5.9
+    "@uniswap/swap-router-contracts": ^1.3.0
+    "@uniswap/v3-periphery": ^1.1.1
+    "@uniswap/v3-staker": 1.0.0
+    bignumber.js: 9.0.2
+    jsbi: ^3.1.5
+    lodash.clonedeep: ^4.5.0
+    maia-core-sdk: ^1.0.31
+    tiny-invariant: ^1.1.0
+  checksum: aa552f16f778213e6a20c3deeaa70a10a6e2be3674705f468aab7325867258bdc02e8764f7da664e5bf496a4064b41c64e5df7d662728e83486732ecebcf12fc
+  languageName: node
+  linkType: hard
+
 "hermes-v2-sdk@workspace:sdks/hermes-v2-sdk":
   version: 0.0.0-use.local
   resolution: "hermes-v2-sdk@workspace:sdks/hermes-v2-sdk"
@@ -9098,7 +9117,7 @@ __metadata:
     "@uniswap/v3-periphery": ^1.1.1
     "@uniswap/v3-staker": 1.0.0
     babel-jest: 25.5.1
-    bignumber.js: 9.0.2
+    bignumber.js: ^9.0.2
     jsbi: ^3.1.5
     lodash.clonedeep: ^4.5.0
     maia-core-sdk: ^1.0.31
@@ -15344,13 +15363,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solady@npm:^0.0.167":
-  version: 0.0.167
-  resolution: "solady@npm:0.0.167"
-  checksum: cb82d290cd7daee1f1f41ba58fab0897821236aa516b11e86738aa6cdac5829b84bf409fdc56fe4adf996d93ad49e4529ca8adb18f8e9e2b103710ecd8bc7956
-  languageName: node
-  linkType: hard
-
 "solady@npm:^0.0.226":
   version: 0.0.226
   resolution: "solady@npm:0.0.226"
@@ -16793,25 +16805,24 @@ __metadata:
   dependencies:
     "@ethersproject/solidity": ^5.7.0
     "@types/jest": ^24.0.25
-    hermes-v2-sdk: ^0.0.74
-    maia-core-sdk: 1.0.30
+    hermes-v2-sdk: ^0.0.76
+    maia-core-sdk: 1.0.31
     maia-v2-sdk: ^0.0.8
     prettier: ^2.4.1
-    solady: ^0.0.226
     talos-sdk: ^0.0.15
     tsdx: ^0.14.1
-    ulysses-sdk: ^0.0.93
+    ulysses-sdk: ^0.0.95
   languageName: unknown
   linkType: soft
 
-"ulysses-sdk@npm:^0.0.93":
-  version: 0.0.93
-  resolution: "ulysses-sdk@npm:0.0.93"
+"ulysses-sdk@npm:^0.0.95":
+  version: 0.0.95
+  resolution: "ulysses-sdk@npm:0.0.95"
   dependencies:
     "@ethersproject/abi": ^5.7.0
-    maia-core-sdk: 1.0.30
-    solady: ^0.0.167
-  checksum: fc2274cfbafb6d7dfef5cab6ce79fc61e08bdc0409e923c544056a5a4bd933c3c13d1551e30d7e9b3ed6b25e4a62626752ff1d8c30cbc07b696f8dc32194940a
+    maia-core-sdk: 1.0.31
+    solady: ^0.0.226
+  checksum: a917e7152cd81223eaeeb53546cabcb9e94476f93661aad75c7c513c242e0e1a6be83ff9af25d405f1e974ba818681d982860163900d6187680dbd12571402a6
   languageName: node
   linkType: hard
 
