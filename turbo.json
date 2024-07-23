@@ -1,10 +1,8 @@
 {
+  "globalPassThroughEnv": ["NPM_TOKEN", "PAT_TOKEN"],
   "tasks": {
     "lint": {
-      "inputs": [
-        "sdks/*/src/**/*.ts",
-        "sdks/*/src/**/*.tsx"
-      ]
+      "inputs": ["sdks/*/src/**/*.ts", "sdks/*/src/**/*.tsx"]
     },
     "build": {
       "inputs": [
@@ -16,9 +14,7 @@
       "outputs": []
     },
     "test": {
-      "dependsOn": [
-        "build"
-      ]
+      "dependsOn": ["build"]
     },
     "release": {
       "dependsOn": []
