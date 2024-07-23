@@ -1,5 +1,5 @@
 {
-  "globalPassThroughEnv": ["NPM_TOKEN", "PAT_TOKEN"],
+  "globalPassThroughEnv": ["NPM_TOKEN", "GITHUB_TOKEN"],
   "tasks": {
     "lint": {
       "inputs": ["sdks/*/src/**/*.ts", "sdks/*/src/**/*.tsx"]
