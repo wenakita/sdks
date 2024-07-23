@@ -98,16 +98,16 @@ const UlyssesOptimismSepolia: IUlyssesCommonContracts = {
 }
 
 const UlyssesPolygonAmoy: IUlyssesCommonContracts = {
-  BranchPort: '',
-  BranchBridgeAgentFactory: '',
-  CoreBranchRouter: '',
-  CoreBranchBridgeAgent: '',
-  ERC20hTokenBranchFactory: '',
-  MulticallBranchRouter: '',
-  MulticallBranchBridgeAgent: '',
-  MulticallBranchRouterLibZip: '',
-  MulticallBranchBridgeAgentLibZip: '',
-  NativeToken: '',
+  BranchPort: '0x471e76A7CD76A0DbD021F5A3136d1F0828cbD270',
+  BranchBridgeAgentFactory: '0x1fc37a909cB3997f96cE395B3Ee9ac268C9bCcdb',
+  CoreBranchRouter: '0x68868e60Bb70f9eA3A153334440e0D6aF96bE77A',
+  CoreBranchBridgeAgent: '0xE1cEf05Ea3Da03EfE18b01fbd7b11DF059A7aF3F',
+  ERC20hTokenBranchFactory: '0x7ddEecA94ce57264410d51E9F73a0f8983b2eAA7',
+  MulticallBranchRouter: '0xAfB0F351A9a92220eFC54a92EA5cAE21AcB3D6Da',
+  MulticallBranchBridgeAgent: '0x201a51Fe6688AEE94E97c71DAdfa727769fE1AB5',
+  MulticallBranchRouterLibZip: '0x9f88DbcD0d2Db9a2433Ce0f4eF1C5d533F032702',
+  MulticallBranchBridgeAgentLibZip: '0xf64597697246F09aA71Eb859F69512c4AabD4dE5',
+  NativeToken: '0x833bF555AD7201Dba33D4A5AeA88c179468Ca424',
 }
 
 export const Ulysses: IUlysses = {
