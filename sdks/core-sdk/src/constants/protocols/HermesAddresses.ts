@@ -1,42 +1,52 @@
 import { HermesAddressesType, IHermes } from '../../types'
-// import { ZERO_ADDRESS } from '../addresses'
+import { ZERO_ADDRESS } from '../addresses'
 import { SupportedChainId } from '../chainIds'
 
 /**
  * These addresses are on arbitrum
  */
-// export const ArbitrumHermesAddresses: IHermes = {
-//   Hermes: ZERO_ADDRESS,
-//   bHermes: ZERO_ADDRESS,
-//   bHermesVotes: ZERO_ADDRESS,
-//   bHermesGauges: ZERO_ADDRESS,
-//   bHermesBoost: ZERO_ADDRESS,
-//   UniswapV3GaugeFactory: ZERO_ADDRESS,
-//   UniswapV3Staker: ZERO_ADDRESS,
-//   BribesFactory: ZERO_ADDRESS,
-//   BaseV2Minter: ZERO_ADDRESS,
-//   PartnerManagerFactory: ZERO_ADDRESS,
-//   FlywheelGaugeRewards: ZERO_ADDRESS,
-// }
+export const ArbitrumHermesAddresses: IHermes = {
+  Hermes: ZERO_ADDRESS,
+  bHermes: ZERO_ADDRESS,
+  bHermesVotes: ZERO_ADDRESS,
+  bHermesGauges: ZERO_ADDRESS,
+  bHermesBoost: ZERO_ADDRESS,
+  UniswapV3GaugeFactory: ZERO_ADDRESS,
+  UniswapV3Staker: ZERO_ADDRESS,
+  BribesFactory: ZERO_ADDRESS,
+  FlywheelBooster: ZERO_ADDRESS,
+  BaseV2Minter: ZERO_ADDRESS,
+  BaseV2GaugeManager: ZERO_ADDRESS,
+  PartnerManagerFactory: ZERO_ADDRESS,
+  FlywheelGaugeRewards: ZERO_ADDRESS,
+  RewardsInfoHelper: ZERO_ADDRESS,
+  ERC20BoostHelper: ZERO_ADDRESS,
+  RestakeHelper: ZERO_ADDRESS,
+}
 
 /**
  * These are the tesnet addresses on Sepolia
  */
 export const SepoliaHermesAddresses: IHermes = {
-  Hermes: '0xC2dC238083fCc1adAD44090cc0802C94Ca1f25E9',
-  bHermes: '0x6B65882F51BD0B5BE9803a3F2e1e895700F371B3',
-  bHermesVotes: '0x1A2DC6AA017d6F5b2e538189F655cb2d120dCc4d',
-  bHermesGauges: '0x3A8093824b0CDECc9B0c7B0C68B86630dcDe1bEB',
-  bHermesBoost: '0x8265Aa10EE11f57ed01Bf8ecE5BA57Ef75ED36dc',
-  UniswapV3GaugeFactory: '0x6CFFD0d728deF9BE1640c70776fbE6B93e7E96A2',
-  UniswapV3Staker: '0x488ABc69528597bf86A7728aEf17EaaEb9d7E323',
-  BribesFactory: '0x67195CB1Be819c5790dc89C2023b21943c702A49',
-  BaseV2Minter: '0xB82241b897256d920470b585C555C4341d2B1D4A',
-  PartnerManagerFactory: '0xC2080cA61D32663fb698321dEF53C038eFc72964',
-  FlywheelGaugeRewards: '0x54994cd7bbA34C8dbD4a0033b99332B665F91CD3',
+  Hermes: '0x34CA145f38aBff21679B958fA067DBF3c021a60D',
+  bHermes: '0x12bcE9DBFfD8F20b1B7F74c9A5678f770FCb36b8',
+  bHermesVotes: '0x4A6D202cd15dD26ca28693Ed8256f5F57fCAf367',
+  bHermesGauges: '0xd6154D2C9f5C1e682786aA06c092e9f466f5E068',
+  bHermesBoost: '0xE2eaCd92208E81c88E629682aeab5646E4f8ed69',
+  UniswapV3GaugeFactory: '0x068cA042b76589A59435C3bd6B5e45D4223453cf',
+  UniswapV3Staker: '0x2907fA8B81AD03F07A6545901957e7a9D1dD252B',
+  BribesFactory: '0x0A87e91500B1cdC75759ee923054d48dE3df8C0D',
+  FlywheelBooster: '0xCff715821ECF15466fC73ee10591D0CcEe2b7f38',
+  BaseV2Minter: '0x006a82828debcC1b369B3E41a88F018Ca72dA809',
+  BaseV2GaugeManager: '0x996486eA713aCBcD93e0DeD1722F7CF18FeDC0Be',
+  PartnerManagerFactory: '0x7049E4743F148d0817Ba82455eC2065E5B97f146',
+  FlywheelGaugeRewards: '0xa8C563BA4Eff705f30B631b4cd4A4C4395540d07',
+  RewardsInfoHelper: '0x38Ca8f2db851575632B532Ca7EcB3dfffB0E82b0',
+  ERC20BoostHelper: '0x07B0ED72AdF6f0912Ce176081b6c7Be93DaA92Eb',
+  RestakeHelper: '0x34A1D3fff3958843C43aD80F30b94c510645C316',
 }
 
 export const HermesAddresses: HermesAddressesType = {
-  // [SupportedChainId.ARBITRUM_ONE]: ArbitrumHermesAddresses,
+  [SupportedChainId.ARBITRUM_ONE]: ArbitrumHermesAddresses,
   [SupportedChainId.SEPOLIA]: SepoliaHermesAddresses,
 }

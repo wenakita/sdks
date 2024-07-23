@@ -18,6 +18,16 @@ export interface IMaia extends IProtocolAddresses {
    * The address of the vMaiaVotes Token
    */
   vMaiaVotes: string
+
+  /**
+   * The address of the vMaiaTest Token
+   */
+  vMaiaTest: string
+
+  /**
+   * The address of the vMaiaVotesTest Token
+   */
+  vMaiaVotesTest: string
 }
 
 export type MaiaAddressesType = ProtocolAddressesType<IMaia>

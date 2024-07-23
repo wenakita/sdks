@@ -7,10 +7,14 @@ export const MaiaAddresses: MaiaAddressesType = {
     Maia: ZERO_ADDRESS,
     vMaia: ZERO_ADDRESS,
     vMaiaVotes: ZERO_ADDRESS,
+    vMaiaTest: ZERO_ADDRESS,
+    vMaiaVotesTest: ZERO_ADDRESS,
   },
   [SupportedChainId.SEPOLIA]: {
-    Maia: '0x1877F4644eEC61659d7fa40F297f20507b60f75e',
-    vMaia: '0x2bc7a31E13B78f37371793dE7629AEC39465E976',
-    vMaiaVotes: '0x5EA25810EbeD7bcCf4045ed2eF14192DEc79C79f',
+    Maia: '0xe17F84cA0a338Bb09fe2FBF99DD841F2F5f6F8C2',
+    vMaia: '0xa97B98B822A7fd1CaC21cCCa2E0Df99357C3dC75',
+    vMaiaVotes: '0x4B620E248C2dB84186e7dd4dc17263b97b5eF34E',
+    vMaiaTest: '0xC3667dC9f94BBD0643fB9c020865bE90713b0f4f',
+    vMaiaVotesTest: '0x168f8c99291A9fEbB75EbBf5D3931CC995fF5D9b',
   },
 }

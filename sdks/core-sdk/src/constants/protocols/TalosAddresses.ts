@@ -9,13 +9,15 @@ export const TalosAddresses: TalosAddressesType = {
     BoostAggregatorFactory: ZERO_ADDRESS,
     TalosManagerFactory: ZERO_ADDRESS,
     FlywheelCoreInstant: ZERO_ADDRESS,
+    TransferAll: ZERO_ADDRESS,
   },
 
   [SupportedChainId.SEPOLIA]: {
-    TalosStrategyStakedFactory: '0xdB51f53819E6a8580C161B65f117743f1D311832',
-    OptimizerFactory: '0x9b41164789B5DDC4f2a8ABF32B879986928D000D',
-    BoostAggregatorFactory: '0x64C0432f47cC6135a3828C7DFA66d81DDb4D894F',
-    TalosManagerFactory: '0xB5Ae0AD4955f1e9446009502A654AD6FA4560Fe5',
-    FlywheelCoreInstant: '0xef800796E2b08fA3a0b67a8Caa3A63ed3d682A83',
+    TalosStrategyStakedFactory: '0xA483A5FB7974Dcdc4480a976fECD4e5d21312E20',
+    OptimizerFactory: '0xE5534Af145B1F539a89F0a8c210c1213539Aa0Bc',
+    BoostAggregatorFactory: '0xA6605f5Ade7eA775535a7e0B54833b7EE6eE98C6',
+    TalosManagerFactory: '0x09e2877026cC748c992612b999c4b8A10bfE8Eea',
+    FlywheelCoreInstant: '0x090BB8B6a6f8daa1cD1e3153F030F2E7609D4321',
+    TransferAll: '0x000bE6db68E716106dAb57190c6A1bF6D3F4cBAf',
   },
 }

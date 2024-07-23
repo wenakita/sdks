@@ -6,6 +6,7 @@ export interface ITalos extends IProtocolAddresses {
   BoostAggregatorFactory: string
   TalosManagerFactory: string
   FlywheelCoreInstant: string
+  TransferAll: string
 }
 
 export type TalosAddressesType = ProtocolAddressesType<ITalos>
