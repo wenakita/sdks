@@ -6,21 +6,28 @@ import { gasParamsMap } from '../types'
 export const ROOT_CHAIN_IDS = [SupportedChainId.ARBITRUM_ONE, SupportedChainId.SEPOLIA]
 
 export const EVM_CHAIN_ID_TO_ROOT_CHAIN_ID: { [key in SupportedChainId]: SupportedChainId } = {
-  //MAINNETS
-  [SupportedChainId.ARBITRUM_ONE]: SupportedChainId.ARBITRUM_ONE,
+  //Mainnets
   [SupportedChainId.MAINNET]: SupportedChainId.ARBITRUM_ONE,
+  [SupportedChainId.ARBITRUM_ONE]: SupportedChainId.ARBITRUM_ONE,
   [SupportedChainId.OPTIMISM]: SupportedChainId.ARBITRUM_ONE,
   [SupportedChainId.POLYGON]: SupportedChainId.ARBITRUM_ONE,
-  [SupportedChainId.FANTOM]: SupportedChainId.ARBITRUM_ONE,
   [SupportedChainId.BSC]: SupportedChainId.ARBITRUM_ONE,
   [SupportedChainId.AVAX]: SupportedChainId.ARBITRUM_ONE,
   [SupportedChainId.METIS]: SupportedChainId.ARBITRUM_ONE,
+  [SupportedChainId.BASE]: SupportedChainId.ARBITRUM_ONE,
 
-  //TESTNETS
+  [SupportedChainId.FANTOM]: SupportedChainId.ARBITRUM_ONE,
+  [SupportedChainId.SCROLL]: SupportedChainId.ARBITRUM_ONE,
+  [SupportedChainId.MANTLE]: SupportedChainId.ARBITRUM_ONE,
+  [SupportedChainId.FRAXTAL]: SupportedChainId.ARBITRUM_ONE,
+  [SupportedChainId.GNOSIS]: SupportedChainId.ARBITRUM_ONE,
+
+  //Testnets
   [SupportedChainId.SEPOLIA]: SupportedChainId.SEPOLIA,
   [SupportedChainId.ARBITRUM_SEPOLIA]: SupportedChainId.SEPOLIA,
   [SupportedChainId.OPTIMISM_SEPOLIA]: SupportedChainId.SEPOLIA,
-  [SupportedChainId.POLYGON_MUMBAI]: SupportedChainId.SEPOLIA,
+  [SupportedChainId.POLYGON_AMOY]: SupportedChainId.SEPOLIA,
+
   [SupportedChainId.FANTOM_TESTNET]: SupportedChainId.SEPOLIA,
   [SupportedChainId.BSC_TESTNET]: SupportedChainId.SEPOLIA,
   [SupportedChainId.AVAX_FUJI]: SupportedChainId.SEPOLIA,
@@ -177,7 +184,7 @@ export const DEFAULT_JSON_RPC_PROVIDER: URLMap = {
   [SupportedChainId.BSC]: '',
   [SupportedChainId.OPTIMISM]: '',
   [SupportedChainId.POLYGON]: '',
-  [SupportedChainId.POLYGON_MUMBAI]: '',
+  [SupportedChainId.POLYGON_AMOY]: '',
   [SupportedChainId.MAINNET]: '',
 }
 
@@ -232,7 +239,7 @@ export const DEFAULT_GAS_PARAMS: gasParamsMap = {
     gasLimit: JSBI.BigInt(600000).toString(),
     remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
   },
-  [SupportedChainId.POLYGON_MUMBAI]: {
+  [SupportedChainId.POLYGON_AMOY]: {
     gasLimit: JSBI.BigInt(600000).toString(),
     remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
   },
