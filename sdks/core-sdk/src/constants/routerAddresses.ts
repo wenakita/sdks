@@ -109,27 +109,6 @@ export const MULTICALL_ADDRESSES: AddressMap = {
   }, {}),
 }
 
-/**
- * The oldest V0 governance address
- */
-export const GOVERNANCE_ALPHA_V0_ADDRESSES: AddressMap = constructSameAddressMap(
-  '0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F'
-)
-/**
- * The older V1 governance address
- */
-export const GOVERNANCE_ALPHA_V1_ADDRESSES: AddressMap = {
-  [ChainId.MAINNET]: '0xC4e172459f1E7939D522503B81AFAaC1014CE6F6',
-}
-/**
- * The latest governor bravo that is currently admin of timelock
- */
-export const GOVERNANCE_BRAVO_ADDRESSES: AddressMap = {
-  [ChainId.MAINNET]: '0x408ED6354d4973f66138C91495F2f2FCbd8724C3',
-}
-
-export const TIMELOCK_ADDRESSES: AddressMap = constructSameAddressMap('0x1a9C8182C09F50C8318d769245beA52c32BE35BC')
-
 export const ARGENT_WALLET_DETECTOR_ADDRESS: AddressMap = {
   [ChainId.MAINNET]: '0xeca4B0bDBf7c55E9b7925919d03CbF8Dc82537E8',
 }
