@@ -5153,6 +5153,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bignumber.js@npm:9.0.2":
+  version: 9.0.2
+  resolution: "bignumber.js@npm:9.0.2"
+  checksum: 8637b71d0a99104b20413c47578953970006fec6b4df796b9dcfd9835ea9c402ea0e727eba9a5ca9f9a393c1d88b6168c5bbe0887598b708d4f8b4870ad62e1f
+  languageName: node
+  linkType: hard
+
 "bignumber.js@npm:^9.0.2":
   version: 9.1.2
   resolution: "bignumber.js@npm:9.1.2"
@@ -9091,7 +9098,7 @@ __metadata:
     "@uniswap/v3-periphery": ^1.1.1
     "@uniswap/v3-staker": 1.0.0
     babel-jest: 25.5.1
-    bignumber.js: 9.0.1
+    bignumber.js: 9.0.2
     jsbi: ^3.1.5
     lodash.clonedeep: ^4.5.0
     maia-core-sdk: ^1.0.31
@@ -16816,7 +16823,7 @@ __metadata:
     "@types/jest": ^24.0.25
     maia-core-sdk: 1.0.31
     prettier: ^2.4.1
-    solady: ^0.0.167
+    solady: ^0.0.226
     tsdx: ^0.14.1
   languageName: unknown
   linkType: soft
