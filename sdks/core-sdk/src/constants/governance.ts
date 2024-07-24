@@ -7,7 +7,7 @@ import { AddressMap } from './types'
  */
 export const GOVERNANCE_BRAVO_ADDRESSES: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0x373c39bC97EAa5750237aA857C713835d09b5aF5',
+  [SupportedChainId.SEPOLIA]: '0x4eFa62833922406A427B54ebe8f796275Ca87687',
 }
 
 /**
@@ -15,7 +15,7 @@ export const GOVERNANCE_BRAVO_ADDRESSES: AddressMap = {
  */
 export const GOVERNANCE_BRAVO_SEVERITY_1_ADDRESSES: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0xE218278e792Fc4d2e0C1112bf9068994263F1Ce8',
+  [SupportedChainId.SEPOLIA]: '0x28a9ffd6Fe4497f0788606F64Ab7095fDeCe4Ebb',
 }
 
 /**
@@ -23,7 +23,7 @@ export const GOVERNANCE_BRAVO_SEVERITY_1_ADDRESSES: AddressMap = {
  */
 export const GOVERNANCE_BRAVO_SEVERITY_2_ADDRESSES: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0xF05DC5D30DE18149D112fB344B8EA48fE9d65081',
+  [SupportedChainId.SEPOLIA]: '0x38bAd91B4c7016f8a9C71aab1071769Ec0FBe241',
 }
 
 /**
@@ -31,7 +31,7 @@ export const GOVERNANCE_BRAVO_SEVERITY_2_ADDRESSES: AddressMap = {
  */
 export const GOVERNANCE_BRAVO_SEVERITY_3_ADDRESSES: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0x0FD8A64BFc02fD5542FADb012C7c822C49F9ff9b',
+  [SupportedChainId.SEPOLIA]: '0x8d2c9aA2e899B18e03931ccFcf088be0b3a23BdE',
 }
 
 /**
@@ -39,7 +39,7 @@ export const GOVERNANCE_BRAVO_SEVERITY_3_ADDRESSES: AddressMap = {
  */
 export const GOVERNANCE_BRAVO_SEVERITY_4_ADDRESSES: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0x4030A53Ae2Ff19CaE81b062BCFAc2dcDc75Df518',
+  [SupportedChainId.SEPOLIA]: '0xB9618958c953D67E15Bf7eFe78478Dd1e8b23CeC',
 }
 
 /**
@@ -47,12 +47,12 @@ export const GOVERNANCE_BRAVO_SEVERITY_4_ADDRESSES: AddressMap = {
  */
 export const GOVERNANCE_BRAVO_SEVERITY_5_ADDRESSES: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0x5737fa794EEE7E60b6079f0f2BCF650c074A3A82',
+  [SupportedChainId.SEPOLIA]: '0xBFFc42560a51832daa466955f39D81915402Fd50',
 }
 
 export const TIMELOCK_ADDRESS: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0xC2d8fde22ddBffc13b39B2c33E8Dcca66E4D4004',
+  [SupportedChainId.SEPOLIA]: '0x640415A622fD2422D310083D81991B9EC65e5C51',
 }
 
 /**
@@ -60,7 +60,7 @@ export const TIMELOCK_ADDRESS: AddressMap = {
  */
 export const TIMELOCK_SEVERITY_1_ADDRESSES: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0xDCb48B20aaBa007711B0248b0353943116eb6283',
+  [SupportedChainId.SEPOLIA]: '0x16DfceFF2e21c54Cd4B262edDCc1baEB734a112A',
 }
 
 /**
@@ -68,7 +68,7 @@ export const TIMELOCK_SEVERITY_1_ADDRESSES: AddressMap = {
  */
 export const TIMELOCK_SEVERITY_2_ADDRESSES: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0xd76B214F5E8EdfF64549b9cEbF3d63F0651E7386',
+  [SupportedChainId.SEPOLIA]: '0x0d5783E0e19bf09A923A742E5feB0653c2Eed638',
 }
 
 /**
@@ -76,7 +76,7 @@ export const TIMELOCK_SEVERITY_2_ADDRESSES: AddressMap = {
  */
 export const TIMELOCK_SEVERITY_3_ADDRESSES: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0xAC871a52f9C73fFaFdC440E6490D74053fF94a7d',
+  [SupportedChainId.SEPOLIA]: '0x69ff16440052DE228a158517d91E92D803e072D7',
 }
 
 /**
@@ -84,7 +84,7 @@ export const TIMELOCK_SEVERITY_3_ADDRESSES: AddressMap = {
  */
 export const TIMELOCK_SEVERITY_4_ADDRESSES: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0xd752dE986d07096E4F67f0275e61aA9d925348A9',
+  [SupportedChainId.SEPOLIA]: '0x8e0881066dA3B81041105B58303a975bD507091C',
 }
 
 /**
@@ -92,5 +92,5 @@ export const TIMELOCK_SEVERITY_4_ADDRESSES: AddressMap = {
  */
 export const TIMELOCK_SEVERITY_5_ADDRESSES: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0xEc635f676258FAedf5865a5A971cDf873392E65f',
+  [SupportedChainId.SEPOLIA]: '0x9de0F9B4a94a2119789F03A21Da42576114A0554',
 }

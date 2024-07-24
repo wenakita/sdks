@@ -86,6 +86,11 @@ export interface IHermes extends IProtocolAddresses {
    * The address of the RestakeHelper
    */
   RestakeHelper: string
+
+  /**
+   * The address of the FlywheelHelper
+   */
+  FlywheelHelper: string
 }
 
 export type HermesAddressesType = ProtocolAddressesType<IHermes>

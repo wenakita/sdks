@@ -22,6 +22,7 @@ export const ArbitrumHermesAddresses: IHermes = {
   RewardsInfoHelper: ZERO_ADDRESS,
   ERC20BoostHelper: ZERO_ADDRESS,
   RestakeHelper: ZERO_ADDRESS,
+  FlywheelHelper: ZERO_ADDRESS,
 }
 
 /**
@@ -44,6 +45,7 @@ export const SepoliaHermesAddresses: IHermes = {
   RewardsInfoHelper: '0x38Ca8f2db851575632B532Ca7EcB3dfffB0E82b0',
   ERC20BoostHelper: '0x07B0ED72AdF6f0912Ce176081b6c7Be93DaA92Eb',
   RestakeHelper: '0x34A1D3fff3958843C43aD80F30b94c510645C316',
+  FlywheelHelper: '0xeCC521C10806D02f313443624f0eF66f2eA91A31',
 }
 
 export const HermesAddresses: HermesAddressesType = {

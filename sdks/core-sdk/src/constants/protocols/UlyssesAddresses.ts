@@ -49,12 +49,12 @@ const UlyssesSepoliaBranch: IUlyssesCommonContracts = {
   BranchPort: '0xE2B6Dc3e16873aC460d01307898eba5e3ef72165',
   BranchBridgeAgentFactory: '0xbDf7Df30b8575a112cA8B74486f616f97548573C',
   CoreBranchRouter: '0xE9E180453f1318c9518166f53BF5b55Cfb5302Cf',
-  CoreBranchBridgeAgent: 'ZERO_ADDRESS', // TODO: Update - not used for now
+  CoreBranchBridgeAgent: ZERO_ADDRESS, // TODO: Update - not used for now
   ERC20hTokenBranchFactory: ZERO_ADDRESS,
   MulticallBranchRouter: '0x9FF07935Aa66aCCEc439a7bc830645B77198E2CF',
-  MulticallBranchBridgeAgent: 'ZERO_ADDRESS', // TODO: Update - not used for now
+  MulticallBranchBridgeAgent: '0x141282d0442adda1274b9eb7ca368e24b2e06639',
   MulticallBranchRouterLibZip: '0xb48a73F3dC5F8065B3c9F9EDdcCd33979b518841',
-  MulticallBranchBridgeAgentLibZip: 'ZERO_ADDRESS', // TODO: Update - not used for now
+  MulticallBranchBridgeAgentLibZip: ZERO_ADDRESS, // TODO: Update - not used for now
   NativeToken: '0xfff9976782d46cc05630d1f6ebab18b2324d6b14',
 }
 
@@ -121,11 +121,11 @@ export const Ulysses: IUlysses = {
   [SupportedChainId.BSC]: UlyssesEthereum,
   [SupportedChainId.METIS]: UlyssesEthereum,
 
-  [SupportedChainId.FANTOM]: UlyssesEthereum,
-  [SupportedChainId.SCROLL]: UlyssesEthereum,
-  [SupportedChainId.MANTLE]: UlyssesEthereum,
-  [SupportedChainId.FRAXTAL]: UlyssesEthereum,
-  [SupportedChainId.GNOSIS]: UlyssesEthereum,
+  // [SupportedChainId.FANTOM]: UlyssesEthereum,
+  // [SupportedChainId.SCROLL]: UlyssesEthereum,
+  // [SupportedChainId.MANTLE]: UlyssesEthereum,
+  // [SupportedChainId.FRAXTAL]: UlyssesEthereum,
+  // [SupportedChainId.GNOSIS]: UlyssesEthereum,
 
   // Testnets
   [SupportedChainId.SEPOLIA]: UlyssesSepolia,
