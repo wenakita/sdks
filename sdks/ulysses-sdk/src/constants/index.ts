@@ -1,5 +1,5 @@
 import JSBI from 'jsbi'
-import { AddressMap, SupportedChainId } from 'maia-core-sdk'
+import { SupportedChainId } from 'maia-core-sdk'
 
 import { gasParamsMap } from '../types'
 
@@ -16,21 +16,23 @@ export const EVM_CHAIN_ID_TO_ROOT_CHAIN_ID: { [key in SupportedChainId]: Support
   [SupportedChainId.METIS]: SupportedChainId.ARBITRUM_ONE,
   [SupportedChainId.BASE]: SupportedChainId.ARBITRUM_ONE,
 
-  [SupportedChainId.FANTOM]: SupportedChainId.ARBITRUM_ONE,
-  [SupportedChainId.SCROLL]: SupportedChainId.ARBITRUM_ONE,
-  [SupportedChainId.MANTLE]: SupportedChainId.ARBITRUM_ONE,
-  [SupportedChainId.FRAXTAL]: SupportedChainId.ARBITRUM_ONE,
-  [SupportedChainId.GNOSIS]: SupportedChainId.ARBITRUM_ONE,
+  // [SupportedChainId.FANTOM]: SupportedChainId.ARBITRUM_ONE,
+  // [SupportedChainId.SCROLL]: SupportedChainId.ARBITRUM_ONE,
+  // [SupportedChainId.MANTLE]: SupportedChainId.ARBITRUM_ONE,
+  // [SupportedChainId.FRAXTAL]: SupportedChainId.ARBITRUM_ONE,
+  // [SupportedChainId.GNOSIS]: SupportedChainId.ARBITRUM_ONE,
 
   //Testnets
   [SupportedChainId.SEPOLIA]: SupportedChainId.SEPOLIA,
   [SupportedChainId.ARBITRUM_SEPOLIA]: SupportedChainId.SEPOLIA,
   [SupportedChainId.OPTIMISM_SEPOLIA]: SupportedChainId.SEPOLIA,
+  [SupportedChainId.BASE_SEPOLIA]: SupportedChainId.SEPOLIA,
+
   [SupportedChainId.POLYGON_AMOY]: SupportedChainId.SEPOLIA,
 
-  [SupportedChainId.FANTOM_TESTNET]: SupportedChainId.SEPOLIA,
-  [SupportedChainId.BSC_TESTNET]: SupportedChainId.SEPOLIA,
-  [SupportedChainId.AVAX_FUJI]: SupportedChainId.SEPOLIA,
+  // [SupportedChainId.FANTOM_TESTNET]: SupportedChainId.SEPOLIA,
+  // [SupportedChainId.BSC_TESTNET]: SupportedChainId.SEPOLIA,
+  // [SupportedChainId.AVAX_FUJI]: SupportedChainId.SEPOLIA,
 }
 
 /**
@@ -173,21 +175,6 @@ export const MULTICALL_FUNCID = {
   SIGNED_MULTIPLE_OUTPUT: '0x06',
 } as const
 
-type URLMap = AddressMap
-
-export const DEFAULT_JSON_RPC_PROVIDER: URLMap = {
-  [SupportedChainId.ARBITRUM_ONE]: '',
-  [SupportedChainId.METIS]: '',
-  [SupportedChainId.FANTOM]: '',
-  [SupportedChainId.FANTOM_TESTNET]: '',
-  [SupportedChainId.AVAX]: '',
-  [SupportedChainId.BSC]: '',
-  [SupportedChainId.OPTIMISM]: '',
-  [SupportedChainId.POLYGON]: '',
-  [SupportedChainId.POLYGON_AMOY]: '',
-  [SupportedChainId.MAINNET]: '',
-}
-
 /**
  * Holds the default Supported Chain Id to gas params used in gas estimation
  */
@@ -205,14 +192,18 @@ export const DEFAULT_GAS_PARAMS: gasParamsMap = {
     gasLimit: JSBI.BigInt(600000).toString(),
     remoteBranchExecutionGas: JSBI.BigInt(1e16).toString(),
   },
+  [SupportedChainId.BASE]: {
+    gasLimit: JSBI.BigInt(600000).toString(),
+    remoteBranchExecutionGas: JSBI.BigInt(1e16).toString(),
+  },
   [SupportedChainId.POLYGON]: {
     gasLimit: JSBI.BigInt(600000).toString(),
     remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
   },
-  [SupportedChainId.FANTOM]: {
-    gasLimit: JSBI.BigInt(600000).toString(),
-    remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
-  },
+  // [SupportedChainId.FANTOM]: {
+  //   gasLimit: JSBI.BigInt(600000).toString(),
+  //   remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
+  // },
   [SupportedChainId.BSC]: {
     gasLimit: JSBI.BigInt(600000).toString(),
     remoteBranchExecutionGas: JSBI.BigInt(1e16).toString(),
@@ -239,20 +230,24 @@ export const DEFAULT_GAS_PARAMS: gasParamsMap = {
     gasLimit: JSBI.BigInt(600000).toString(),
     remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
   },
+  [SupportedChainId.BASE_SEPOLIA]: {
+    gasLimit: JSBI.BigInt(600000).toString(),
+    remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
+  },
   [SupportedChainId.POLYGON_AMOY]: {
     gasLimit: JSBI.BigInt(600000).toString(),
     remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
   },
-  [SupportedChainId.FANTOM_TESTNET]: {
-    gasLimit: JSBI.BigInt(600000).toString(),
-    remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
-  },
-  [SupportedChainId.BSC_TESTNET]: {
-    gasLimit: JSBI.BigInt(600000).toString(),
-    remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
-  },
-  [SupportedChainId.AVAX_FUJI]: {
-    gasLimit: JSBI.BigInt(600000).toString(),
-    remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
-  },
+  // [SupportedChainId.FANTOM_TESTNET]: {
+  //   gasLimit: JSBI.BigInt(600000).toString(),
+  //   remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
+  // },
+  // [SupportedChainId.BSC_TESTNET]: {
+  //   gasLimit: JSBI.BigInt(600000).toString(),
+  //   remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
+  // },
+  // [SupportedChainId.AVAX_FUJI]: {
+  //   gasLimit: JSBI.BigInt(600000).toString(),
+  //   remoteBranchExecutionGas: JSBI.BigInt(1e17).toString(),
+  // },
 }
