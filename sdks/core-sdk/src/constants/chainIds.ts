@@ -26,11 +26,14 @@ export enum SupportedChainId {
   SEPOLIA = 11155111, // ROOT_CHAIN_ID
   ARBITRUM_SEPOLIA = 421614,
   OPTIMISM_SEPOLIA = 11155420,
+  BASE_SEPOLIA = 84532,
+
+  // Not shown in UI. But has contracts deployed
   POLYGON_AMOY = 80002,
 
   // // Not deployed and shown in UI for now
-  // BSC_TESTNET = 97,
   // AVAX_FUJI = 43113,
+  // BSC_TESTNET = 97,
   // FANTOM_TESTNET = 4002,
 }
 
@@ -42,11 +45,11 @@ export enum SupportedLayerzeroChainId {
   ARBITRUM_ONE = 110, // ROOT_CHAIN_ID
   MAINNET = 101,
   OPTIMISM = 111,
+  BASE = 184,
   POLYGON = 137,
   BSC = 102,
   AVAX = 106,
   METIS = 151,
-  BASE = 184,
 
   // Not shown in UI. But has contracts deployed
   // FANTOM = 112,
@@ -60,6 +63,8 @@ export enum SupportedLayerzeroChainId {
   SEPOLIA = 10161, // ROOT_CHAIN_ID
   ARBITRUM_SEPOLIA = 10231,
   OPTIMISM_SEPOLIA = 10232,
+  BASE_SEPOLIA = 10245,
+
   POLYGON_AMOY = 10267,
 
   // Not deployed and shown in UI for now
@@ -98,6 +103,8 @@ export const LZ_CHAIN_ID_FROM_EVM_CHAIN_ID: chainIdMap = {
   [SupportedChainId.SEPOLIA]: SupportedLayerzeroChainId.SEPOLIA,
   [SupportedChainId.ARBITRUM_SEPOLIA]: SupportedLayerzeroChainId.ARBITRUM_SEPOLIA,
   [SupportedChainId.OPTIMISM_SEPOLIA]: SupportedLayerzeroChainId.OPTIMISM_SEPOLIA,
+  [SupportedChainId.BASE_SEPOLIA]: SupportedLayerzeroChainId.BASE_SEPOLIA,
+
   [SupportedChainId.POLYGON_AMOY]: SupportedLayerzeroChainId.POLYGON_AMOY,
 
   // [SupportedChainId.FANTOM_TESTNET]: SupportedLayerzeroChainId.FANTOM_TESTNET,

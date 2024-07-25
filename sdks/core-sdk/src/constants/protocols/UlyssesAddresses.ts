@@ -97,6 +97,19 @@ const UlyssesOptimismSepolia: IUlyssesCommonContracts = {
   NativeToken: '0xAd6A7addf807D846A590E76C5830B609F831Ba2E',
 }
 
+const UlyssesBaseSepolia: IUlyssesCommonContracts = {
+  BranchPort: '0x184f1c3c450702C02bB99137403B125243cB5e66',
+  BranchBridgeAgentFactory: '0x1fc37a909cB3997f96cE395B3Ee9ac268C9bCcdb',
+  CoreBranchRouter: '0x9f88DbcD0d2Db9a2433Ce0f4eF1C5d533F032702',
+  CoreBranchBridgeAgent: '0xcf76904D24c5b99411B3D481049F466F83490bB7',
+  ERC20hTokenBranchFactory: '0x471e76A7CD76A0DbD021F5A3136d1F0828cbD270',
+  MulticallBranchRouter: '0x7ddEecA94ce57264410d51E9F73a0f8983b2eAA7',
+  MulticallBranchBridgeAgent: '0x55D69928F08695a724E8eD65EaaDBA41809a3eFc',
+  MulticallBranchRouterLibZip: '0xAfB0F351A9a92220eFC54a92EA5cAE21AcB3D6Da',
+  MulticallBranchBridgeAgentLibZip: '0x188f596da34015cb2FD8D90770c024c8a271e513',
+  NativeToken: '0x4200000000000000000000000000000000000006',
+}
+
 const UlyssesPolygonAmoy: IUlyssesCommonContracts = {
   BranchPort: '0x471e76A7CD76A0DbD021F5A3136d1F0828cbD270',
   BranchBridgeAgentFactory: '0x1fc37a909cB3997f96cE395B3Ee9ac268C9bCcdb',
@@ -131,5 +144,7 @@ export const Ulysses: IUlysses = {
   [SupportedChainId.SEPOLIA]: UlyssesSepolia,
   [SupportedChainId.ARBITRUM_SEPOLIA]: UlyssesArbitrumSepolia,
   [SupportedChainId.OPTIMISM_SEPOLIA]: UlyssesOptimismSepolia,
+  [SupportedChainId.BASE_SEPOLIA]: UlyssesBaseSepolia,
+
   [SupportedChainId.POLYGON_AMOY]: UlyssesPolygonAmoy,
 }
