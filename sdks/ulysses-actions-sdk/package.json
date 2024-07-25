@@ -28,7 +28,7 @@
     "maia-core-sdk": "1.0.35",
     "maia-v2-sdk": "^0.0.8",
     "talos-sdk": "^0.0.15",
-    "ulysses-sdk": "^0.0.96"
+    "ulysses-sdk": "^0.0.98"
   },
   "devDependencies": {
     "@types/jest": "^24.0.25",
