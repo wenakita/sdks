@@ -1,7 +1,5 @@
-import { SupportedChainId } from 'maia-core-sdk'
-
 // Define the default gas params type.
-export type gasParamsMap = { [chainId in SupportedChainId]: GasParams }
+export type gasParamsMap = { [chainId: number]: GasParams }
 
 /**
  * Interface for the object that holds the output token params.
