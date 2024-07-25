@@ -16797,18 +16797,18 @@ __metadata:
     prettier: ^2.4.1
     talos-sdk: ^0.0.15
     tsdx: ^0.14.1
-    ulysses-sdk: ^0.0.97
+    ulysses-sdk: ^0.0.96
   languageName: unknown
   linkType: soft
 
-"ulysses-sdk@npm:^0.0.97":
-  version: 0.0.97
-  resolution: "ulysses-sdk@npm:0.0.97"
+"ulysses-sdk@npm:^0.0.96":
+  version: 0.0.96
+  resolution: "ulysses-sdk@npm:0.0.96"
   dependencies:
     "@ethersproject/abi": ^5.7.0
-    maia-core-sdk: 1.0.35
+    maia-core-sdk: 1.0.33
     solady: ^0.0.226
-  checksum: cb2c1855afdaecf4edb2a7afd6683111eb340fafe3e11c5b153a3c1874bbe1cdf36d28dc1dd75835d17c413ceace5583f244e08961a8fac2098fec5846b96223
+  checksum: 57ead0d58ea7303bf7780f8919e2d1f0472ddbccbb438acb93776e8e9066088fe2ca295c5b0e0c84b77b610deb4f51361cd93e2dc9ec9e2f6560f44450b6c018
   languageName: node
   linkType: hard
 
