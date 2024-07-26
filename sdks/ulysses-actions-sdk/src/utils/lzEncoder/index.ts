@@ -174,7 +174,7 @@ export class LayerZeroEndpointCalldataEncoder {
       if (
         !this.settlementRecipient ||
         !this.useFallback ||
-        !this.branchBridgeAgentNonce ||
+        !this.destinationBridgeAgentNonce ||
         !this.destinationBridgeAgentAddress ||
         !this.rootBridgeAgentAddress ||
         !this.dstChainId ||
