@@ -9087,7 +9087,7 @@ __metadata:
     bignumber.js: ^9.0.2
     jsbi: ^3.1.5
     lodash.clonedeep: ^4.5.0
-    maia-core-sdk: ^1.0.35
+    maia-core-sdk: ^1.0.36
     tiny-invariant: ^1.1.0
     tsdx: ^0.14.1
   languageName: unknown
@@ -11700,6 +11700,20 @@ __metadata:
     tiny-invariant: ^1.1.0
     toformat: ^2.0.0
   checksum: 47ff78f2b809c86919a0e68d00ed9deaf28c7211f2b211d467bb5692dc3f4a07333478e36d4866a8f1acc93e49ccd32228e216e448dd2b8c0cd2f12e597706e7
+  languageName: node
+  linkType: hard
+
+"maia-core-sdk@npm:^1.0.36":
+  version: 1.0.36
+  resolution: "maia-core-sdk@npm:1.0.36"
+  dependencies:
+    "@ethersproject/address": ^5.7.0
+    big.js: ^5.2.2
+    decimal.js-light: ^2.5.0
+    jsbi: ^3.1.5
+    tiny-invariant: ^1.1.0
+    toformat: ^2.0.0
+  checksum: daa2851b158920b26c03427e1c8813e59c8ea150b90100865ad16718f8bc2ea72a469df989c27f0f1eca2ed063566440b7e13b161699c84fd815b16602f52e09
   languageName: node
   linkType: hard
 
