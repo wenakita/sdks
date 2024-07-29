@@ -7,7 +7,7 @@ import { AddressMap } from './types'
  */
 export const GOVERNANCE_BRAVO_ADDRESSES: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0xD0631f6Da448aaF9022d8EAc8144661a8549B633',
+  [SupportedChainId.SEPOLIA]: '0x61B046e0812CF9c170fa09b9834708F73421B59b',
 }
 
 /**
@@ -52,7 +52,7 @@ export const GOVERNANCE_BRAVO_SEVERITY_5_ADDRESSES: AddressMap = {
 
 export const TIMELOCK_ADDRESS: AddressMap = {
   [SupportedChainId.ARBITRUM_ONE]: ZERO_ADDRESS,
-  [SupportedChainId.SEPOLIA]: '0xa5E225B0d00B2af04667efebaC2fEC73E153c90f',
+  [SupportedChainId.SEPOLIA]: '0x86712f780F8883482e7EBf6f395CEe374CC59787',
 }
 
 /**
