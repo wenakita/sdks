@@ -44,7 +44,7 @@ export const SepoliaHermesAddresses: IHermes = {
   FlywheelGaugeRewards: '0xa8C563BA4Eff705f30B631b4cd4A4C4395540d07',
   RewardsInfoHelper: '0x38Ca8f2db851575632B532Ca7EcB3dfffB0E82b0',
   ERC20BoostHelper: '0x07B0ED72AdF6f0912Ce176081b6c7Be93DaA92Eb',
-  RestakeHelper: '0x34A1D3fff3958843C43aD80F30b94c510645C316',
+  RestakeHelper: '0x3491CF277310fFbd84fFb3C274C907E78EC6df3B',
   FlywheelHelper: '0xeCC521C10806D02f313443624f0eF66f2eA91A31',
 }
 
