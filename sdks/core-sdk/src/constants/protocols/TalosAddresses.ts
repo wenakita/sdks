@@ -1,15 +1,14 @@
 import { TalosAddressesType } from '../../types'
-import { ZERO_ADDRESS } from '../addresses'
 import { SupportedChainId } from '../chainIds'
 
 export const TalosAddresses: TalosAddressesType = {
   [SupportedChainId.ARBITRUM_ONE]: {
-    TalosStrategyStakedFactory: ZERO_ADDRESS,
-    OptimizerFactory: ZERO_ADDRESS,
-    BoostAggregatorFactory: ZERO_ADDRESS,
-    TalosManagerFactory: ZERO_ADDRESS,
-    FlywheelCoreInstant: ZERO_ADDRESS,
-    TransferAll: ZERO_ADDRESS,
+    TalosStrategyStakedFactory: '0x2E90a7aBcDC3acf15F5604cA0de7A97504A2738a',
+    OptimizerFactory: '0x000000005De908d83F4b6072D388e3e9Fc543557',
+    BoostAggregatorFactory: '0x00deFc91d4CFE748D5000000fA1FF9B592c00000',
+    TalosManagerFactory: '0x00780F4E0084BfE000Df008A0081E900E2f1C632',
+    FlywheelCoreInstant: '0x340297150A933c474d98dcf92F5e583C4D48E4FE',
+    TransferAll: '0x000067eadd040000d8ee00c1b9ca41ef920c005c',
   },
 
   [SupportedChainId.SEPOLIA]: {
