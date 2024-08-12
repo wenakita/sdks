@@ -5,42 +5,120 @@ import { SupportedChainId } from '../chainIds'
 // MAINNET - Ulysses Omnichain Address Definitions per Chain
 
 const UlyssesArbitrumBranch: IUlyssesCommonContracts = {
-  BranchPort: ZERO_ADDRESS,
-  BranchBridgeAgentFactory: ZERO_ADDRESS,
-  CoreBranchRouter: ZERO_ADDRESS,
-  CoreBranchBridgeAgent: ZERO_ADDRESS,
-  ERC20hTokenBranchFactory: ZERO_ADDRESS,
-  MulticallBranchRouter: ZERO_ADDRESS,
-  MulticallBranchBridgeAgent: ZERO_ADDRESS,
-  MulticallBranchRouterLibZip: ZERO_ADDRESS,
-  MulticallBranchBridgeAgentLibZip: ZERO_ADDRESS,
-  NativeToken: ZERO_ADDRESS,
+  BranchPort: '0x0c453ef35986E1d8dA22043fF00BF03cEB42e1f7',
+  BranchBridgeAgentFactory: '0x3d1b7079745d6148a273b36C03228B5d0D84dEf7',
+  CoreBranchRouter: '0xaAa6C918bc5b391553221A1a32423658480943FD',
+  CoreBranchBridgeAgent: '0xfD1Ff0625D7bcE2A9506Ec8AA7B5d3CFa0C766E3',
+  ERC20hTokenBranchFactory: '',
+  MulticallBranchRouter: '0x880Cc05E65578091a6793749b55122198a740783',
+  MulticallBranchBridgeAgent: '0xfD1Ff0625D7bcE2A9506Ec8AA7B5d3CFa0C766E3',
+  MulticallBranchRouterLibZip: '0x7AdD6EBeBbb24c8d6E135c6C4fc168f676363cf1',
+  MulticallBranchBridgeAgentLibZip: '0xfD1Ff0625D7bcE2A9506Ec8AA7B5d3CFa0C766E3',
+  NativeToken: '',
 }
 
 const UlyssesArbitrum: IUlyssesArbitrumContracts = {
   ...UlyssesArbitrumBranch,
-  RootPort: ZERO_ADDRESS,
-  RootBridgeAgentFactory: ZERO_ADDRESS,
-  CoreRootRouter: ZERO_ADDRESS,
-  CoreRootBridgeAgent: ZERO_ADDRESS,
-  ERC20hTokenRootFactory: ZERO_ADDRESS,
-  MulticallRootRouter: ZERO_ADDRESS,
-  MulticallRootBridgeAgent: ZERO_ADDRESS,
-  MulticallRootRouterLibZip: ZERO_ADDRESS,
-  MulticallRootBridgeAgentLibZip: ZERO_ADDRESS,
+  RootPort: '0x5399Eee5073bC1018233796a291Ffd6a78E26cbb',
+  RootBridgeAgentFactory: '0x627DCcd47FBaDfBd601894aeeA289c23Db67D466',
+  CoreRootRouter: '0xcD2fDCb25Ae2106B4f860bf92B4Af5F326a00Eb3',
+  CoreRootBridgeAgent: '0xF06b9B31B46d3301221EdA97900FE7C5aaa043d6',
+  ERC20hTokenRootFactory: '0xE6Ac784d1844CAd3D4CcB3Cd1114aCdd1623bDed',
+  MulticallRootRouter: '0x8F9B85c85fB4E0C74dE75Dc883966FF363440a7d',
+  MulticallRootBridgeAgent: '0x667C3e523AA1a26C4D15901C0d8F24F6c5F51Da3',
+  MulticallRootRouterLibZip: '0xcb3B7bE0056e2064565Bb2b1d635A87180C33d25',
+  MulticallRootBridgeAgentLibZip: '0xdc10Da7318F0C292b2fB1ac1CD2a9DD3A31710FE',
 }
 
 const UlyssesEthereum: IUlyssesCommonContracts = {
-  BranchPort: ZERO_ADDRESS,
-  BranchBridgeAgentFactory: ZERO_ADDRESS,
-  CoreBranchRouter: ZERO_ADDRESS,
-  CoreBranchBridgeAgent: ZERO_ADDRESS,
-  ERC20hTokenBranchFactory: ZERO_ADDRESS,
-  MulticallBranchRouter: ZERO_ADDRESS,
-  MulticallBranchBridgeAgent: ZERO_ADDRESS,
-  MulticallBranchRouterLibZip: ZERO_ADDRESS,
-  MulticallBranchBridgeAgentLibZip: ZERO_ADDRESS,
-  NativeToken: ZERO_ADDRESS,
+  BranchPort: '0x6C6d3FB0289039b0FCa2E7244A06Cf9403464646',
+  BranchBridgeAgentFactory: '',
+  CoreBranchRouter: '0xf265B4F5c68c3e5767aC5245500D2B8691f369e4',
+  CoreBranchBridgeAgent: '0x400d7EBC40C6C32bb16E5E5dE73029E9456a1b73',
+  ERC20hTokenBranchFactory: '0x5c41F659Dba16A061BbE5e48FBE9eAeEe2a7F39b',
+  MulticallBranchRouter: '0x435A9E41BefdfB8B070df12afeA57921F17970C5',
+  MulticallBranchBridgeAgent: '0x925b2421fbDA55aCD8A28A813BC3Dcc9078943cC',
+  MulticallBranchRouterLibZip: '0x72F2e1394d4D748824FD015c6FC4b6d16E0a1E7D',
+  MulticallBranchBridgeAgentLibZip: '0xC16bE3db4104F088Fc464f51C9feccB4eCff37A9',
+  NativeToken: '0xD02498F4A36eAf1a5b522ee262AF8FEA6eCeAD53',
+}
+
+const UlyssesPolygon: IUlyssesCommonContracts = {
+  BranchPort: '0x6C6d3FB0289039b0FCa2E7244A06Cf9403464646',
+  BranchBridgeAgentFactory: '',
+  CoreBranchRouter: '0xf265B4F5c68c3e5767aC5245500D2B8691f369e4',
+  CoreBranchBridgeAgent: '0x400d7EBC40C6C32bb16E5E5dE73029E9456a1b73',
+  ERC20hTokenBranchFactory: '0x5c41F659Dba16A061BbE5e48FBE9eAeEe2a7F39b',
+  MulticallBranchRouter: '0x435A9E41BefdfB8B070df12afeA57921F17970C5',
+  MulticallBranchBridgeAgent: '0x925b2421fbDA55aCD8A28A813BC3Dcc9078943cC',
+  MulticallBranchRouterLibZip: '0x72F2e1394d4D748824FD015c6FC4b6d16E0a1E7D',
+  MulticallBranchBridgeAgentLibZip: '0xC16bE3db4104F088Fc464f51C9feccB4eCff37A9',
+  NativeToken: '0xD02498F4A36eAf1a5b522ee262AF8FEA6eCeAD53',
+}
+
+const UlyssesAvax: IUlyssesCommonContracts = {
+  BranchPort: '0x6C6d3FB0289039b0FCa2E7244A06Cf9403464646',
+  BranchBridgeAgentFactory: '',
+  CoreBranchRouter: '0xf265B4F5c68c3e5767aC5245500D2B8691f369e4',
+  CoreBranchBridgeAgent: '0x400d7EBC40C6C32bb16E5E5dE73029E9456a1b73',
+  ERC20hTokenBranchFactory: '0x5c41F659Dba16A061BbE5e48FBE9eAeEe2a7F39b',
+  MulticallBranchRouter: '0x435A9E41BefdfB8B070df12afeA57921F17970C5',
+  MulticallBranchBridgeAgent: '0x925b2421fbDA55aCD8A28A813BC3Dcc9078943cC',
+  MulticallBranchRouterLibZip: '0x72F2e1394d4D748824FD015c6FC4b6d16E0a1E7D',
+  MulticallBranchBridgeAgentLibZip: '0xC16bE3db4104F088Fc464f51C9feccB4eCff37A9',
+  NativeToken: '0xD02498F4A36eAf1a5b522ee262AF8FEA6eCeAD53',
+}
+
+const UlyssesOptimism: IUlyssesCommonContracts = {
+  BranchPort: '0x6C6d3FB0289039b0FCa2E7244A06Cf9403464646',
+  BranchBridgeAgentFactory: '',
+  CoreBranchRouter: '0xf265B4F5c68c3e5767aC5245500D2B8691f369e4',
+  CoreBranchBridgeAgent: '0x400d7EBC40C6C32bb16E5E5dE73029E9456a1b73',
+  ERC20hTokenBranchFactory: '0x5c41F659Dba16A061BbE5e48FBE9eAeEe2a7F39b',
+  MulticallBranchRouter: '0x435A9E41BefdfB8B070df12afeA57921F17970C5',
+  MulticallBranchBridgeAgent: '0x925b2421fbDA55aCD8A28A813BC3Dcc9078943cC',
+  MulticallBranchRouterLibZip: '0x72F2e1394d4D748824FD015c6FC4b6d16E0a1E7D',
+  MulticallBranchBridgeAgentLibZip: '0xC16bE3db4104F088Fc464f51C9feccB4eCff37A9',
+  NativeToken: '0xD02498F4A36eAf1a5b522ee262AF8FEA6eCeAD53',
+}
+
+const UlyssesBase: IUlyssesCommonContracts = {
+  BranchPort: '0x6C6d3FB0289039b0FCa2E7244A06Cf9403464646',
+  BranchBridgeAgentFactory: '',
+  CoreBranchRouter: '0xf265B4F5c68c3e5767aC5245500D2B8691f369e4',
+  CoreBranchBridgeAgent: '0x400d7EBC40C6C32bb16E5E5dE73029E9456a1b73',
+  ERC20hTokenBranchFactory: '0x5c41F659Dba16A061BbE5e48FBE9eAeEe2a7F39b',
+  MulticallBranchRouter: '0x435A9E41BefdfB8B070df12afeA57921F17970C5',
+  MulticallBranchBridgeAgent: '0x925b2421fbDA55aCD8A28A813BC3Dcc9078943cC',
+  MulticallBranchRouterLibZip: '0x72F2e1394d4D748824FD015c6FC4b6d16E0a1E7D',
+  MulticallBranchBridgeAgentLibZip: '0xC16bE3db4104F088Fc464f51C9feccB4eCff37A9',
+  NativeToken: '0xD02498F4A36eAf1a5b522ee262AF8FEA6eCeAD53',
+}
+
+const UlyssesBSC: IUlyssesCommonContracts = {
+  BranchPort: '0x6C6d3FB0289039b0FCa2E7244A06Cf9403464646',
+  BranchBridgeAgentFactory: '',
+  CoreBranchRouter: '0xf265B4F5c68c3e5767aC5245500D2B8691f369e4',
+  CoreBranchBridgeAgent: '0x400d7EBC40C6C32bb16E5E5dE73029E9456a1b73',
+  ERC20hTokenBranchFactory: '0x5c41F659Dba16A061BbE5e48FBE9eAeEe2a7F39b',
+  MulticallBranchRouter: '0x435A9E41BefdfB8B070df12afeA57921F17970C5',
+  MulticallBranchBridgeAgent: '0x925b2421fbDA55aCD8A28A813BC3Dcc9078943cC',
+  MulticallBranchRouterLibZip: '0x72F2e1394d4D748824FD015c6FC4b6d16E0a1E7D',
+  MulticallBranchBridgeAgentLibZip: '0xC16bE3db4104F088Fc464f51C9feccB4eCff37A9',
+  NativeToken: '0xD02498F4A36eAf1a5b522ee262AF8FEA6eCeAD53',
+}
+
+const UlyssesMetis: IUlyssesCommonContracts = {
+  BranchPort: '0x6C6d3FB0289039b0FCa2E7244A06Cf9403464646',
+  BranchBridgeAgentFactory: '',
+  CoreBranchRouter: '0xf265B4F5c68c3e5767aC5245500D2B8691f369e4',
+  CoreBranchBridgeAgent: '0x400d7EBC40C6C32bb16E5E5dE73029E9456a1b73',
+  ERC20hTokenBranchFactory: '0x5c41F659Dba16A061BbE5e48FBE9eAeEe2a7F39b',
+  MulticallBranchRouter: '0x435A9E41BefdfB8B070df12afeA57921F17970C5',
+  MulticallBranchBridgeAgent: '0x925b2421fbDA55aCD8A28A813BC3Dcc9078943cC',
+  MulticallBranchRouterLibZip: '0x72F2e1394d4D748824FD015c6FC4b6d16E0a1E7D',
+  MulticallBranchBridgeAgentLibZip: '0xC16bE3db4104F088Fc464f51C9feccB4eCff37A9',
+  NativeToken: '0xD02498F4A36eAf1a5b522ee262AF8FEA6eCeAD53',
 }
 
 // TESTNET - Ulysses Omnichain Address Definitions per Chain
@@ -127,12 +205,12 @@ export const Ulysses: IUlysses = {
   //Mainnets
   [SupportedChainId.ARBITRUM_ONE]: UlyssesArbitrum,
   [SupportedChainId.MAINNET]: UlyssesEthereum,
-  [SupportedChainId.OPTIMISM]: UlyssesEthereum,
-  [SupportedChainId.BASE]: UlyssesEthereum,
-  [SupportedChainId.POLYGON]: UlyssesEthereum,
-  [SupportedChainId.AVAX]: UlyssesEthereum,
-  [SupportedChainId.BSC]: UlyssesEthereum,
-  [SupportedChainId.METIS]: UlyssesEthereum,
+  [SupportedChainId.OPTIMISM]: UlyssesOptimism,
+  [SupportedChainId.BASE]: UlyssesBase,
+  [SupportedChainId.POLYGON]: UlyssesPolygon,
+  [SupportedChainId.AVAX]: UlyssesAvax,
+  [SupportedChainId.BSC]: UlyssesBSC,
+  [SupportedChainId.METIS]: UlyssesMetis,
 
   // [SupportedChainId.FANTOM]: UlyssesEthereum,
   // [SupportedChainId.SCROLL]: UlyssesEthereum,
