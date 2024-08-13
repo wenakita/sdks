@@ -34,7 +34,7 @@
     "bignumber.js": "^9.0.2",
     "jsbi": "^3.1.5",
     "lodash.clonedeep": "^4.5.0",
-    "maia-core-sdk": "^1.0.36",
+    "maia-core-sdk": "^1.0.38",
     "tiny-invariant": "^1.1.0"
   },
   "devDependencies": {
