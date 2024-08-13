@@ -9018,8 +9018,8 @@ __metadata:
     "@ethersproject/abi": ^5.7.0
     "@types/jest": ^24.0.25
     "@uniswap/swap-router-contracts": ^1.3.0
-    hermes-v2-sdk: 0.0.80
-    maia-core-sdk: 1.0.36
+    hermes-v2-sdk: 0.0.81
+    maia-core-sdk: 1.0.38
     prettier: ^2.4.1
     tsdx: ^0.14.1
   languageName: unknown
@@ -9069,6 +9069,25 @@ __metadata:
     maia-core-sdk: ^1.0.36
     tiny-invariant: ^1.1.0
   checksum: 93f6b6baf2eaf9b8b4a52c7bbea7c29740b921ee879e23764d4e823c9d002ca2b9c43e36e32534d4fe84c278195e61a70748d3e39fccbddabfcfee14b935f233
+  languageName: node
+  linkType: hard
+
+"hermes-v2-sdk@npm:0.0.81":
+  version: 0.0.81
+  resolution: "hermes-v2-sdk@npm:0.0.81"
+  dependencies:
+    "@ethersproject/abi": ^5.7.0
+    "@ethersproject/solidity": ^5.7.0
+    "@types/lodash.clonedeep": ^4.5.9
+    "@uniswap/swap-router-contracts": ^1.3.0
+    "@uniswap/v3-periphery": ^1.1.1
+    "@uniswap/v3-staker": 1.0.0
+    bignumber.js: ^9.0.2
+    jsbi: ^3.1.5
+    lodash.clonedeep: ^4.5.0
+    maia-core-sdk: ^1.0.38
+    tiny-invariant: ^1.1.0
+  checksum: 068818c3adc611c242f4536474074682c1d4554756391bcc6b668f6c295ecdc314c6235ee3fbefaf0c925e35f7c0b5497692927504bfeb0ccd7427b9f7b4c760
   languageName: node
   linkType: hard
 
@@ -16773,23 +16792,23 @@ __metadata:
     "@ethersproject/solidity": ^5.7.0
     "@types/jest": ^24.0.25
     hermes-v2-sdk: ^0.0.80
-    maia-core-sdk: 1.0.36
+    maia-core-sdk: 1.0.38
     maia-v2-sdk: ^0.0.8
     prettier: ^2.4.1
     talos-sdk: ^0.0.15
     tsdx: ^0.14.1
-    ulysses-sdk: ^0.0.99
+    ulysses-sdk: ^0.0.100
   languageName: unknown
   linkType: soft
 
-"ulysses-sdk@npm:^0.0.99":
-  version: 0.0.99
-  resolution: "ulysses-sdk@npm:0.0.99"
+"ulysses-sdk@npm:^0.0.100":
+  version: 0.0.100
+  resolution: "ulysses-sdk@npm:0.0.100"
   dependencies:
     "@ethersproject/abi": ^5.7.0
-    maia-core-sdk: 1.0.36
+    maia-core-sdk: 1.0.38
     solady: ^0.0.226
-  checksum: 2fd13f55aecb7fd6ef5aa559c013ec3c2608d2e9e4b159007ad3ee8dd00de311e196d5e7855e73d88483f951548b348898515c648bf180b92b714a7d3f8f3c85
+  checksum: c50cc113d4f25e46bb2656305e3977a7e1b213daab8b3500f19f89412b6a555a6bb83137c74e100160725afd9a22f12194f92c51b01d275bd9b3b637e3429a21
   languageName: node
   linkType: hard
 
