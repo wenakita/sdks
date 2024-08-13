@@ -8999,15 +8999,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hermes-swap-router-sdk@npm:^0.0.44":
-  version: 0.0.44
-  resolution: "hermes-swap-router-sdk@npm:0.0.44"
+"hermes-swap-router-sdk@npm:^0.0.45":
+  version: 0.0.45
+  resolution: "hermes-swap-router-sdk@npm:0.0.45"
   dependencies:
     "@ethersproject/abi": ^5.7.0
     "@uniswap/swap-router-contracts": ^1.3.0
-    hermes-v2-sdk: 0.0.80
-    maia-core-sdk: 1.0.36
-  checksum: 20cb1208950ba6e257622636dcde839dfd93174e9bd08b72373a5c5cab2bce24e57d19aec637a5025345da6f1ea2bdfbda824cb24f03936c34a0c7305ba42f43
+    hermes-v2-sdk: 0.0.81
+    maia-core-sdk: 1.0.38
+  checksum: f1e3cc76a527d0545feca5e5cfee76675819efd6faffd57151bc1cad645f6be71aaf0ab58e27534d8f9a2b888127b3efdd6862f0c0bbd417194ea4b2c3df53ce
   languageName: node
   linkType: hard
 
@@ -9041,9 +9041,9 @@ __metadata:
     eslint-plugin-prettier: ^3.4.1
     ethers: ^5.7.0
     hardhat: ^2.14.0
-    hermes-swap-router-sdk: ^0.0.44
-    hermes-v2-sdk: 0.0.80
-    maia-core-sdk: 1.0.36
+    hermes-swap-router-sdk: ^0.0.45
+    hermes-v2-sdk: 0.0.81
+    maia-core-sdk: 1.0.38
     prettier: ^2.4.1
     ts-node: ^10.9.1
     tsdx: ^0.14.1
@@ -9052,25 +9052,6 @@ __metadata:
     typescript: ^4.3.3
   languageName: unknown
   linkType: soft
-
-"hermes-v2-sdk@npm:0.0.80, hermes-v2-sdk@npm:^0.0.80":
-  version: 0.0.80
-  resolution: "hermes-v2-sdk@npm:0.0.80"
-  dependencies:
-    "@ethersproject/abi": ^5.7.0
-    "@ethersproject/solidity": ^5.7.0
-    "@types/lodash.clonedeep": ^4.5.9
-    "@uniswap/swap-router-contracts": ^1.3.0
-    "@uniswap/v3-periphery": ^1.1.1
-    "@uniswap/v3-staker": 1.0.0
-    bignumber.js: ^9.0.2
-    jsbi: ^3.1.5
-    lodash.clonedeep: ^4.5.0
-    maia-core-sdk: ^1.0.36
-    tiny-invariant: ^1.1.0
-  checksum: 93f6b6baf2eaf9b8b4a52c7bbea7c29740b921ee879e23764d4e823c9d002ca2b9c43e36e32534d4fe84c278195e61a70748d3e39fccbddabfcfee14b935f233
-  languageName: node
-  linkType: hard
 
 "hermes-v2-sdk@npm:0.0.81":
   version: 0.0.81
@@ -9088,6 +9069,25 @@ __metadata:
     maia-core-sdk: ^1.0.38
     tiny-invariant: ^1.1.0
   checksum: 068818c3adc611c242f4536474074682c1d4554756391bcc6b668f6c295ecdc314c6235ee3fbefaf0c925e35f7c0b5497692927504bfeb0ccd7427b9f7b4c760
+  languageName: node
+  linkType: hard
+
+"hermes-v2-sdk@npm:^0.0.80":
+  version: 0.0.80
+  resolution: "hermes-v2-sdk@npm:0.0.80"
+  dependencies:
+    "@ethersproject/abi": ^5.7.0
+    "@ethersproject/solidity": ^5.7.0
+    "@types/lodash.clonedeep": ^4.5.9
+    "@uniswap/swap-router-contracts": ^1.3.0
+    "@uniswap/v3-periphery": ^1.1.1
+    "@uniswap/v3-staker": 1.0.0
+    bignumber.js: ^9.0.2
+    jsbi: ^3.1.5
+    lodash.clonedeep: ^4.5.0
+    maia-core-sdk: ^1.0.36
+    tiny-invariant: ^1.1.0
+  checksum: 93f6b6baf2eaf9b8b4a52c7bbea7c29740b921ee879e23764d4e823c9d002ca2b9c43e36e32534d4fe84c278195e61a70748d3e39fccbddabfcfee14b935f233
   languageName: node
   linkType: hard
 
@@ -11708,20 +11708,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"maia-core-sdk@npm:1.0.36, maia-core-sdk@npm:^1.0.36":
-  version: 1.0.36
-  resolution: "maia-core-sdk@npm:1.0.36"
-  dependencies:
-    "@ethersproject/address": ^5.7.0
-    big.js: ^5.2.2
-    decimal.js-light: ^2.5.0
-    jsbi: ^3.1.5
-    tiny-invariant: ^1.1.0
-    toformat: ^2.0.0
-  checksum: daa2851b158920b26c03427e1c8813e59c8ea150b90100865ad16718f8bc2ea72a469df989c27f0f1eca2ed063566440b7e13b161699c84fd815b16602f52e09
-  languageName: node
-  linkType: hard
-
 "maia-core-sdk@npm:1.0.38, maia-core-sdk@npm:^1.0.38":
   version: 1.0.38
   resolution: "maia-core-sdk@npm:1.0.38"
@@ -11733,6 +11719,20 @@ __metadata:
     tiny-invariant: ^1.1.0
     toformat: ^2.0.0
   checksum: df80be7ebbe88da4e7bb98d036bf8b2892fba84c54790cf80e393719b06ffc446cf92846d9714a41e37fb67a8208cb6c90c46d953f0da8915118b9761ebede05
+  languageName: node
+  linkType: hard
+
+"maia-core-sdk@npm:^1.0.36":
+  version: 1.0.36
+  resolution: "maia-core-sdk@npm:1.0.36"
+  dependencies:
+    "@ethersproject/address": ^5.7.0
+    big.js: ^5.2.2
+    decimal.js-light: ^2.5.0
+    jsbi: ^3.1.5
+    tiny-invariant: ^1.1.0
+    toformat: ^2.0.0
+  checksum: daa2851b158920b26c03427e1c8813e59c8ea150b90100865ad16718f8bc2ea72a469df989c27f0f1eca2ed063566440b7e13b161699c84fd815b16602f52e09
   languageName: node
   linkType: hard
 
