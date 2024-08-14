@@ -17,7 +17,7 @@ export function computeVirtualAccount(account: string, chainId: SupportedChainId
   const initCodeHash = keccak256(
     ['bytes'],
     [
-      (SupportedChainId.ARBITRUM_ONE ? bytecode : testnetBytecode)
+      (SupportedChainId.ARBITRUM_ONE === chainId ? bytecode : testnetBytecode)
         .concat('000000000000000000000000')
         .concat(account.slice(2)),
     ]
