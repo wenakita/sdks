@@ -1,7 +1,6 @@
-import { CurrencyAmount, NativeToken, Percent, Price } from 'maia-core-sdk'
+import { BalancerAddresses, CurrencyAmount, NativeToken, Percent, Price, SupportedChainId } from 'maia-core-sdk'
 import invariant from 'tiny-invariant'
 
-import { VAULT_FACTORY_ADDRESS } from '../../constants/constants'
 import { computeVaultAddress } from '../../utils/addresses/computeVaultAddress'
 
 /**
@@ -21,9 +20,13 @@ export abstract class Vault {
     factoryAddressOverride?: string
   ): string {
     return computeVaultAddress({
-      factoryAddress: factoryAddressOverride ?? VAULT_FACTORY_ADDRESS,
+      factoryAddress:
+        factoryAddressOverride ??
+        BalancerAddresses[underlying.chainId as SupportedChainId]!.ComposableStablePoolWrapperFactory,
       underlying: underlying.address,
-      initCodeHashManualOverride,
+      initCodeHash:
+        initCodeHashManualOverride ??
+        BalancerAddresses[underlying.chainId as SupportedChainId]!.ComposableStablePoolWrapperInitCodeHash,
     })
   }
 

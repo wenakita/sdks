@@ -3,7 +3,7 @@ import { keccak256 } from '@ethersproject/solidity'
 import { SupportedChainId, Ulysses, ZERO_ADDRESS } from 'maia-core-sdk'
 import invariant from 'tiny-invariant'
 
-import VirtualAccountABI from '../abis/VirtualAccount.json'
+import { bytecode, testnetBytecode } from '../abis/VirtualAccount.json'
 import { ROOT_CHAIN_IDS } from '../constants'
 
 /**
@@ -16,7 +16,11 @@ export function computeVirtualAccount(account: string, chainId: SupportedChainId
 
   const initCodeHash = keccak256(
     ['bytes'],
-    [VirtualAccountABI.bytecode.concat('000000000000000000000000').concat(account.slice(2))]
+    [
+      (SupportedChainId.ARBITRUM_ONE ? bytecode : testnetBytecode)
+        .concat('000000000000000000000000')
+        .concat(account.slice(2)),
+    ]
   )
 
   return getCreate2Address(

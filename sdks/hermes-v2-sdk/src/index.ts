@@ -7,7 +7,6 @@ export {
   Rounding,
   TICK_SPACINGS,
   TradeType,
-  VAULT_FACTORY_ADDRESS,
 } from './constants/constants'
 export { MINIMUM_LIQUIDITY, Q192, Q96 } from './constants/internalConstants'
 export * from './entities'
