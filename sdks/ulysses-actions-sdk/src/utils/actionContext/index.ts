@@ -1,7 +1,8 @@
 import JSBI from 'jsbi'
-import { ROOT_CHAIN_ID, SupportedChainId, Ulysses, ZERO, ZERO_ADDRESS } from 'maia-core-sdk'
+import { SupportedChainId, Ulysses, ZERO, ZERO_ADDRESS } from 'maia-core-sdk'
 import {
   BranchBridgeAgent,
+  EVM_CHAIN_ID_TO_ROOT_CHAIN_ID,
   GasParams,
   IMulticallCall,
   IMultipleDepositParams,
@@ -75,8 +76,10 @@ export class ContextHandler<TParams, TResult> implements IActionContext<TParams,
     // Prepare the calldata
     let calldata = ''
 
+    const rootChainId = EVM_CHAIN_ID_TO_ROOT_CHAIN_ID[this.chainId]
+
     //---Wrap or adjust calldata for root chain virtual account usage
-    if (this.chainId === ROOT_CHAIN_ID && this.useVirtualAccount) {
+    if (this.chainId === rootChainId && this.useVirtualAccount) {
       // Root Action with no settlement creation
       if (!this.gasParams && !this.outputTokens) {
         // Wrap encode a Payable interaction via Virtual Account

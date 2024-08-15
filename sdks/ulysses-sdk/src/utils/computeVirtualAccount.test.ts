@@ -5,12 +5,15 @@ import { computeVirtualAccount } from './computeVirtualAccount'
 describe('computeVirtualAccount', () => {
   describe('#compute', () => {
     it('compute works fine mainnet', () => {
-      const ADDRESS_TEST_ONE = '0x00000000206ad3e31DffF979Ccef06dE72a9E027'
-      const VIRTUAL_ACCOUNT_ONE = '0xC66C49cE2E3579d20134eA2F0ca1eEf8EdFb6bdA'
+      const ADDRESS_TEST_ONE = '0x88E07a0457aA113AB910103d9a01217315DA1C98'
+      const ADDRESS_TEST_TWO = '0x00000000206ad3e31DffF979Ccef06dE72a9E027'
+      const VIRTUAL_ACCOUNT_ONE = '0xbBb141078E3DdF6e58D0296186A46922C6468308'
+      const VIRTUAL_ACCOUNT_TWO = '0xC66C49cE2E3579d20134eA2F0ca1eEf8EdFb6bdA'
 
       const rootChainId = SupportedChainId.ARBITRUM_ONE
 
       expect(computeVirtualAccount(ADDRESS_TEST_ONE, rootChainId)).toEqual(VIRTUAL_ACCOUNT_ONE)
+      expect(computeVirtualAccount(ADDRESS_TEST_TWO, rootChainId)).toEqual(VIRTUAL_ACCOUNT_TWO)
     })
     it('compute works fine testnet', () => {
       const ADDRESS_TEST_ONE = '0x88E07a0457aA113AB910103d9a01217315DA1C98'
