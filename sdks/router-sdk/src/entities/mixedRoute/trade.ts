@@ -201,7 +201,6 @@ export class MixedRouteTrade<TInput extends Currency, TOutput extends Currency, 
     for (let i = 0; i < route.path.length - 1; i++) {
       const pool = route.pools[i]
       // TODO: If ComposableStablePoolWrapper and using underlying, update Wrapper's rate
-      // TODO: Double check if other routes don't influence this one
       const [outputAmount] = await pool.getOutputAmount(amounts[i])
       amounts[i + 1] = outputAmount
     }
@@ -261,7 +260,6 @@ export class MixedRouteTrade<TInput extends Currency, TOutput extends Currency, 
       for (let i = 0; i < route.path.length - 1; i++) {
         const pool = route.pools[i]
         // TODO: If ComposableStablePoolWrapper and using underlying, update Wrapper's rate
-        // TODO: Double check if other routes don't influence this one
         const [outputAmount] = await pool.getOutputAmount(amounts[i])
         amounts[i + 1] = outputAmount
       }
@@ -464,7 +462,6 @@ export class MixedRouteTrade<TInput extends Currency, TOutput extends Currency, 
       let amountOut: CurrencyAmount<NativeToken>
       try {
         // TODO: If ComposableStablePoolWrapper and using underlying, update Wrapper's rate
-        // TODO: Double check if other routes don't influence this one
         ;[amountOut] = await pool.getOutputAmount(amountIn)
       } catch (error) {
         // input too low
