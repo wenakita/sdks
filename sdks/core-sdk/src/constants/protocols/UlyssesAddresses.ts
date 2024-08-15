@@ -39,7 +39,7 @@ const UlyssesEthereum: IUlyssesCommonContracts = {
   MulticallBranchRouter: '0x435A9E41BefdfB8B070df12afeA57921F17970C5',
   MulticallBranchBridgeAgent: '0x925b2421fbDA55aCD8A28A813BC3Dcc9078943cC',
   MulticallBranchRouterLibZip: '0x72F2e1394d4D748824FD015c6FC4b6d16E0a1E7D',
-  MulticallBranchBridgeAgentLibZip: '0xC16bE3db4104F088Fc464f51C9feccB4eCff37A9',
+  MulticallBranchBridgeAgentLibZip: '0x2732828007d811575f05f40f13133e8f4cd56cae',
   NativeToken: '0xD02498F4A36eAf1a5b522ee262AF8FEA6eCeAD53',
 }
 
