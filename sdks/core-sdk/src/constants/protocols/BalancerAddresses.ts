@@ -6,7 +6,7 @@ import { SupportedChainId } from '../chainIds'
  */
 export const ArbitrumBalancerAddresses: IBalancer = {
   ComposableStablePoolWrapperFactory: '0x00Dccc0053C2Fa9b0000085a00bD15F200961af0',
-  ComposableStablePoolWrapperInitCodeHash: '0x2f29c1929bc70aae113b1671d9250cc3e2ab673d22188542ebf28ded1ac9e1a4', // TODO Change to real init code hash
+  ComposableStablePoolWrapperInitCodeHash: '0x486597d0dac9e727fb360962435de36b40a335916fd13eb350993c76512b55c0',
 }
 
 /**

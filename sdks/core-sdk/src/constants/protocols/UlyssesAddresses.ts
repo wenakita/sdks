@@ -11,9 +11,9 @@ const UlyssesArbitrumBranch: IUlyssesCommonContracts = {
   CoreBranchBridgeAgent: '0xfD1Ff0625D7bcE2A9506Ec8AA7B5d3CFa0C766E3',
   ERC20hTokenBranchFactory: '',
   MulticallBranchRouter: '0x880Cc05E65578091a6793749b55122198a740783',
-  MulticallBranchBridgeAgent: '0xfD1Ff0625D7bcE2A9506Ec8AA7B5d3CFa0C766E3',
+  MulticallBranchBridgeAgent: '0xf5CB76a6Fec2706F4B97e8F1D2cc9f09ae930835',
   MulticallBranchRouterLibZip: '0x7AdD6EBeBbb24c8d6E135c6C4fc168f676363cf1',
-  MulticallBranchBridgeAgentLibZip: '0xfD1Ff0625D7bcE2A9506Ec8AA7B5d3CFa0C766E3',
+  MulticallBranchBridgeAgentLibZip: '0x285FADBCe14168B3D6fCFA20E4f0D0b79719168c',
   NativeToken: '',
 }
 

@@ -76,8 +76,7 @@ export enum SupportedLayerzeroChainId {
 /**
  * Holds the root chain id
  */
-export const ROOT_CHAIN_ID = SupportedChainId.SEPOLIA
-// export const ROOT_CHAIN_ID = SupportedChainId.ARBITRUM_ONE //TODO: change this for production use
+export const ROOT_CHAIN_ID = SupportedChainId.ARBITRUM_ONE
 
 /**
  * Holds the chain ids to layerzero chain ids for the supported chains
