@@ -42,7 +42,10 @@ export function addStableQuote<TInput extends Currency, TOutput extends Currency
       }
 
       if (!zeroForOutput) {
-        planner.addCommand(CommandType.ERC4626_DEPOSIT, [wrappedToken.address, '0'])
+        planner.addCommand(CommandType.ERC4626_DEPOSIT, [
+          wrappedToken.address,
+          hasBptToken ? amount.quotient.toString() : '0',
+        ])
       }
     }
   } else {
@@ -107,7 +110,7 @@ export function addStableMixedQuote(planner: QuotePlanner, { route, amountIn }: 
       }
 
       if (!zeroForOutput) {
-        planner.addCommand(CommandType.ERC4626_DEPOSIT, [wrappedToken.address, '0'])
+        planner.addCommand(CommandType.ERC4626_DEPOSIT, [wrappedToken.address, hasBptToken ? amountIn : '0'])
       }
     }
   } else {
