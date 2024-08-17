@@ -1,10 +1,10 @@
 import { ComposableStablePool } from 'hermes-v2-sdk'
 import { Currency, NativeToken } from 'maia-core-sdk'
 
+import { MixedEncodingParams, SingleEncodingParams } from '.'
 import { QuotePlanner } from '../../../utils/quoterCommands'
 import { CommandType } from '../../../utils/routerCommands'
 import { BatchSwapStep } from '../addSwap/addStableSwap'
-import { MixedEncodingParams, SingleEncodingParams } from '.'
 
 export function addStableQuote<TInput extends Currency, TOutput extends Currency>(
   planner: QuotePlanner,
@@ -24,18 +24,22 @@ export function addStableQuote<TInput extends Currency, TOutput extends Currency
     } else {
       const wrappedToken = stablePool.wrappedTokenIndex === 0 ? stablePool.token0 : stablePool.token1
       const zeroForOutput = wrappedToken.equals(amount.currency)
+      const bptToken = stablePool.wrapper?.underlying()
+      const hasBptToken = bptToken && bptToken.equals(zeroForOutput ? route.output.wrapped : route.input.wrapped)
 
       if (zeroForOutput) {
         planner.addCommand(CommandType.ERC4626_REDEEM, [wrappedToken.address, amount.quotient.toString()])
       }
 
-      planner.addCommand(CommandType.BALANCER_SINGLE_SWAP_EXACT_IN, [
-        stablePool.pool.id,
-        zeroForOutput ? stablePool.pool.address : route.input.wrapped.address,
-        zeroForOutput ? route.output.wrapped.address : stablePool.pool.address,
-        zeroForOutput ? '0' : amount.quotient.toString(),
-        [],
-      ])
+      if (!hasBptToken) {
+        planner.addCommand(CommandType.BALANCER_SINGLE_SWAP_EXACT_IN, [
+          stablePool.pool.id,
+          zeroForOutput ? stablePool.pool.address : route.input.wrapped.address,
+          zeroForOutput ? route.output.wrapped.address : stablePool.pool.address,
+          zeroForOutput ? '0' : amount.quotient.toString(),
+          [],
+        ])
+      }
 
       if (!zeroForOutput) {
         planner.addCommand(CommandType.ERC4626_DEPOSIT, [wrappedToken.address, '0'])
@@ -85,18 +89,22 @@ export function addStableMixedQuote(planner: QuotePlanner, { route, amountIn }: 
     } else {
       const wrappedToken = stablePool.wrappedTokenIndex === 0 ? stablePool.token0 : stablePool.token1
       const zeroForOutput = wrappedToken.equals(route.input.wrapped)
+      const bptToken = stablePool.wrapper?.underlying()
+      const hasBptToken = bptToken && bptToken.equals(zeroForOutput ? route.output.wrapped : route.input.wrapped)
 
       if (zeroForOutput) {
         planner.addCommand(CommandType.ERC4626_REDEEM, [wrappedToken.address, amountIn])
       }
 
-      planner.addCommand(CommandType.BALANCER_SINGLE_SWAP_EXACT_IN, [
-        stablePool.pool.id,
-        zeroForOutput ? stablePool.pool.address : route.input.wrapped.address,
-        zeroForOutput ? route.output.wrapped.address : stablePool.pool.address,
-        zeroForOutput ? '0' : amountIn,
-        [],
-      ])
+      if (!hasBptToken) {
+        planner.addCommand(CommandType.BALANCER_SINGLE_SWAP_EXACT_IN, [
+          stablePool.pool.id,
+          zeroForOutput ? stablePool.pool.address : route.input.wrapped.address,
+          zeroForOutput ? route.output.wrapped.address : stablePool.pool.address,
+          zeroForOutput ? '0' : amountIn,
+          [],
+        ])
+      }
 
       if (!zeroForOutput) {
         planner.addCommand(CommandType.ERC4626_DEPOSIT, [wrappedToken.address, '0'])
