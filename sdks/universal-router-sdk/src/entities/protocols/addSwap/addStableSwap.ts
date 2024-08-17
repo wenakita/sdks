@@ -44,6 +44,8 @@ export function addStableSwap<TInput extends Currency, TOutput extends Currency>
     } else {
       const wrappedToken = stablePool.wrappedTokenIndex === 0 ? stablePool.token0 : stablePool.token1
       const zeroForOutput = wrappedToken.equals(inputAmount.currency)
+      const bptToken = stablePool.wrapper?.underlying()
+      const hasBptToken = bptToken && bptToken.equals(zeroForOutput ? route.output.wrapped : route.input.wrapped)
 
       if (zeroForOutput) {
         const params = [
@@ -51,30 +53,32 @@ export function addStableSwap<TInput extends Currency, TOutput extends Currency>
           amountIn,
           // Next params are included for now. They can be ommited if the appropriate checks are done before/after the swap
           payerIsUser,
-          0,
-          ROUTER_AS_RECIPIENT,
+          hasBptToken ? amountOut : 0,
+          !hasBptToken || routerMustCustody ? ROUTER_AS_RECIPIENT : options.recipient,
         ]
 
         planner.addCommand(CommandType.ERC4626_REDEEM, params)
       }
 
-      planner.addCommand(CommandType.BALANCER_SINGLE_SWAP_EXACT_IN, [
-        stablePool.pool.id,
-        zeroForOutput ? stablePool.pool.address : route.input.wrapped.address,
-        zeroForOutput ? route.output.wrapped.address : stablePool.pool.address,
-        zeroForOutput ? CONTRACT_BALANCE : amountIn,
-        zeroForOutput ? amountOut : '0',
-        zeroForOutput ? false : payerIsUser,
-        zeroForOutput ? (routerMustCustody ? ROUTER_AS_RECIPIENT : options.recipient) : ROUTER_AS_RECIPIENT,
-        [],
-      ])
+      if (!hasBptToken) {
+        planner.addCommand(CommandType.BALANCER_SINGLE_SWAP_EXACT_IN, [
+          stablePool.pool.id,
+          zeroForOutput ? stablePool.pool.address : route.input.wrapped.address,
+          zeroForOutput ? route.output.wrapped.address : stablePool.pool.address,
+          zeroForOutput ? CONTRACT_BALANCE : amountIn,
+          zeroForOutput ? amountOut : '0',
+          zeroForOutput ? false : payerIsUser,
+          zeroForOutput ? (routerMustCustody ? ROUTER_AS_RECIPIENT : options.recipient) : ROUTER_AS_RECIPIENT,
+          [],
+        ])
+      }
 
       if (!zeroForOutput) {
         const params = [
           stablePool.wrapper?.vault().address,
-          CONTRACT_BALANCE,
+          hasBptToken ? amountIn : CONTRACT_BALANCE,
           // Next params are included for now. They can be ommited if the appropriate checks are done before/after the swap
-          false,
+          hasBptToken ? payerIsUser : false,
           amountOut,
           routerMustCustody ? ROUTER_AS_RECIPIENT : options.recipient,
         ]
@@ -148,6 +152,8 @@ export function addStableMixedSwap(
     } else {
       const wrappedToken = stablePool.wrappedTokenIndex === 0 ? stablePool.token0 : stablePool.token1
       const zeroForOutput = wrappedToken.equals(route.input.wrapped)
+      const bptToken = stablePool.wrapper?.underlying()
+      const hasBptToken = bptToken && bptToken.equals(zeroForOutput ? route.output.wrapped : route.input.wrapped)
 
       if (zeroForOutput) {
         const params = [
@@ -155,30 +161,32 @@ export function addStableMixedSwap(
           amountIn,
           // Next params are included for now. They can be ommited if the appropriate checks are done before/after the swap
           payerIsUser,
-          0,
-          ROUTER_AS_RECIPIENT,
+          hasBptToken ? amountOut : 0,
+          hasBptToken ? recipient : ROUTER_AS_RECIPIENT,
         ]
 
         planner.addCommand(CommandType.ERC4626_REDEEM, params)
       }
 
-      planner.addCommand(CommandType.BALANCER_SINGLE_SWAP_EXACT_IN, [
-        stablePool.pool.id,
-        zeroForOutput ? stablePool.pool.address : route.input.wrapped.address,
-        zeroForOutput ? route.output.wrapped.address : stablePool.pool.address,
-        zeroForOutput ? CONTRACT_BALANCE : amountIn,
-        zeroForOutput ? amountOut : '0',
-        zeroForOutput ? false : payerIsUser,
-        zeroForOutput ? recipient : ROUTER_AS_RECIPIENT,
-        [],
-      ])
+      if (!hasBptToken) {
+        planner.addCommand(CommandType.BALANCER_SINGLE_SWAP_EXACT_IN, [
+          stablePool.pool.id,
+          zeroForOutput ? stablePool.pool.address : route.input.wrapped.address,
+          zeroForOutput ? route.output.wrapped.address : stablePool.pool.address,
+          zeroForOutput ? CONTRACT_BALANCE : amountIn,
+          zeroForOutput ? amountOut : '0',
+          zeroForOutput ? false : payerIsUser,
+          zeroForOutput ? recipient : ROUTER_AS_RECIPIENT,
+          [],
+        ])
+      }
 
       if (!zeroForOutput) {
         const params = [
           stablePool.wrapper?.vault().address,
-          CONTRACT_BALANCE,
+          hasBptToken ? amountIn : CONTRACT_BALANCE,
           // Next params are included for now. They can be ommited if the appropriate checks are done before/after the swap
-          false,
+          hasBptToken ? payerIsUser : false,
           amountOut,
           recipient,
         ]
