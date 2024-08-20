@@ -25,7 +25,8 @@ export function addStableQuote<TInput extends Currency, TOutput extends Currency
       const wrappedToken = stablePool.wrappedTokenIndex === 0 ? stablePool.token0 : stablePool.token1
       const zeroForOutput = wrappedToken.equals(amount.currency)
       const bptToken = stablePool.wrapper?.underlying()
-      const hasBptToken = bptToken && bptToken.equals(zeroForOutput ? route.output.wrapped : route.input.wrapped)
+      const hasBptToken =
+        !!bptToken && bptToken.equals(stablePool.wrappedTokenIndex === 0 ? stablePool.token1 : stablePool.token0)
 
       if (zeroForOutput) {
         planner.addCommand(CommandType.ERC4626_REDEEM, [wrappedToken.address, amount.quotient.toString()])
@@ -93,7 +94,8 @@ export function addStableMixedQuote(planner: QuotePlanner, { route, amountIn }: 
       const wrappedToken = stablePool.wrappedTokenIndex === 0 ? stablePool.token0 : stablePool.token1
       const zeroForOutput = wrappedToken.equals(route.input.wrapped)
       const bptToken = stablePool.wrapper?.underlying()
-      const hasBptToken = bptToken && bptToken.equals(zeroForOutput ? route.output.wrapped : route.input.wrapped)
+      const hasBptToken =
+        !!bptToken && bptToken.equals(stablePool.wrappedTokenIndex === 0 ? stablePool.token1 : stablePool.token0)
 
       if (zeroForOutput) {
         planner.addCommand(CommandType.ERC4626_REDEEM, [wrappedToken.address, amountIn])

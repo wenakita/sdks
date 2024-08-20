@@ -45,7 +45,8 @@ export function addStableSwap<TInput extends Currency, TOutput extends Currency>
       const wrappedToken = stablePool.wrappedTokenIndex === 0 ? stablePool.token0 : stablePool.token1
       const zeroForOutput = wrappedToken.equals(inputAmount.currency)
       const bptToken = stablePool.wrapper?.underlying()
-      const hasBptToken = bptToken && bptToken.equals(zeroForOutput ? route.output.wrapped : route.input.wrapped)
+      const hasBptToken =
+        !!bptToken && bptToken.equals(stablePool.wrappedTokenIndex === 0 ? stablePool.token1 : stablePool.token0)
 
       if (zeroForOutput) {
         const params = [
@@ -153,7 +154,8 @@ export function addStableMixedSwap(
       const wrappedToken = stablePool.wrappedTokenIndex === 0 ? stablePool.token0 : stablePool.token1
       const zeroForOutput = wrappedToken.equals(route.input.wrapped)
       const bptToken = stablePool.wrapper?.underlying()
-      const hasBptToken = bptToken && bptToken.equals(zeroForOutput ? route.output.wrapped : route.input.wrapped)
+      const hasBptToken =
+        !!bptToken && bptToken.equals(stablePool.wrappedTokenIndex === 0 ? stablePool.token1 : stablePool.token0)
 
       if (zeroForOutput) {
         const params = [
