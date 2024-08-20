@@ -133,7 +133,7 @@ function encodeQuote<TInput extends Currency, TOutput extends Currency>(
     for (let amountIndex = 0; amountIndex < amounts.length; amountIndex++) {
       planners.push(new QuotePlanner())
       const params: SingleEncodingParams<TInput, TOutput> = { route, amount: amounts[amountIndex], tradeType }
-      addQuoteForRoute(planners[0], params)
+      addQuoteForRoute(planners[amountIndex], params)
     }
   } else {
     // logic from hermes-swap-router-sdk. Originally from uniswap-v3-sdk
