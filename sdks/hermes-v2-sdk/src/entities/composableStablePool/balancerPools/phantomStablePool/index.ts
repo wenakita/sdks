@@ -5,9 +5,9 @@ import cloneDeep from 'lodash.clonedeep'
 
 import { PoolBase, PoolTypes, SubgraphPoolBase, SubgraphToken, SwapTypes } from '../../../../types/balancer'
 import { isSameAddress } from '../../../../utils/balancer'
-import { BigNumber as OldBigNumber, bnum, ZERO } from '../../../../utils/balancer/bignumber'
+import { bnum, BigNumber as OldBigNumber, ZERO } from '../../../../utils/balancer/bignumber'
 import { universalNormalizedLiquidity } from '../liquidity'
-import { MetaStablePoolPairData } from '../metaStablePool'
+import { StablePoolPairData } from '../stablePool'
 import {
   _calcBptInGivenExactTokensOut,
   _calcBptOutGivenExactTokensIn,
@@ -25,6 +25,11 @@ export enum PairTypes {
 }
 
 export type PhantomStablePoolToken = Pick<SubgraphToken, 'address' | 'balance' | 'decimals' | 'priceRate'>
+
+export type MetaStablePoolPairData = StablePoolPairData & {
+  tokenInPriceRate: BigNumber
+  tokenOutPriceRate: BigNumber
+}
 
 export type PhantomStablePoolPairData = MetaStablePoolPairData & {
   pairType: PairTypes

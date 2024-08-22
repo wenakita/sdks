@@ -20,5 +20,5 @@ export function computeVaultAddress({
   invariant(!!factoryAddress, 'Invalid factory address')
   invariant(!!initCodeHash, 'Invalid init code hash')
 
-  return getCreate2Address(factoryAddress, underlying + '000000000000000000000000', initCodeHash)
+  return getCreate2Address(factoryAddress, underlying.concat('000000000000000000000000'), initCodeHash)
 }
