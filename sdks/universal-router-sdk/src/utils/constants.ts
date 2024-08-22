@@ -41,7 +41,7 @@ const CHAIN_CONFIGS: { [key: number]: ChainConfig } = {
   },
   // arbitrum
   [42161]: {
-    router: '0x0000000003Af65ffb293E722e9Fe41e9C15ABB3D',
+    router: '0x00000006f4dd9687c729a608a0ddb70400001095',
     quoter: '0xE8d9dfF5807c6F832CBC41322aE4ca625f99d34d',
     weth: NOT_SUPPORTED_ON_CHAIN,
     steth: NOT_SUPPORTED_ON_CHAIN,
