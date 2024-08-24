@@ -3,6 +3,7 @@ import JSBI from 'jsbi'
 import { ZERO } from 'maia-core-sdk'
 import invariant from 'tiny-invariant'
 
+import { LibZip } from 'solady'
 import VirtualAccountABI from '../../abis/VirtualAccount.json'
 import { IMulticallCall, IPayableCall } from '../../types/encodingTypes'
 import { IWithdrawERC20Params, IWithdrawNativeParams } from '../../types/virtualAccountTypes'
@@ -26,7 +27,9 @@ export abstract class VirtualAccount {
     //performs safety check before encoding the data
     virtualAccountCallInvariantHelper(calls)
 
-    return VirtualAccount.INTERFACE.encodeFunctionData('call', [formatCalls(calls)])
+    const calldata = VirtualAccount.INTERFACE.encodeFunctionData('call', [formatCalls(calls)])
+
+    return LibZip.cdCompress(calldata)
   }
 
   /**
@@ -34,6 +37,29 @@ export abstract class VirtualAccount {
    * @param calls list of payable calls to aggregate
    */
   public static encodePayableCall(calls: IPayableCall[]) {
+    virtualAccountCallInvariantHelper(calls)
+
+    const calldata = VirtualAccount.INTERFACE.encodeFunctionData('payableCall', [formatPayableCalls(calls)])
+
+    return LibZip.cdCompress(calldata)
+  }
+
+  /**
+   * Aggregate calls ensuring each call is successful
+   * @param calls list of calls to aggregate
+   */
+  public static encodeMulticallWithoutCompression(calls: IMulticallCall[]) {
+    //performs safety check before encoding the data
+    virtualAccountCallInvariantHelper(calls)
+
+    return VirtualAccount.INTERFACE.encodeFunctionData('call', [formatCalls(calls)])
+  }
+
+  /**
+   * Aggregate calls with a msg value (gas value) ensuring each call is successful
+   * @param calls list of payable calls to aggregate
+   */
+  public static encodePayableCallWithoutCompression(calls: IPayableCall[]) {
     virtualAccountCallInvariantHelper(calls)
     return VirtualAccount.INTERFACE.encodeFunctionData('payableCall', [formatPayableCalls(calls)])
   }
