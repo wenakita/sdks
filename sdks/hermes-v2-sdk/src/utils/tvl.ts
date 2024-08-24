@@ -37,7 +37,7 @@ export function getAmountsCurrentTickUSD(
 ) {
   const tickSpacing = feeTierToTickSpacing(feeTier)
 
-  if (!tickCurrent) return 0
+  if (tickCurrent === undefined || isNaN(tickCurrent)) return 0
 
   const amount0 = getAmountsCurrentTick(false, sqrtPriceX96, tickCurrent, liquidity, feeTier, tickSpacing)
 
