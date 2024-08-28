@@ -4,9 +4,23 @@ import { FeeAmount, TICK_INCREMENT } from '../constants/constants'
 import { SwapMath } from './swapMath'
 import { TickMath } from './tickMath'
 
+// If the width is greater than 2^20, the efficiency is equivalent to full range, the least efficient.
+const MAX_WIDTH_FOR_EFFICIENCY = 2 ** 20
+
+// Depending on fee tier and min width, we calculate the efficiency of the position.
+// The value can go from 40k (1 tick) to 1 (full range).
 export function positionEfficiency(feeTier: number, minWidth: number): number {
   const tickSpacing = feeTierToTickSpacing(feeTier)
-  return 1 / (1 - (1 / (1 + TICK_INCREMENT * getLargerInTicks(tickSpacing, minWidth))) ** (1 / 4))
+  const priceRatio = calculatePriceRatio(minWidth, tickSpacing)
+
+  // C.E. = 1/(1-(Pa/Pb)^0.25)
+  return 1 / (1 - priceRatio ** (1 / 4))
+}
+
+function calculatePriceRatio(minWidth: number, tickSpacing: number) {
+  // We assume price is 1. To get price ratio at tick `i`: Pa/Pb = 1 / (1.0001)^i
+  // If minWidth is too large, we assume the ratio is zero (1 / infinity = 0).
+  return minWidth >= MAX_WIDTH_FOR_EFFICIENCY ? 0 : 1 / TICK_INCREMENT ** getLargerInTicks(tickSpacing, minWidth)
 }
 
 export function getLargerInTicks(tickSpacing: number, minWidth: number): number {
