@@ -7,9 +7,14 @@ import {
   MixedRouteSDK,
   MixedRouteTrade,
   partitionMixedRouteByProtocol,
+  Protocol,
+  RouteStable,
+  RouteStableWrapper,
+  RouteV2,
+  RouteV3,
   TPool,
 } from 'hermes-swap-router-sdk'
-import { TradeType } from 'hermes-v2-sdk'
+import { TradeType, V2Trade, Trade as V3Trade } from 'hermes-v2-sdk'
 import { Currency, NativeToken } from 'maia-core-sdk'
 
 import { CONTRACT_BALANCE, ROUTER_AS_RECIPIENT } from '../../../utils/constants'
@@ -127,12 +132,46 @@ export function addMixedSwap<TInput extends Currency, TOutput extends Currency>(
 
     addSwapForRoute(planner, params)
   } else {
-    const trade = MixedRouteTrade.createUncheckedTrade({
-      route: route as MixedRoute<TInput, TOutput>,
-      inputAmount,
-      outputAmount,
-      tradeType,
-    })
+    let trade
+
+    if (route.protocol == Protocol.V2) {
+      trade = new V2Trade(
+        route as RouteV2<TInput, TOutput>,
+        tradeType == TradeType.EXACT_INPUT ? inputAmount : outputAmount,
+        tradeType
+      )
+    } else if (route.protocol == Protocol.V3) {
+      trade = V3Trade.createUncheckedTrade({
+        route: route as RouteV3<TInput, TOutput>,
+        inputAmount,
+        outputAmount,
+        tradeType: tradeType,
+      })
+    } else if (route.protocol == Protocol.MIXED) {
+      /// we can change the naming of this function on MixedRouteTrade if needed
+      trade = MixedRouteTrade.createUncheckedTrade({
+        route: route as MixedRoute<TInput, TOutput>,
+        inputAmount,
+        outputAmount,
+        tradeType: tradeType,
+      })
+    } else if (route.protocol == Protocol.BAL_STABLE) {
+      trade = V3Trade.createUncheckedTrade({
+        route: route as RouteStable<TInput, TOutput>,
+        inputAmount,
+        outputAmount,
+        tradeType: tradeType,
+      })
+    } else if (route.protocol == Protocol.BAL_STABLE_WRAPPER) {
+      trade = V3Trade.createUncheckedTrade({
+        route: route as RouteStableWrapper<TInput, TOutput>,
+        inputAmount,
+        outputAmount,
+        tradeType: tradeType,
+      })
+    } else {
+      throw new Error('UNSUPPORTED_TRADE_PROTOCOL')
+    }
 
     const amountIn = trade.maximumAmountIn(options.slippageTolerance, inputAmount).quotient.toString()
     const amountOut = trade.minimumAmountOut(options.slippageTolerance, outputAmount).quotient.toString()
