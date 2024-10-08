@@ -16799,7 +16799,7 @@ __metadata:
   dependencies:
     "@ethersproject/abi": ^5.7.0
     "@types/jest": ^24.0.25
-    maia-core-sdk: 1.0.44
+    maia-core-sdk: ^1.0.44
     prettier: ^2.4.1
     solady: ^0.0.226
     tsdx: ^0.14.1
