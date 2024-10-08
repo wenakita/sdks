@@ -39,7 +39,7 @@ export abstract class LzEndpoint {
    * @param gasLimit
    * @param nativeForDst
    * @param dstNativeAddress
-   * @returns encoded adapter params
+   * @returns encoded adapter params.
    */
   public static encodeAdapterParamsV2(gasLimit: string, nativeForDst: string, dstNativeAddress: string): string {
     return pack(['uint16', 'uint256', 'uint256', 'address'], [2, gasLimit, nativeForDst, dstNativeAddress])

@@ -4,7 +4,7 @@ import invariant from 'tiny-invariant'
 import { computeVaultAddress } from '../../utils/addresses/computeVaultAddress'
 
 /**
- * Represents an ERC4626 vault
+ * Represents an ERC4626 vault.
  */
 export abstract class Vault {
   // One of these tokens is the Vault's address and the other is the underlying token
