@@ -176,7 +176,7 @@ export const MULTICALL_FUNCID = {
 } as const
 
 /**
- * Holds the default Supported Chain Id to gas params used in gas estimation
+ * Holds the default Supported Chain Id to gas params used in gas estimation.
  */
 export const DEFAULT_GAS_PARAMS: gasParamsMap = {
   // Mainnets

@@ -24,7 +24,7 @@ export abstract class BHermesVotes {
 
   /**
    *  Creates the necessary execution params to delegate bHermes governance power to a given address.
-   * @param newDelegatee  The address of the gauge to delegate votes to
+   * @param newDelegatee  The address of the gauge to delegate votes to.
    */
   public static encodeDelegateCalldata({ newDelegatee }: TDelegateVotesParams): string {
     // Check if the new delegatee address is valid.
