@@ -4,9 +4,9 @@ import { SupportedChainId } from '../chainIds'
 
 export const MaiaAddresses: MaiaAddressesType = {
   [SupportedChainId.ARBITRUM_ONE]: {
-    Maia: '0x00000000702749f73E5210B08b0a3D440078f888',
-    vMaia: '0x00003b020004328e005a0011b99a00c100cb9040',
-    vMaiaVotes: '0x416fbdf56ce29f04d21c6f16eaba9b93c998b21e',
+    Maia: '0x00000000ea00F3F4000e7Ed5Ed91965b19f1009B',
+    vMaia: '0x000000f0C01c6200354f240000b7003668B4D080',
+    vMaiaVotes: '0x54b6e28a869a56f4e34d1187ae0a35b7dd3be111',
     vMaiaTest: ZERO_ADDRESS,
     vMaiaVotesTest: ZERO_ADDRESS,
   },

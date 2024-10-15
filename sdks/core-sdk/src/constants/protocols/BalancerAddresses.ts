@@ -5,7 +5,7 @@ import { SupportedChainId } from '../chainIds'
  * These addresses are on arbitrum
  */
 export const ArbitrumBalancerAddresses: IBalancer = {
-  ComposableStablePoolWrapperFactory: '0x00Dccc0053C2Fa9b0000085a00bD15F200961af0',
+  ComposableStablePoolWrapperFactory: '0x0FeC6De5Cf270000460000008f0033B910004797',
   ComposableStablePoolWrapperInitCodeHash: '0x486597d0dac9e727fb360962435de36b40a335916fd13eb350993c76512b55c0',
 }
 

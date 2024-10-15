@@ -3,9 +3,9 @@ import { SupportedChainId } from '../chainIds'
 
 export const TalosAddresses: TalosAddressesType = {
   [SupportedChainId.ARBITRUM_ONE]: {
-    TalosStrategyStakedFactory: '0x2E90a7aBcDC3acf15F5604cA0de7A97504A2738a',
+    TalosStrategyStakedFactory: '0x17B4f847f9B071298f3eF0DAd5FCB20453bd537D',
     OptimizerFactory: '0x000000005De908d83F4b6072D388e3e9Fc543557',
-    BoostAggregatorFactory: '0x00deFc91d4CFE748D5000000fA1FF9B592c00000',
+    BoostAggregatorFactory: '0x223F3862F28848784432dc48346d133aBA94fbD4',
     TalosManagerFactory: '0x00780F4E0084BfE000Df008A0081E900E2f1C632',
     FlywheelCoreInstant: '0x340297150A933c474d98dcf92F5e583C4D48E4FE',
     TransferAll: '0x000067eadd040000d8ee00c1b9ca41ef920c005c',
