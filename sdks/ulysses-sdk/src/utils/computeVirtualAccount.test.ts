@@ -5,10 +5,10 @@ import { computeVirtualAccount } from './computeVirtualAccount'
 describe('computeVirtualAccount', () => {
   describe('#compute', () => {
     it('compute works fine mainnet', () => {
-      const ADDRESS_TEST_ONE = '0x88E07a0457aA113AB910103d9a01217315DA1C98'
+      const ADDRESS_TEST_ONE = '0xdABBbF2CC029CEafdc7597bc232Da6fEc4fa3934'
       const ADDRESS_TEST_TWO = '0x00000000206ad3e31DffF979Ccef06dE72a9E027'
-      const VIRTUAL_ACCOUNT_ONE = '0xbBb141078E3DdF6e58D0296186A46922C6468308'
-      const VIRTUAL_ACCOUNT_TWO = '0xC66C49cE2E3579d20134eA2F0ca1eEf8EdFb6bdA'
+      const VIRTUAL_ACCOUNT_ONE = '0xb502131a69C5C1C6855d9A9dfC7a7D430C4A0A3A'
+      const VIRTUAL_ACCOUNT_TWO = '0x499788D77E5aAF496039abE1E25fA27b68e8AdD9'
 
       const rootChainId = SupportedChainId.ARBITRUM_ONE
 

@@ -80,7 +80,7 @@ export abstract class UniswapV3Staker {
     // Check if the token id is valid.
     invariant(tokenId, 'Invalid token id')
     // Encode the stake action.
-    return UniswapV3Staker.INTERFACE.encodeFunctionData('stake', [tokenId])
+    return UniswapV3Staker.INTERFACE.encodeFunctionData('stakeToken', [tokenId])
   }
 
   /**
@@ -92,7 +92,7 @@ export abstract class UniswapV3Staker {
     // Check if the token id is valid.
     invariant(tokenId, 'Invalid token id')
     // Encode the restake action.
-    return UniswapV3Staker.INTERFACE.encodeFunctionData('restake', [tokenId])
+    return UniswapV3Staker.INTERFACE.encodeFunctionData('restakeToken', [tokenId])
   }
 
   /**

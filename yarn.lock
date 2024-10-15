@@ -9087,7 +9087,7 @@ __metadata:
     bignumber.js: ^9.0.2
     jsbi: ^3.1.5
     lodash.clonedeep: ^4.5.0
-    maia-core-sdk: ^1.0.44
+    maia-core-sdk: ^1.0.45
     tiny-invariant: ^1.1.0
     tsdx: ^0.14.1
   languageName: unknown
@@ -11700,6 +11700,20 @@ __metadata:
     tiny-invariant: ^1.1.0
     toformat: ^2.0.0
   checksum: 3639dcf85ffbddf725658dc509fd75b5648a951269df3a6eb1f1a1c015832d12d7194ecf0d7cfaa550dc7757544e9dce3c5a4c5c596ce3674cc08764b330ab3d
+  languageName: node
+  linkType: hard
+
+"maia-core-sdk@npm:^1.0.45":
+  version: 1.0.45
+  resolution: "maia-core-sdk@npm:1.0.45"
+  dependencies:
+    "@ethersproject/address": ^5.7.0
+    big.js: ^5.2.2
+    decimal.js-light: ^2.5.0
+    jsbi: ^3.1.5
+    tiny-invariant: ^1.1.0
+    toformat: ^2.0.0
+  checksum: 12f209005e726e6c88e6e482f1f9a40ea3ce6fd3a5af2ec97204e7afe1021864d6307e25ced9331b926c00eb14fe54e0df23052edb9a6de22441a922542de2bd
   languageName: node
   linkType: hard
 
@@ -16785,7 +16799,7 @@ __metadata:
   dependencies:
     "@ethersproject/abi": ^5.7.0
     "@types/jest": ^24.0.25
-    maia-core-sdk: ^1.0.44
+    maia-core-sdk: ^1.0.45
     prettier: ^2.4.1
     solady: ^0.0.226
     tsdx: ^0.14.1

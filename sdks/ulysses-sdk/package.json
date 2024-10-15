@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
-    "maia-core-sdk": "^1.0.44",
+    "maia-core-sdk": "^1.0.45",
     "solady": "^0.0.226"
   },
   "devDependencies": {
