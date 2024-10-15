@@ -4,11 +4,11 @@ import {
   IPool,
   Pair,
   Pool,
-  Route as V3RouteSDK,
-  Trade as V3TradeSDK,
   TradeType,
   V2RouteSDK,
   V2Trade as V2TradeSDK,
+  Route as V3RouteSDK,
+  Trade as V3TradeSDK,
 } from 'hermes-v2-sdk'
 import { Currency, CurrencyAmount, Fraction, ONE, Percent, Price, ZERO } from 'maia-core-sdk'
 import invariant from 'tiny-invariant'

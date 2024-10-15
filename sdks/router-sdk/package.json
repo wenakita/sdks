@@ -25,8 +25,8 @@
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@uniswap/swap-router-contracts": "^1.3.0",
-    "hermes-v2-sdk": "0.0.89",
-    "maia-core-sdk": "1.0.44"
+    "hermes-v2-sdk": "0.0.90",
+    "maia-core-sdk": "1.0.45"
   },
   "devDependencies": {
     "@types/jest": "^24.0.25",
