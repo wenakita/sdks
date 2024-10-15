@@ -36,8 +36,8 @@ export abstract class BHermesVotes {
 
   /**
    *  Creates the necessary execution params to undelegate bHermes governance power from a given address.
-   * @param delegatee  The address of the gauge to undelegate votes from
-   * @param amount  The amount of votes to undelegate
+   * @param delegatee  The address of the gauge to undelegate votes from.
+   * @param amount  The amount of votes to undelegate.
    */
   public static encodeUndelegateCalldata({ delegatee, amount }: TUndelegateVotesParams): string {
     // Check if the delegatee address and amount is valid.

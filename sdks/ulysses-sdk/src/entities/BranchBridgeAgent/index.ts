@@ -45,8 +45,8 @@ export abstract class BranchBridgeAgent {
    * @param account user account that's used for the refund of gas if applicable
    * @param params The encoded params to pass to the root router. (executeSignedDepositSingle function on the router)
    * @param depositParams params that hold information about the deposit token and amount.
-   * @param gasParams params that hold information about the gasLimit and remoteBranchExecutionGas
-   * @param hasFallbackToggled defaults to true
+   * @param gasParams params that hold information about the gasLimit and remoteBranchExecutionGas.
+   * @param hasFallbackToggled defaults to true.
    * @returns
    */
   public static encodeCallOutSignedAndBridgeCalldata({
