@@ -9019,7 +9019,7 @@ __metadata:
     "@types/jest": ^24.0.25
     "@uniswap/swap-router-contracts": ^1.3.0
     hermes-v2-sdk: 0.0.89
-    maia-core-sdk: 1.0.44
+    maia-core-sdk: 1.0.45
     prettier: ^2.4.1
     tsdx: ^0.14.1
   languageName: unknown
@@ -11703,7 +11703,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"maia-core-sdk@npm:^1.0.45":
+"maia-core-sdk@npm:1.0.45, maia-core-sdk@npm:^1.0.45":
   version: 1.0.45
   resolution: "maia-core-sdk@npm:1.0.45"
   dependencies:
@@ -16773,7 +16773,7 @@ __metadata:
     "@ethersproject/solidity": ^5.7.0
     "@types/jest": ^24.0.25
     hermes-v2-sdk: ^0.0.89
-    maia-core-sdk: 1.0.44
+    maia-core-sdk: 1.0.45
     maia-v2-sdk: ^0.0.8
     prettier: ^2.4.1
     talos-sdk: ^0.0.15
