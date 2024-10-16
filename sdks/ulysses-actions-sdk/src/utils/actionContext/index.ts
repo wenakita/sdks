@@ -150,7 +150,7 @@ export class ContextHandler<TParams, TResult> implements IActionContext<TParams,
         return {
           target: this.userAccount ?? ZERO_ADDRESS,
           params: {
-            calldata: VirtualAccount.encodePayableCallWithoutCompression(calls),
+            calldata: VirtualAccount.encodePayableCall(calls),
             value: '0', // TODO: Check HOW WE CAN GET SUM OF VALUE HERE
           },
         } as IActionResult<TResult>
