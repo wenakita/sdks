@@ -8999,15 +8999,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hermes-swap-router-sdk@npm:^0.0.57":
-  version: 0.0.57
-  resolution: "hermes-swap-router-sdk@npm:0.0.57"
+"hermes-swap-router-sdk@npm:^0.0.58":
+  version: 0.0.58
+  resolution: "hermes-swap-router-sdk@npm:0.0.58"
   dependencies:
     "@ethersproject/abi": ^5.7.0
     "@uniswap/swap-router-contracts": ^1.3.0
-    hermes-v2-sdk: 0.0.91
-    maia-core-sdk: 1.0.45
-  checksum: bcaee41875ed8d3055439d87b6d280c7191877d14d978c59fd360a267902b470f0461f722d180c1795399444b439fe19d6090f94d715a90edd6c5765cd5cb095
+    hermes-v2-sdk: 0.0.92
+    maia-core-sdk: 1.0.46
+  checksum: b560c4e64c5d2abcd853fafdf5e4c81b5c1f71d886249ac38963ab1a69176566993e45ea02c64e7847a49561a976dd6e8f1afda8917614d28858e13224b926cc
   languageName: node
   linkType: hard
 
@@ -9041,9 +9041,9 @@ __metadata:
     eslint-plugin-prettier: ^3.4.1
     ethers: ^5.7.0
     hardhat: ^2.14.0
-    hermes-swap-router-sdk: ^0.0.57
-    hermes-v2-sdk: 0.0.91
-    maia-core-sdk: 1.0.45
+    hermes-swap-router-sdk: ^0.0.58
+    hermes-v2-sdk: 0.0.92
+    maia-core-sdk: 1.0.46
     prettier: ^2.4.1
     ts-node: ^10.9.1
     tsdx: ^0.14.1
@@ -9052,25 +9052,6 @@ __metadata:
     typescript: ^4.3.3
   languageName: unknown
   linkType: soft
-
-"hermes-v2-sdk@npm:0.0.91":
-  version: 0.0.91
-  resolution: "hermes-v2-sdk@npm:0.0.91"
-  dependencies:
-    "@ethersproject/abi": ^5.7.0
-    "@ethersproject/solidity": ^5.7.0
-    "@types/lodash.clonedeep": ^4.5.9
-    "@uniswap/swap-router-contracts": ^1.3.0
-    "@uniswap/v3-periphery": ^1.1.1
-    "@uniswap/v3-staker": 1.0.0
-    bignumber.js: ^9.0.2
-    jsbi: ^3.1.5
-    lodash.clonedeep: ^4.5.0
-    maia-core-sdk: ^1.0.45
-    tiny-invariant: ^1.1.0
-  checksum: e6f7da7038ea21c7c4b10ed6e28f6e4b988ad5865ad08c3c25719a628d2a5d21354017c74bed0be8fd94ee1607cf9d32d4aa11bb3f94bb8bcc2fbe294b84f3d9
-  languageName: node
-  linkType: hard
 
 "hermes-v2-sdk@npm:0.0.92, hermes-v2-sdk@npm:^0.0.92":
   version: 0.0.92
@@ -11705,20 +11686,6 @@ __metadata:
   dependencies:
     sourcemap-codec: ^1.4.8
   checksum: 9a0e55a15c7303fc360f9572a71cffba1f61451bc92c5602b1206c9d17f492403bf96f946dfce7483e66822d6b74607262e24392e87b0ac27b786e69a40e9b1a
-  languageName: node
-  linkType: hard
-
-"maia-core-sdk@npm:1.0.45, maia-core-sdk@npm:^1.0.45":
-  version: 1.0.45
-  resolution: "maia-core-sdk@npm:1.0.45"
-  dependencies:
-    "@ethersproject/address": ^5.7.0
-    big.js: ^5.2.2
-    decimal.js-light: ^2.5.0
-    jsbi: ^3.1.5
-    tiny-invariant: ^1.1.0
-    toformat: ^2.0.0
-  checksum: 12f209005e726e6c88e6e482f1f9a40ea3ce6fd3a5af2ec97204e7afe1021864d6307e25ced9331b926c00eb14fe54e0df23052edb9a6de22441a922542de2bd
   languageName: node
   linkType: hard
 
