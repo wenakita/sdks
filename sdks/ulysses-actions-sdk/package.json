@@ -27,13 +27,25 @@
     "hermes-v2-sdk": "^0.0.92",
     "maia-core-sdk": "1.0.46",
     "maia-v2-sdk": "^0.0.8",
+    "react": "18.3.1",
     "talos-sdk": "^0.0.15",
     "ulysses-sdk": "^0.0.111"
   },
   "devDependencies": {
+    "@rushstack/eslint-patch": "1.10.4",
     "@types/jest": "^24.0.25",
-    "prettier": "^2.4.1",
-    "tsdx": "^0.14.1"
+    "@typescript-eslint/eslint-plugin": "8.12.1",
+    "@typescript-eslint/parser": "8.12.1",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-config-react-app": "7.0.1",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react": "7.37.2",
+    "eslint-plugin-react-hooks": "5.0.0",
+    "patch-package": "8.0.0",
+    "prettier": "3.3.3",
+    "tsdx": "^0.14.1",
+    "typescript": "5.6.3"
   },
   "prettier": {
     "printWidth": 120,
